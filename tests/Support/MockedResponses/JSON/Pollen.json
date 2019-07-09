@@ -1,0 +1,13 @@
+[
+  {
+    "name":"Danmark",
+    "language":"DK",
+    "products":{
+      "timestamp":1562085904690,
+      "text_type":"pollen",
+      "text_format":"xml",
+      "text":"<?xml version=\"1.0\" encoding=\"utf-8\"?><pollen_info>  <file_info>    <provider>DMI</provider>    <date_UTC>      <day>2</day>      <month>7</month>      <year>2019</year>      <time>12:16:57</time>      <date_string>tirsdag den 2. juli 2019</date_string>    </date_UTC>    <date_DK>      <day>2</day>      <month>7</month>      <year>2019</year>      <time>14:16:57</time>      <date_string>tirsdag den 2. juli 2019</date_string>    </date_DK>  </file_info>  <region>    <name>København</name>    <readings>      <reading>        <name>Birk</name>        <value>-</value>      </reading>      <reading>        <name>Bynke</name>        <value>-</value>      </reading>      <reading>        <name>El</name>        <value>-</value>      </reading>      <reading>        <name>Elm</name>        <value>51</value>      </reading>      <reading>        <name>Græs</name>        <value>18</value>      </reading>      <reading>        <name>Hassel</name>        <value>-</value>      </reading>      <reading>        <name>Alternaria</name>        <value>Moderat</value>      </reading>      <reading>        <name>Cladosporium</name>        <value>Lavt</value>      </reading>    </readings>    <forecast>For i morgen, onsdag d. 3 juli, ventes et moderat antal græspollen, mellem 10-50 pr. m3 luft</forecast>  </region>  <region>    <name>Viborg</name>    <readings>      <reading>        <name>Birk</name>        <value>-</value>      </reading>      <reading>        <name>Bynke</name>        <value>-</value>      </reading>      <reading>        <name>El</name>        <value>-</value>      </reading>      <reading>        <name>Elm</name>        <value>-</value>      </reading>      <reading>        <name>Græs</name>        <value>31</value>      </reading>      <reading>        <name>Hassel</name>        <value>-</value>      </reading>    </readings>    <forecast>For i morgen, onsdag d. 3 juli, ventes et moderat antal græspollen, mellem 10-50 pr. m3 luft</forecast>  </region>  <comment>Kilde: Astma-Allergi Danmark og DMI</comment>  <info>Pollentallet er det gennemsnitlige antal pollen pr. kubikmeter luft pr. døgn, i København målt i tidsrummet i går kl. 13 til i dag kl. 13, i Viborg målt i tidsrummet i går kl. 9 til i dag kl. 9. Pollentallet måles 15 m over jordniveau.</info>  <copyright>Dagens pollental og pollenvarsling er fra Astma- og Allergiforbundet og Danmarks Meteorologiske Institut.  </copyright></pollen_info>",
+      "varnishURL":"text/Danmark/DK/pollen"
+    }
+  }
+]

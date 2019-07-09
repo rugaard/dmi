@@ -1,0 +1,36 @@
+{
+  "name":"København",
+  "country":"DK",
+  "municipality":"København",
+  "shore_stationid":"30336",
+  "farvanddata":[
+    {
+      "name":"Bælthavet og Sundet",
+      "language":"DK",
+      "products":[
+        {
+          "timestamp":1561861956793,
+          "text_type":"farvand",
+          "text_format":"xml",
+          "text":"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><dmi><dato name='Dato'><text>Søndag den 30. juni 2019.</text></dato><varsler name='Varsler'><text>Der er kulingvarsel for Vestlige Østersø, Kattegat, Skagerrak og Fisker. </text></varsler><oversigt name='Oversigt'><text>Et højtryk, 1012 hPa, over Østersøen fjerner sig mod sydøst. En svag koldfront passerer Danmark fra vest og efterfølges af blæsende vejr fra sydvest og vest.</text></oversigt><gyldighed name='Gyldighed'><text>Farvandsudsigter, der gælder til mandag morgen, udsendt klokken 4.30.</text></gyldighed><baelthavetogsundet name='Bælthavet og Sundet'><text>Bælthavet og Sundet:</text><baelthavetogsundet name='Udsigt for Bælthavet og Sundet'><text>Bælthavet: Syd 4 til 9 m/s. God sigt. I eftermiddag, i aften og i nat vest 7 til 12 m/s. God sigt.  Sundet: Syd 3 til 8 m/s. God sigt. I eftermiddag, i aften og i nat vest 8 til 13 m/s. God sigt. </text></baelthavetogsundet><isvarbaelthavetogsundet name='Overisningsvarsel for Bælthavet og Sundet'><text></text></isvarbaelthavetogsundet></baelthavetogsundet></dmi>",
+          "varnishURL":"text/Bælthavet og Sundet/DK/farvand"
+        }
+      ]
+    }
+  ],
+  "regiondata":[
+    {
+      "name":"Storkøbenhavn",
+      "products":[
+        {
+          "timestamp":1561879146173,
+          "text_type":"region",
+          "text_format":"xml",
+          "text":"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><dmi><overskriftkoebenhavnognordsjaelland name='Overskrift København og Nordsjælland'><text>Sol og op til 32 grader</text></overskriftkoebenhavnognordsjaelland><dato name='Dato'><text>Søndag den 30. juni 2019.</text></dato><reggyld name='Reggyld'><text>Udsigt, der gælder til mandag morgen, udsendt kl. 09.30</text></reggyld><regionkoebenhavnognordsjaelland name='København og Nordsjælland'><text>København og Nordsjælland:</text><koebenhavnognordsjaelland name='København og Nordsjælland'><text>En del sol, men i løbet af eftermiddagen en overgang mere skyet. Temp. op mellem 27 og 32 grader. Let til frisk sydlig vind, som i eftermiddag drejer til sydvest og vest og tiltager til jævn til hård vind med kraftige vindstød. I aften en del sol og i nat fortsat mest klart vejr. Temp. mellem 13 og 17 grader og jævn til hård vind fra sydvest og vest som aftager en smule.</text></koebenhavnognordsjaelland></regionkoebenhavnognordsjaelland></dmi>",
+          "varnishURL":"text/Storkøbenhavn/DK/region"
+        }
+      ]
+    }
+  ],
+  "municipality4obs":"Københavns"
+}

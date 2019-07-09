@@ -1,0 +1,74 @@
+{
+  "name": "rugaard/dmi",
+  "type": "library",
+  "description": "API for the Danish Meteorological Institute (DMI)",
+  "keywords": [
+    "morten",
+    "rugaard",
+    "morten rugaard",
+    "dmi",
+    "danish meteorological institute",
+    "dmi api",
+    "danish meteorological institute api",
+    "api",
+    "weather",
+    "forecast",
+    "weather forecast"
+  ],
+  "authors": [
+    {
+      "name": "Morten Rugaard",
+      "email": "morten@rugaard.me",
+      "homepage": "https://github.com/rugaard",
+      "role": "Developer"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/rugaard",
+  "support": {
+    "issues": "https://github.com/rugaard/dmi/issues",
+    "source": "https://github.com/rugaard/dmi"
+  },
+  "require": {
+    "php": "^7.2",
+    "ext-json": "*",
+    "ext-simplexml": "*",
+    "guzzlehttp/guzzle": "~6.0",
+    "tightenco/collect": "^5.8"
+  },
+  "require-dev": {
+    "mockery/mockery": "^1.0",
+    "phpunit/phpunit": "^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rugaard\\DMI\\": "src"
+    },
+    "files": [
+      "src/Support/Date.php",
+      "src/Support/Measurements.php",
+      "src/Support/Units.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Rugaard\\DMI\\Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Rugaard\\DMI\\Providers\\Laravel\\ServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "./vendor/bin/phpunit --colors=always"
+  },
+  "prefer-stable": true,
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
+}

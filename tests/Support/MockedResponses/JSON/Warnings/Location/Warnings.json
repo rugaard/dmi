@@ -1,0 +1,197 @@
+{
+  "name":"Blovstrød",
+  "area":"Allerød",
+  "vandstand":"",
+  "day0":"none",
+  "day1":"none",
+  "day2":"regn-risiko.svg",
+  "day3":"none",
+  "day4":"none",
+  "day5":"none",
+  "favorite":"regn-risiko.svg",
+  "warnings":[
+    {
+      "timeString":"30 June 2019 09:00",
+      "time":1561878000000,
+      "warning_list":[
+        {
+          "category":0,
+          "type":1,
+          "group":"Regn",
+          "cause":"Kraftig regn/skybrud 25-35mm/6t",
+          "title":"DMI risiko for kraftig regn og lokale skybrud ",
+          "text":"Der er risiko for kraftig regn, lokalt mellem 25 og 35 mm på 6 timer. Der er også risiko for lokale skybrud med mere end 15 mm på 30 min. ",
+          "warning_area":"Allerød"
+        }
+      ],
+      "icon":"regn-risiko.svg"
+    },
+    {
+      "timeString":"30 June 2019 10:00",
+      "time":1561881600000,
+      "warning_list":[
+        {
+          "category":0,
+          "type":1,
+          "group":"Regn",
+          "cause":"Kraftig regn/skybrud 25-35mm/6t",
+          "title":"DMI risiko for kraftig regn og lokale skybrud ",
+          "text":"Der er risiko for kraftig regn, lokalt mellem 25 og 35 mm på 6 timer. Der er også risiko for lokale skybrud med mere end 15 mm på 30 min. ",
+          "warning_area":"Allerød"
+        }
+      ],
+      "icon":"regn-risiko.svg"
+    },
+    {
+      "timeString":"30 June 2019 10:00",
+      "time":1561881600000,
+      "warning_list":[
+        {
+          "category":0,
+          "type":1,
+          "group":"Regn",
+          "cause":"Kraftig regn/skybrud 25-35mm/6t",
+          "title":"DMI risiko for kraftig regn og lokale skybrud ",
+          "text":"Der er risiko for kraftig regn, lokalt mellem 25 og 35 mm på 6 timer. Der er også risiko for lokale skybrud med mere end 15 mm på 30 min. ",
+          "warning_area":"Allerød"
+        }
+      ],
+      "icon":"regn-risiko.svg"
+    },
+    {
+      "timeString":"30 June 2019 11:00",
+      "time":1561885200000,
+      "warning_list":[
+        {
+          "category":0,
+          "type":1,
+          "group":"Regn",
+          "cause":"Kraftig regn/skybrud 25-35mm/6t",
+          "title":"DMI risiko for kraftig regn og lokale skybrud ",
+          "text":"Der er risiko for kraftig regn, lokalt mellem 25 og 35 mm på 6 timer. Der er også risiko for lokale skybrud med mere end 15 mm på 30 min. ",
+          "warning_area":"Allerød"
+        }
+      ],
+      "icon":"regn-risiko.svg"
+    },
+    {
+      "timeString":"30 June 2019 12:00",
+      "time":1561888800000,
+      "warning_list":[
+        {
+          "category":0,
+          "type":1,
+          "group":"Regn",
+          "cause":"Kraftig regn/skybrud 25-35mm/6t",
+          "title":"DMI risiko for kraftig regn og lokale skybrud ",
+          "text":"Der er risiko for kraftig regn, lokalt mellem 25 og 35 mm på 6 timer. Der er også risiko for lokale skybrud med mere end 15 mm på 30 min. ",
+          "warning_area":"Allerød"
+        }
+      ],
+      "icon":"regn-risiko.svg"
+    },
+    {
+      "timeString":"30 June 2019 13:00",
+      "time":1561892400000,
+      "warning_list":[
+        {
+          "category":0,
+          "type":1,
+          "group":"Regn",
+          "cause":"Kraftig regn/skybrud 25-35mm/6t",
+          "title":"DMI risiko for kraftig regn og lokale skybrud ",
+          "text":"Der er risiko for kraftig regn, lokalt mellem 25 og 35 mm på 6 timer. Der er også risiko for lokale skybrud med mere end 15 mm på 30 min. ",
+          "warning_area":"Allerød"
+        }
+      ],
+      "icon":"regn-risiko.svg"
+    },
+    {
+      "timeString":"30 June 2019 14:00",
+      "time":1561896000000,
+      "warning_list":[
+        {
+          "category":0,
+          "type":1,
+          "group":"Regn",
+          "cause":"Kraftig regn/skybrud 25-35mm/6t",
+          "title":"DMI risiko for kraftig regn og lokale skybrud ",
+          "text":"Der er risiko for kraftig regn, lokalt mellem 25 og 35 mm på 6 timer. Der er også risiko for lokale skybrud med mere end 15 mm på 30 min. ",
+          "warning_area":"Allerød"
+        }
+      ],
+      "icon":"regn-risiko.svg"
+    },
+    {
+      "timeString":"30 June 2019 15:00",
+      "time":1561899600000,
+      "warning_list":[
+        {
+          "category":0,
+          "type":1,
+          "group":"Regn",
+          "cause":"Kraftig regn/skybrud 25-35mm/6t",
+          "title":"DMI risiko for kraftig regn og lokale skybrud ",
+          "text":"Der er risiko for kraftig regn, lokalt mellem 25 og 35 mm på 6 timer. Der er også risiko for lokale skybrud med mere end 15 mm på 30 min. ",
+          "warning_area":"Allerød"
+        }
+      ],
+      "icon":"regn-risiko.svg"
+    }
+  ],
+  "locationWarnings":[
+    {
+      "area":"København",
+      "warningText":"Der er risiko for kraftig regn, lokalt mellem 25 og 35 mm på 6 timer. Der er også risiko for lokale skybrud med mere end 15 mm på 30 min. ",
+      "warningTitle":"DMI risiko for kraftig regn og lokale skybrud ",
+      "category":"2",
+      "issuedAt":1561842000000,
+      "issuedAtText":"2019-06-29 23:00",
+      "validFrom":1561852800000,
+      "validFromText":"Søndag kl. 02:00",
+      "validTo":1561975200000,
+      "validToText":"Mandag kl. 12:00",
+      "additionalText":"Vær opmærksom på, at lavtliggende områder som f.eks. kældre, vejbaner og viadukter kan oversvømmes. Store mængder vand påvirker trafikken, og der er risiko for strømafbrydelser. Tjek tagrender, nedløbsrør og afløbsriste nær din bolig. Luk vinduer og døre. Nedsæt hastigheden, mens du kører, for at undgå akvaplaning, og kør ikke ud i vand, hvor du ikke kan vurdere dybden.",
+      "warningType":"1",
+      "warningCauseGroup":"3",
+      "validFromDay":"Mandag",
+      "validToDay":"Mandag",
+      "iconOverview":"bla-regn-risiko.svg",
+      "validFromHour":"kl. 02:00",
+      "validToHour":"kl. 12:00",
+      "formattedCategory":0,
+      "warningCause":"regn",
+      "peiod":"I dag kl. 02:00 til 12:00",
+      "icon":"regn-risiko.svg"
+    }
+  ],
+  "actualWarnings":[
+    {
+      "area":"København",
+      "warningText":"Der er risiko for kraftig regn, lokalt mellem 25 og 35 mm på 6 timer. Der er også risiko for lokale skybrud med mere end 15 mm på 30 min. ",
+      "warningTitle":"DMI risiko for kraftig regn og lokale skybrud ",
+      "category":"2",
+      "issuedAt":1561842000000,
+      "issuedAtText":"2019-06-29 23:00",
+      "validFrom":1561852800000,
+      "validFromText":"Søndag kl. 02:00",
+      "validTo":1561975200000,
+      "validToText":"Mandag kl. 12:00",
+      "additionalText":"Vær opmærksom på, at lavtliggende områder som f.eks. kældre, vejbaner og viadukter kan oversvømmes. Store mængder vand påvirker trafikken, og der er risiko for strømafbrydelser. Tjek tagrender, nedløbsrør og afløbsriste nær din bolig. Luk vinduer og døre. Nedsæt hastigheden, mens du kører, for at undgå akvaplaning, og kør ikke ud i vand, hvor du ikke kan vurdere dybden.",
+      "warningType":"1",
+      "warningCauseGroup":"3",
+      "validFromDay":"Mandag",
+      "validToDay":"Mandag",
+      "iconOverview":"bla-regn-risiko.svg",
+      "validFromHour":"kl. 02:00",
+      "validToHour":"kl. 12:00",
+      "formattedCategory":0,
+      "warningCause":"regn",
+      "peiod":"I dag kl. 02:00 til 12:00",
+      "icon":"regn-risiko.svg"
+    }
+  ],
+  "fivedayWarnings":[
+
+  ]
+}

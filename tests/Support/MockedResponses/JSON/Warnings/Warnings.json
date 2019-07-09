@@ -1,0 +1,66 @@
+{
+  "overviewIssued":1551092280000,
+  "overviewIssuedString":"Udsendt mandag kl. 11:58",
+  "title":"DMI risiko for kraftig regn og lokale skybrud",
+  "overviewCategory":"2",
+  "totalArea":"Vest- og Sydsjælland samt Lolland-Falster, København og Nordsjælland, Østjylland og Nordjylland",
+  "formatedOverviewCategory":0,
+  "overviewText":"DMI risiko",
+  "type":"1",
+  "warnings":[
+    {
+      "area":"København og Nordsjælland, Midtsjælland og Odsherred",
+      "warningText":"DMI risiko for kraftig regn og lokale skybrud",
+      "warningTitle":null,
+      "category":"2",
+      "issuedAt":1551087360000,
+      "issuedAtText":"Gyldig fra mandag kl. 10:36",
+      "validFrom":1551078300000,
+      "validFromText":"Gyldig fra mandag kl. 08:05",
+      "validTo":1551096000000,
+      "validToText":"Mandag kl. 13:00",
+      "additionalText":"Vær opmærksom på, at lavtliggende områder som f.eks. kældre, vejbaner og viadukter kan oversvømmes. Store mængder vand påvirker trafikken, og der er risiko for strømafbrydelser. Tjek tagrender, nedløbsrør og afløbsriste nær din bolig. Luk vinduer og døre. Nedsæt hastigheden, mens du kører, for at undgå akvaplaning, og kør ikke ud i vand, hvor du ikke kan vurdere dybden.",
+      "warningType":"1",
+      "warningCauseGroup":"3",
+      "validFromDay":"Mandag",
+      "validToDay":"Mandag",
+      "iconOverview":"bla-regn-risiko.svg",
+      "validFromHour":"kl. 08:05",
+      "validToHour":"kl. 13:00",
+      "formattedCategory":0,
+      "warningCause":"regn",
+      "peiod":"I dag kl. 08:05 til 13:00",
+      "icon":"regn-risiko.svg"
+    },
+    {
+      "area":"Djursland, Storaalborg, Randers, Brønderslev, Frederikshavn, Rebild og Mariagerfjord",
+      "warningText":"DMI risiko for kraftig regn og lokale skybrud",
+      "warningTitle":null,
+      "category":"2",
+      "issuedAt":1551087360000,
+      "issuedAtText":"Gyldig fra mandag kl. 10:36",
+      "validFrom":1551078300000,
+      "validFromText":"Gyldig fra mandag kl. 08:05",
+      "validTo":1551096000000,
+      "validToText":"Mandag kl. 13:00",
+      "additionalText":"Vær opmærksom på, at lavtliggende områder som f.eks. kældre, vejbaner og viadukter kan oversvømmes. Store mængder vand påvirker trafikken, og der er risiko for strømafbrydelser. Tjek tagrender, nedløbsrør og afløbsriste nær din bolig. Luk vinduer og døre. Nedsæt hastigheden, mens du kører, for at undgå akvaplaning, og kør ikke ud i vand, hvor du ikke kan vurdere dybden.",
+      "warningType":"1",
+      "warningCauseGroup":"3",
+      "validFromDay":"Søndag",
+      "validToDay":"Søndag",
+      "iconOverview":"bla-regn-risiko.svg",
+      "validFromHour":"kl. 08:05",
+      "validToHour":"kl. 13:00",
+      "formattedCategory":0,
+      "warningCause":"regn",
+      "peiod":"I dag kl. 08:05 til 13:00",
+      "icon":"regn-risiko.svg"
+    }
+  ],
+  "icons":[
+    {
+      "icon":"bla-regn-risiko.svg",
+      "text":"DMI risiko for kraftig regn og lokale skybrud"
+    }
+  ]
+}

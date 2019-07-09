@@ -1,0 +1,36 @@
+{
+  "name":"København",
+  "country":"DK",
+  "municipality":"København",
+  "shore_stationid":"30336",
+  "farvanddata":[
+    {
+      "name":"Bælthavet og Sundet",
+      "language":"DK",
+      "products":[
+        {
+          "timestamp":1562575462730,
+          "text_type":"farvand",
+          "text_format":"xml",
+          "text":"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><dmi><dato name='Dato'><text>Mandag den 8. juli 2019.</text></dato><varsler name='Varsler'><text>Der er kulingvarsel for Fisker. </text></varsler><oversigt name='Oversigt'><text>Nordvestlig strømning af kold og instabil med byger, især over Kattegat og de østlige farvande, hvor bygerne lokalt kan være med torden. Fra i nat mest tørt.</text></oversigt><gyldighed name='Gyldighed'><text>Farvandsudsigter, der gælder til tirsdag middag, udsendt klokken 10.45.</text></gyldighed><baelthavetogsundet name='Bælthavet og Sundet'><text>Bælthavet og Sundet:</text><baelthavetogsundet name='Udsigt for Bælthavet og Sundet'><text>Bælthavet: Nordvest 6 til 11 m/s. God sigt.  Sundet: Nordvest 5 til 10 m/s. God sigt. </text></baelthavetogsundet><isvarbaelthavetogsundet name='Overisningsvarsel for Bælthavet og Sundet'><text></text></isvarbaelthavetogsundet></baelthavetogsundet></dmi>",
+          "varnishURL":"text/Bælthavet og Sundet/DK/farvand"
+        }
+      ]
+    }
+  ],
+  "regiondata":[
+    {
+      "name":"Storkøbenhavn",
+      "products":[
+        {
+          "timestamp":1562571707498,
+          "text_type":"region",
+          "text_format":"xml",
+          "text":"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><dmi><overskriftkoebenhavnognordsjaelland name='Overskrift København og Nordsjælland'><text>Først skyet med tordenbyger, senere nogen sol og kun få byger</text></overskriftkoebenhavnognordsjaelland><dato name='Dato'><text>Mandag den 8. juli 2019.</text></dato><reggyld name='Reggyld'><text>Udsigt, der gælder til tirsdag morgen, udsendt kl. 09.40</text></reggyld><regionkoebenhavnognordsjaelland name='København og Nordsjælland'><text>København og Nordsjælland:</text><koebenhavnognordsjaelland name='København og Nordsjælland'><text>Først skyet med byger, lokalt med torden, men omkring middag klarer det op med nogen sol, dog med mulighed for en lokal byge. Temp. op mellem 17 og 20 grader. I nat mest tørt og klart vejr. Temp. ned mellem 8 og 13 grader. Hele døgnet svag til jævn vind fra vest og nordvest, ved kysterne op til frisk.</text></koebenhavnognordsjaelland></regionkoebenhavnognordsjaelland></dmi>",
+          "varnishURL":"text/Storkøbenhavn/DK/region"
+        }
+      ]
+    }
+  ],
+  "municipality4obs":"Københavns"
+}

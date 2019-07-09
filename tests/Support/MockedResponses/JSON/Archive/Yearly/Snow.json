@@ -1,0 +1,27 @@
+{
+  "parameter":"Års snedybde",
+  "unit":"cm",
+  "area":"Hele landet",
+  "dataserie":[
+    {
+      "time":1546300800000,
+      "value":21.0,
+      "normal":null,
+      "parameterNumber":906,
+      "valuesUsed":0,
+      "timezone":"Europe/Copenhagen",
+      "yearString":"2019",
+      "dateString":"01-01-2019 00:00",
+      "valueOneDecimal":"21,0",
+      "dateLocalString":"01-01-2019 01:00",
+      "yearLocalString":"2019",
+      "monthString":"Jan",
+      "monthLocalString":"Jan",
+      "dayString":"1",
+      "dayLocalString":"1",
+      "hourString":"00",
+      "hourLocalString":"01",
+      "valueRounded2OneDecimal":21.0
+    }
+  ]
+}

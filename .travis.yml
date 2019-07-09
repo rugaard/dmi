@@ -1,0 +1,24 @@
+language: php
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+php:
+  - 7.2
+  - 7.3
+  - 7.4snapshot
+
+install:
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter && chmod +x ./cc-test-reporter
+  - if [ $(phpenv version-name) = "7.2" ]; then ./cc-test-reporter before-build; fi
+
+script:
+  - vendor/bin/phpunit --coverage-text --coverage-clover clover.xml
+
+after_success:
+  - if [ $(phpenv version-name) = "7.2" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build -t clover --exit-code $TRAVIS_TEST_RESULT; fi
