@@ -51,7 +51,7 @@ When DMI releases the data publicly, the license will be changed to a more open 
     * [Day](#day-after-sunrise)
     * [Night](#night-after-sunset)
 * [Municipalities](#-municipalities)
-* [Frequently Asked Questions (FAQ)](#frequently-asked-questions-faq)
+* [Frequently Asked Questions (FAQ)](#-frequently-asked-questions-faq)
     * [How do I find the ID of a pre-defined location?](#how-do-i-find-the-id-of-a-pre-defined-location)
     * [What is this `Tightenco\Collect\Support\Collection` class and how does it work?](#what-is-this-tightencocollectsupportcollection-class-and-how-does-it-work)
 * [Roadmap](#-roadmap)
