@@ -37,6 +37,7 @@ When DMI releases the data publicly, the license will be changed to a more open 
     * [Methods](#methods)
         * [National forecast](#national-forecast)
         * [Extended national forecast](#extended-national-forecast) 
+        * [Search locations](#search-locations)
         * [Location by ID](#location-by-id)
         * [Location by coordinate](#location-by-coordinate)
         * [Weather warnings](#weather-warnings)
@@ -50,6 +51,11 @@ When DMI releases the data publicly, the license will be changed to a more open 
     * [Day](#day-after-sunrise)
     * [Night](#night-after-sunset)
 * [Municipalities](#-municipalities)
+* [Frequently Asked Questions (FAQ)](#frequently-asked-questions-faq)
+    * [How do I find the ID of a pre-defined location?](#how-do-i-find-the-id-of-a-pre-defined-location)
+    * [What is this `Tightenco\Collect\Support\Collection` class and how does it work?](#what-is-this-tightencocollectsupportcollection-class-and-how-does-it-work)
+* [Roadmap](#-roadmap)
+    * [Internal caching](#internal-caching)
 * [License](#-license)
 
 ## 🚀 Features
@@ -57,8 +63,9 @@ When DMI releases the data publicly, the license will be changed to a more open 
 | Name | Description | Supported |
 | :--- | :--- | :---: |
 | National forecasts | National descriptive forecasts (incl. 7 days forecast) | ✅ |
-| Location | Weather data/forecast for a location based on coordinates _(latitude/longitude)_ | ✅ |
-| Location by ID | Weather data/forecast for a pre-defined location _(City, POI etc.)_ | ✅ |
+| Search | Search pre-defined locations | ✅ |
+| Location | Weather data/forecast for a pre-defined location | ✅ |
+| Location by coordinate | Weather data/forecast for a location based on coordinates _(latitude/longitude)_ | ✅ |
 | Weather warnings | National weather warnings | ✅ |
 | Sun times | Time of sunrise and sunset | ✅ |
 | UV index | Current UV index | ✅ |
@@ -138,9 +145,22 @@ Get the extended (_7-days_) national descriptive forecast.
 extendedForecast();
 ```
 
+#### Search locations
+
+Search locations by name.
+
+```php
+search(string $query, int $locationId);
+```
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :---: | :--- |
+| `$query` | `string` | - | Search query |
+| `$limit` | `int` | `20` | Max. number of locations to return. |
+
 #### Location by ID
 
-Get current weather condition and latest forecast for a pre-defined location (Eg. a city or point of interest).
+Get current weather condition and latest forecast for a pre-defined location.
 
 _Note: `$includeRegional` is required to get `municipality` and `region` of location._
 
@@ -343,6 +363,32 @@ Denmark is split into 98 municipalities. In the list below are all the municipal
 | Varde | 573 | Vejen | 575 | Vejle | 630 | Vesthimmerland | 820 |
 | Viborg | 791 | Vordingborg | 390 | Ærø | 492 | Aabenraa | 580 |
 | Aalborg | 851 | Aarhus
+
+## 🗣 Frequently Asked Questions (FAQ)
+
+#### How do I find the ID of a pre-defined location?
+
+There are two ways to find it:
+
+1. Use this package's [search endpoint](#search-locations).
+
+2. Go to [DMI's website](https://www.dmi.dk/) and use the search feature in the top right corner. If your desired location pops up; click on it and you will be directed to the locations page. You can now copy/paste the ID from the locations URL.
+> https://<span></span>www.dmi.dk/lokation/show/DK/**`2618425`**/København/
+
+#### What is this `Tightenco\Collect\Support\Collection` class and how does it work?
+
+All endpoints returns data within a `Tightenco\Collect\Support\Collection` class. The class is a port of the popular `Collection` class from [Laravel](https://laravel.com).
+
+Please refer to [Laravel](https://laravel.com)'s detailed documentation, to learn more about how you work with a `Collection`:<br>
+[https://laravel.com/docs/master/collections](https://laravel.com/docs/master/collections)
+
+## 🗺 Roadmap
+
+#### Internal caching
+
+Some endpoints, like [National forecasts](#national-forecast), [sunrise and sunset](#sun-times) and [pollen measurements](#pollen) are endpoints which doesn't change/update very often.
+
+By implementing some form of internal caching, we could cache these kind of endpoints. This would increase the response time and we would avoid making unnecessary requests to DMI. 
 
 ## 🚓 License
 This package is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/).
