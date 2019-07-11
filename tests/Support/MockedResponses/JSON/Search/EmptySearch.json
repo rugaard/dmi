@@ -1,0 +1,17 @@
+{
+  "responseHeader":{
+    "status":0,
+    "QTime":0,
+    "params":{
+      "q":"(name:\"Sundby\" AND realm:1)^4 OR (name_ngram:\"Sundby\"  AND realm:1)",
+      "sort":"score desc,realm desc,population desc",
+      "rows":"15",
+      "wt":"json"
+    }
+  },
+  "response":{
+    "numFound":0,
+    "start":0,
+    "docs":[]
+  }
+}

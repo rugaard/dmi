@@ -14,6 +14,30 @@ use GuzzleHttp\Psr7\Response as GuzzleResponse;
 trait MockedResponses
 {
     /**
+     * Mocked search response.
+     *
+     * @return \GuzzleHttp\Client
+     */
+    private function mockSearch() : GuzzleClient
+    {
+        return $this->createMockedGuzzleClient([
+            new GuzzleResponse(200, [], file_get_contents(__DIR__ . '/JSON/Search/Search.json')),
+        ]);
+    }
+
+    /**
+     * Mocked empty search response.
+     *
+     * @return \GuzzleHttp\Client
+     */
+    private function mockEmptySearch() : GuzzleClient
+    {
+        return $this->createMockedGuzzleClient([
+            new GuzzleResponse(200, [], file_get_contents(__DIR__ . '/JSON/Search/EmptySearch.json')),
+        ]);
+    }
+
+    /**
      * Mocked forecast response.
      *
      * @return \GuzzleHttp\Client

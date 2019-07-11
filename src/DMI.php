@@ -16,6 +16,7 @@ use Rugaard\DMI\DTO\SeaStation;
 use Rugaard\DMI\Endpoints\Archive;
 use Rugaard\DMI\Endpoints\Forecast;
 use Rugaard\DMI\Endpoints\Pollen;
+use Rugaard\DMI\Endpoints\Search;
 use Rugaard\DMI\Endpoints\SeaStations;
 use Rugaard\DMI\Endpoints\SunTimes;
 use Rugaard\DMI\Endpoints\UV;
@@ -60,6 +61,13 @@ class DMI
     public const DMI_WS_BASE_URL_OBSERVER = 'https://www.dmi.dk/dmidk_obsWS/rest';
 
     /**
+     * Base URL of "search" web service.
+     *
+     * @const string
+     */
+    public const DMI_WS_BASE_URL_SEARCH = 'https://www.dmi.dk/solr/city_core/select';
+
+    /**
      * Client instance.
      *
      * @var \GuzzleHttp\ClientInterface
@@ -87,6 +95,31 @@ class DMI
 
         if ($client !== null) {
             $this->setClient($client);
+        }
+    }
+
+    /**
+     * Search locations (City, POI etc.)
+     *
+     * @param  string $query
+     * @param  int    $limit
+     * @return \Rugaard\DMI\Endpoints\Search
+     * @throws \Rugaard\DMI\Exceptions\DMIException
+     */
+    public function search(string $query, int $limit = 20) : Search
+    {
+        try {
+            // Request DMI API data.
+            $data = $this->request(self::DMI_WS_BASE_URL_SEARCH . '?' . http_build_query([
+                'q' => '(name:"' . $query . '" AND realm:1)^4 OR (name_ngram:"' . $query . '" AND realm:1)',
+                'rows' => $limit,
+                'sort' => 'score desc, realm desc, population desc',
+                'wt' => 'json'
+            ]));
+
+            return new Search($data['response']['docs']);
+        } catch (Throwable $e) {
+            throw new DMIException($e->getMessage(), $e->getCode(), $e);
         }
     }
 
