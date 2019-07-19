@@ -7,6 +7,7 @@ use Rugaard\DMI\DTO\Measurements\Precipitation;
 use Rugaard\DMI\DTO\Units\Length\Meter;
 use Rugaard\DMI\DTO\Units\Length\Millimeter;
 use Rugaard\DMI\Tests\AbstractTestCase;
+use Tightenco\Collect\Support\Collection;
 
 /**
  * Class PrecipitationTest.
@@ -15,6 +16,66 @@ use Rugaard\DMI\Tests\AbstractTestCase;
  */
 class PrecipitationTest extends AbstractTestCase
 {
+    /**
+     * Test set/get type.
+     *
+     * @return void
+     */
+    public function testType() : void
+    {
+        // Supported precipitation types.
+        $precipitationTypes = Collection::make(['rain', 'hail', 'sleet', 'snow']);
+
+        $precipitationTypes->each(function ($precipitationType) {
+            // Instantiate empty DTO.
+            $dto = new Precipitation;
+
+            // Set precipitation type.
+            $dto->setType($precipitationType);
+
+            // Assertions.
+            $this->assertIsString($dto->getType());
+            $this->assertEquals($precipitationType, $dto->getType());
+        });
+    }
+
+    /**
+     * Test set/get type by danish key.
+     *
+     * @return void
+     */
+    public function testTypeByDanishKey() : void
+    {
+        // Supported precipitation types.
+        $precipitationTypes = Collection::make([
+            'regn' => 'rain',
+            'hagl' => 'hail',
+            'slud' => 'sleet',
+            'sne' => 'snow'
+        ]);
+
+        $precipitationTypes->each(function ($precipitationType, $danishPrecipitationType) {
+            // Instantiate empty DTO.
+            $dto = new Precipitation;
+
+            // Set precipitation type.
+            $dto->setTypeByDanishKey($danishPrecipitationType);
+
+            // Assertions.
+            $this->assertIsString($dto->getType());
+            $this->assertEquals($precipitationType, $dto->getType());
+        });
+
+        // Test unsupported precipitation type.
+        $dto = new Precipitation;
+
+        // Set unsupported precipitation type.
+        $dto->setTypeByDanishKey('glitter');
+
+        // Assertions.
+        $this->assertNull($dto->getType());
+    }
+
     /**
      * Test set/get value.
      *

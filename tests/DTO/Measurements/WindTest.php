@@ -102,6 +102,6 @@ class WindTest extends AbstractTestCase
 
         // Assertions.
         $this->assertIsString((string) $dto);
-        $this->assertEquals('2.8 m/s', (string) $dto);
+        $this->assertEquals('2.9 m/s', (string) $dto);
     }
 }

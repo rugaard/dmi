@@ -17,23 +17,23 @@ class Temperature extends AbstractDTO
     /**
      * Predicted/expected temperature.
      *
-     * @var float
+     * @var float|null
      */
-    protected $value = 0.0;
+    protected $value;
 
     /**
      * Lowest predicted temperature (uncertain).
      *
-     * @var float
+     * @var float|null
      */
-    protected $lowestValue = 0.0;
+    protected $lowestValue;
 
     /**
      * Highest predicted temperature (uncertain).
      *
-     * @var float
+     * @var float|null
      */
-    protected $highestValue = 0.0;
+    protected $highestValue;
 
     /**
      * Unit type.
@@ -63,11 +63,14 @@ class Temperature extends AbstractDTO
      */
     public function parse(array $data): void
     {
-        $this->setValue((float) ($data['temp50'] ?? $data['temp'] ?? null));
-
+        // If "temp50" is empty,
+        // then we know EPS is not available.
         if (!empty($data['temp50'])) {
-            $this->setLowestValue((float) $data['temp10'])
-                 ->setHighestValue((float) $data['temp90']);
+            $this->setValue($data['temp50'] ?? null)
+                 ->setLowestValue($data['temp10'] ?? null)
+                 ->setHighestValue($data['temp90'] ?? null);
+        } else {
+            $this->setValue($data['temp'] ?? null);
         }
     }
 
@@ -79,7 +82,7 @@ class Temperature extends AbstractDTO
      */
     public function setValue(?float $value) : self
     {
-        $this->value = $value !== null ? (float) $value : 0.0;
+        $this->value = $value !== null ? (float) $value : null;
         return $this;
     }
 
@@ -101,7 +104,7 @@ class Temperature extends AbstractDTO
      */
     public function setLowestValue(?float $value) : self
     {
-        $this->lowestValue = $value !== null ? (float) $value : 0.0;
+        $this->lowestValue = $value !== null ? (float) $value : null;
         return $this;
     }
 
@@ -123,7 +126,7 @@ class Temperature extends AbstractDTO
      */
     public function setHighestValue(?float $value) : self
     {
-        $this->highestValue = $value !== null ? (float) $value : 0.0;
+        $this->highestValue = $value !== null ? (float) $value : null;
         return $this;
     }
 

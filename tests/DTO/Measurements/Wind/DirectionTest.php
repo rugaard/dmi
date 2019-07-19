@@ -23,15 +23,15 @@ class DirectionTest extends AbstractTestCase
     {
         // Mocked test data.
         $mockedData = Collection::make([
-            Collection::make(['value' => 338, 'expectedDirection' => 'Nord']),
-            Collection::make(['value' => 293, 'expectedDirection' => 'Nordvest']),
-            Collection::make(['value' => 248, 'expectedDirection' => 'Vest']),
-            Collection::make(['value' => 203, 'expectedDirection' => 'Sydvest']),
-            Collection::make(['value' => 158, 'expectedDirection' => 'Syd']),
-            Collection::make(['value' => 113, 'expectedDirection' => 'Sydøst']),
-            Collection::make(['value' => 68, 'expectedDirection' => 'Øst']),
-            Collection::make(['value' => 23, 'expectedDirection' => 'Nordøst']),
-            Collection::make(['value' => 0, 'expectedDirection' => 'Nord']),
+            Collection::make(['value' => 338, 'expectedDirection' => 'North']),
+            Collection::make(['value' => 293, 'expectedDirection' => 'Northwest']),
+            Collection::make(['value' => 248, 'expectedDirection' => 'West']),
+            Collection::make(['value' => 203, 'expectedDirection' => 'Southwest']),
+            Collection::make(['value' => 158, 'expectedDirection' => 'South']),
+            Collection::make(['value' => 113, 'expectedDirection' => 'Southeast']),
+            Collection::make(['value' => 68, 'expectedDirection' => 'East']),
+            Collection::make(['value' => 23, 'expectedDirection' => 'Northeast']),
+            Collection::make(['value' => 0, 'expectedDirection' => 'North']),
         ]);
 
         // Test each wind degree.
@@ -47,13 +47,11 @@ class DirectionTest extends AbstractTestCase
             $this->assertEquals($data->get('value'), $dto->getDegrees());
             $this->assertIsString($dto->getDirection());
             $this->assertEquals($data->get('expectedDirection'), $dto->getDirection());
-
         });
 
         // Test non-existing wind direction.
         $dto = (new Direction)->setDirectionByDegrees(-1);
-        $this->assertIsFloat($dto->getDegrees());
-        $this->assertEquals(0.0, $dto->getDegrees());
+        $this->assertNull($dto->getDegrees());
         $this->assertNull($dto->getDirection());
     }
 
@@ -66,15 +64,15 @@ class DirectionTest extends AbstractTestCase
     {
         // Mocked test data.
         $mockedData = Collection::make([
-            Collection::make(['value' => 338, 'expectedDirection' => 'Nord']),
-            Collection::make(['value' => 293, 'expectedDirection' => 'Nordvest']),
-            Collection::make(['value' => 248, 'expectedDirection' => 'Vest']),
-            Collection::make(['value' => 203, 'expectedDirection' => 'Sydvest']),
-            Collection::make(['value' => 158, 'expectedDirection' => 'Syd']),
-            Collection::make(['value' => 113, 'expectedDirection' => 'Sydøst']),
-            Collection::make(['value' => 68, 'expectedDirection' => 'Øst']),
-            Collection::make(['value' => 23, 'expectedDirection' => 'Nordøst']),
-            Collection::make(['value' => 0, 'expectedDirection' => 'Nord']),
+            Collection::make(['value' => 338, 'expectedDirection' => 'North']),
+            Collection::make(['value' => 293, 'expectedDirection' => 'Northwest']),
+            Collection::make(['value' => 248, 'expectedDirection' => 'West']),
+            Collection::make(['value' => 203, 'expectedDirection' => 'Southwest']),
+            Collection::make(['value' => 158, 'expectedDirection' => 'South']),
+            Collection::make(['value' => 113, 'expectedDirection' => 'Southeast']),
+            Collection::make(['value' => 68, 'expectedDirection' => 'East']),
+            Collection::make(['value' => 23, 'expectedDirection' => 'Northeast']),
+            Collection::make(['value' => 0, 'expectedDirection' => 'North']),
         ]);
 
         // Test each wind degree.
@@ -105,22 +103,22 @@ class DirectionTest extends AbstractTestCase
     {
         // Mocked test data.
         $mockedData = Collection::make([
-            Collection::make(['value' => 'N', 'expectedDirection' => 'Nord']),
-            Collection::make(['value' => 'S', 'expectedDirection' => 'Syd']),
-            Collection::make(['value' => 'Ø', 'expectedDirection' => 'Øst']),
-            Collection::make(['value' => 'V', 'expectedDirection' => 'Vest']),
-            Collection::make(['value' => 'NØ', 'expectedDirection' => 'Nordøst']),
-            Collection::make(['value' => 'NV', 'expectedDirection' => 'Nordvest']),
-            Collection::make(['value' => 'SØ', 'expectedDirection' => 'Sydøst']),
-            Collection::make(['value' => 'SV', 'expectedDirection' => 'Sydvest']),
-            Collection::make(['value' => 'NNØ', 'expectedDirection' => 'Nord-nordøst']),
-            Collection::make(['value' => 'NNV', 'expectedDirection' => 'Nord-nordvest']),
-            Collection::make(['value' => 'ØNØ', 'expectedDirection' => 'Øst-nordøst']),
-            Collection::make(['value' => 'ØSØ', 'expectedDirection' => 'Øst-sydøst']),
-            Collection::make(['value' => 'SSØ', 'expectedDirection' => 'Syd-sydøst']),
-            Collection::make(['value' => 'SSV', 'expectedDirection' => 'Syd-sydvest']),
-            Collection::make(['value' => 'VNV', 'expectedDirection' => 'Vest-nordvest']),
-            Collection::make(['value' => 'VSV', 'expectedDirection' => 'Vest-sydvest']),
+            Collection::make(['value' => 'N', 'expectedDirection' => 'North']),
+            Collection::make(['value' => 'S', 'expectedDirection' => 'South']),
+            Collection::make(['value' => 'E', 'expectedDirection' => 'East']),
+            Collection::make(['value' => 'W', 'expectedDirection' => 'West']),
+            Collection::make(['value' => 'NE', 'expectedDirection' => 'Northeast']),
+            Collection::make(['value' => 'NW', 'expectedDirection' => 'Northwest']),
+            Collection::make(['value' => 'SE', 'expectedDirection' => 'Southeast']),
+            Collection::make(['value' => 'SW', 'expectedDirection' => 'Southwest']),
+            Collection::make(['value' => 'NNE', 'expectedDirection' => 'North-northeast']),
+            Collection::make(['value' => 'NNW', 'expectedDirection' => 'North-northwest']),
+            Collection::make(['value' => 'ENE', 'expectedDirection' => 'East-northeast']),
+            Collection::make(['value' => 'ESE', 'expectedDirection' => 'East-southeast']),
+            Collection::make(['value' => 'SSE', 'expectedDirection' => 'South-southeast']),
+            Collection::make(['value' => 'SSW', 'expectedDirection' => 'South-southwest']),
+            Collection::make(['value' => 'WNW', 'expectedDirection' => 'West-northwest']),
+            Collection::make(['value' => 'WSW', 'expectedDirection' => 'West-southwest']),
         ]);
 
         // Test each wind direction.
@@ -195,13 +193,13 @@ class DirectionTest extends AbstractTestCase
         $dto = new Direction;
 
         // Mocked direction.
-        $mockedDirection = 'NØ';
+        $mockedDirection = 'NE';
 
         // Set direction.
         $dto->setDirection($mockedDirection);
 
         // Assertions.
         $this->assertIsString((string) $dto);
-        $this->assertEquals('Nordøst', (string) $dto);
+        $this->assertEquals('Northeast', (string) $dto);
     }
 }

@@ -264,7 +264,7 @@ class LocationTest extends AbstractTestCase
         $this->assertInstanceOf(Wind::class, $currentForecast->getWind());
         $this->assertInstanceOf(Speed::class, $currentForecast->getWind()->getSpeed());
         $this->assertIsFloat($currentForecast->getWind()->getSpeed()->getValue());
-        $this->assertEquals(2.784574942897006, $currentForecast->getWind()->getSpeed()->getValue());
+        $this->assertEquals(2.9302678, $currentForecast->getWind()->getSpeed()->getValue());
         $this->assertIsFloat($currentForecast->getWind()->getSpeed()->getLowestValue());
         $this->assertEquals(2.1742203, $currentForecast->getWind()->getSpeed()->getLowestValue());
         $this->assertIsFloat($currentForecast->getWind()->getSpeed()->getHighestValue());
@@ -272,14 +272,14 @@ class LocationTest extends AbstractTestCase
         $this->assertInstanceOf(MetersPerSecond::class, $currentForecast->getWind()->getSpeed()->getUnit());
         $this->assertEquals('Meters per second', $currentForecast->getWind()->getSpeed()->getUnit()->getName());
         $this->assertEquals('m/s', $currentForecast->getWind()->getSpeed()->getUnit()->getAbbreviation());
-        $this->assertEquals('2.8 m/s', (string) $currentForecast->getWind()->getSpeed());
-        $this->assertEquals('2.8 m/s', (string) $currentForecast->getWind());
+        $this->assertEquals('2.9 m/s', (string) $currentForecast->getWind()->getSpeed());
+        $this->assertEquals('2.9 m/s', (string) $currentForecast->getWind());
         $this->assertInstanceOf(Direction::class, $currentForecast->getWind()->getDirection());
-        $this->assertEquals('Syd', $currentForecast->getWind()->getDirection()->getDirection());
+        $this->assertEquals('South', $currentForecast->getWind()->getDirection()->getDirection());
         $this->assertEquals('S', $currentForecast->getWind()->getDirection()->getAbbreviation());
         $this->assertIsFloat($currentForecast->getWind()->getDirection()->getDegrees());
         $this->assertEquals(195.00374211733555, $currentForecast->getWind()->getDirection()->getDegrees());
-        $this->assertEquals('Syd', (string) $currentForecast->getWind()->getDirection());
+        $this->assertEquals('South', (string) $currentForecast->getWind()->getDirection());
         $this->assertInstanceOf(Gust::class, $currentForecast->getWind()->getGust());
         $this->assertEquals(7.736926, $currentForecast->getWind()->getGust()->getValue());
         $this->assertInstanceOf(MetersPerSecond::class, $currentForecast->getWind()->getGust()->getUnit());
@@ -307,7 +307,7 @@ class LocationTest extends AbstractTestCase
 
         // Precipitation.
         $this->assertInstanceOf(Precipitation::class, $currentForecast->getPrecipitation());
-        $this->assertEquals('regn', $currentForecast->getPrecipitation()->getType());
+        $this->assertEquals('rain', $currentForecast->getPrecipitation()->getType());
         $this->assertIsFloat($currentForecast->getPrecipitation()->getValue());
         $this->assertEquals(0.0, $currentForecast->getPrecipitation()->getValue());
         $this->assertIsFloat($currentForecast->getPrecipitation()->getLowestValue());
@@ -375,7 +375,7 @@ class LocationTest extends AbstractTestCase
         $this->assertInstanceOf(Wind::class, $hour->getWind());
         $this->assertInstanceOf(Speed::class, $hour->getWind()->getSpeed());
         $this->assertIsFloat($hour->getWind()->getSpeed()->getValue());
-        $this->assertEquals(2.784574942897006, $hour->getWind()->getSpeed()->getValue());
+        $this->assertEquals(2.9302678, $hour->getWind()->getSpeed()->getValue());
         $this->assertIsFloat($hour->getWind()->getSpeed()->getLowestValue());
         $this->assertEquals(2.1742203, $hour->getWind()->getSpeed()->getLowestValue());
         $this->assertIsFloat($hour->getWind()->getSpeed()->getHighestValue());
@@ -383,14 +383,14 @@ class LocationTest extends AbstractTestCase
         $this->assertInstanceOf(MetersPerSecond::class, $hour->getWind()->getSpeed()->getUnit());
         $this->assertEquals('Meters per second', $hour->getWind()->getSpeed()->getUnit()->getName());
         $this->assertEquals('m/s', $hour->getWind()->getSpeed()->getUnit()->getAbbreviation());
-        $this->assertEquals('2.8 m/s', (string) $hour->getWind()->getSpeed());
-        $this->assertEquals('2.8 m/s', (string) $hour->getWind());
+        $this->assertEquals('2.9 m/s', (string) $hour->getWind()->getSpeed());
+        $this->assertEquals('2.9 m/s', (string) $hour->getWind());
         $this->assertInstanceOf(Direction::class, $hour->getWind()->getDirection());
-        $this->assertEquals('Syd', $hour->getWind()->getDirection()->getDirection());
+        $this->assertEquals('South', $hour->getWind()->getDirection()->getDirection());
         $this->assertEquals('S', $hour->getWind()->getDirection()->getAbbreviation());
         $this->assertIsFloat($hour->getWind()->getDirection()->getDegrees());
         $this->assertEquals(195.00374211733555, $hour->getWind()->getDirection()->getDegrees());
-        $this->assertEquals('Syd', (string) $hour->getWind()->getDirection());
+        $this->assertEquals('South', (string) $hour->getWind()->getDirection());
         $this->assertInstanceOf(Gust::class, $hour->getWind()->getGust());
         $this->assertEquals(7.736926, $hour->getWind()->getGust()->getValue());
         $this->assertInstanceOf(MetersPerSecond::class, $hour->getWind()->getGust()->getUnit());
@@ -418,7 +418,7 @@ class LocationTest extends AbstractTestCase
 
         // Precipitation.
         $this->assertInstanceOf(Precipitation::class, $hour->getPrecipitation());
-        $this->assertEquals('regn', $hour->getPrecipitation()->getType());
+        $this->assertEquals('rain', $hour->getPrecipitation()->getType());
         $this->assertIsFloat($hour->getPrecipitation()->getValue());
         $this->assertEquals(0.0, $hour->getPrecipitation()->getValue());
         $this->assertIsFloat($hour->getPrecipitation()->getLowestValue());
@@ -486,7 +486,7 @@ class LocationTest extends AbstractTestCase
         $this->assertInstanceOf(Wind::class, $day->getWind());
         $this->assertInstanceOf(Speed::class, $day->getWind()->getSpeed());
         $this->assertIsFloat($day->getWind()->getSpeed()->getValue());
-        $this->assertEquals(4.7881474947600156, $day->getWind()->getSpeed()->getValue());
+        $this->assertEquals(4.847289206666667, $day->getWind()->getSpeed()->getValue());
         $this->assertIsFloat($day->getWind()->getSpeed()->getLowestValue());
         $this->assertEquals(4.04755224, $day->getWind()->getSpeed()->getLowestValue());
         $this->assertIsFloat($day->getWind()->getSpeed()->getHighestValue());
@@ -497,11 +497,11 @@ class LocationTest extends AbstractTestCase
         $this->assertEquals('4.8 m/s', (string) $day->getWind()->getSpeed());
         $this->assertEquals('4.8 m/s', (string) $day->getWind());
         $this->assertInstanceOf(Direction::class, $day->getWind()->getDirection());
-        $this->assertEquals('Sydvest', $day->getWind()->getDirection()->getDirection());
-        $this->assertEquals('SV', $day->getWind()->getDirection()->getAbbreviation());
+        $this->assertEquals('Southwest', $day->getWind()->getDirection()->getDirection());
+        $this->assertEquals('SW', $day->getWind()->getDirection()->getAbbreviation());
         $this->assertIsFloat($day->getWind()->getDirection()->getDegrees());
         $this->assertEquals(245.45667629457967, $day->getWind()->getDirection()->getDegrees());
-        $this->assertEquals('Sydvest', (string) $day->getWind()->getDirection());
+        $this->assertEquals('Southwest', (string) $day->getWind()->getDirection());
         $this->assertInstanceOf(Gust::class, $day->getWind()->getGust());
         $this->assertEquals(11.177295293333334, $day->getWind()->getGust()->getValue());
         $this->assertInstanceOf(MetersPerSecond::class, $day->getWind()->getGust()->getUnit());
@@ -529,7 +529,7 @@ class LocationTest extends AbstractTestCase
 
         // Precipitation.
         $this->assertInstanceOf(Precipitation::class, $day->getPrecipitation());
-        $this->assertEquals('regn', $day->getPrecipitation()->getType());
+        $this->assertEquals('rain', $day->getPrecipitation()->getType());
         $this->assertIsFloat($day->getPrecipitation()->getValue());
         $this->assertEquals(0.0, $day->getPrecipitation()->getValue());
         $this->assertIsFloat($day->getPrecipitation()->getLowestValue());

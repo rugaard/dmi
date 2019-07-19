@@ -88,7 +88,7 @@ class HourTest extends AbstractTestCase
         // Assertions.
         $this->assertInstanceOf(Wind::class, $dto->getWind());
         $this->assertIsFloat($dto->getWind()->getSpeed()->getValue());
-        $this->assertEquals(2.784574942897006, $dto->getWind()->getSpeed()->getValue());
+        $this->assertEquals(2.9302678, $dto->getWind()->getSpeed()->getValue());
         $this->assertIsFloat($dto->getWind()->getSpeed()->getLowestValue());
         $this->assertEquals(2.1742203, $dto->getWind()->getSpeed()->getLowestValue());
         $this->assertIsFloat($dto->getWind()->getSpeed()->getHighestValue());

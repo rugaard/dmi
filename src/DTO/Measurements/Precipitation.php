@@ -26,21 +26,21 @@ class Precipitation extends AbstractDTO
      *
      * @var float|null
      */
-    protected $value = 0.0;
+    protected $value;
 
     /**
      * Lowest predicted amount (uncertain).
      *
-     * @var float
+     * @var float|null
      */
-    protected $lowestValue = 0.0;
+    protected $lowestValue;
 
     /**
      * Highest predicted amount (uncertain).
      *
-     * @var float
+     * @var float|null
      */
-    protected $highestValue = 0.0;
+    protected $highestValue;
 
     /**
      * Unit type.
@@ -70,22 +70,52 @@ class Precipitation extends AbstractDTO
      */
     public function parse(array $data): void
     {
-        $this->setType($data['precipType'])
-             ->setValue((float) ($data['prec50'] ?? $data['precip3'] ?? null));
+        // Set precipitation type based on danish key.
+        $this->setTypeByDanishKey($data['precipType'] ?? null);
 
-        if (!empty($data['prec50'])) {
-            $this->setLowestValue((float) $data['prec10'])
-                 ->setHighestValue((float) $data['prec90']);
+        // If "temp50" is empty,
+        // then we know EPS is not available.
+        if (!empty($data['temp50'])) {
+            $this->setValue($data['prec50'] ?? null)
+                 ->setLowestValue($data['prec10'] ?? null)
+                 ->setHighestValue($data['prec90'] ?? null);
+        } else {
+            $this->setValue($data['precip1'] ?? null);
         }
+    }
+
+    /**
+     * Set precipitation type by danish key.
+     *
+     * @param  string|null $key
+     * @return $this
+     */
+    public function setTypeByDanishKey(?string $key) : self
+    {
+        switch ($key) {
+            case 'regn':
+                $this->setType('rain');
+                break;
+            case 'hagl':
+                $this->setType('hail');
+                break;
+            case 'slud':
+                $this->setType('sleet');
+                break;
+            case 'sne':
+                $this->setType('snow');
+                break;
+        }
+        return $this;
     }
 
     /**
      * Set precipitation type.
      *
-     * @param  string $type
+     * @param  string|null $type
      * @return $this
      */
-    public function setType(string $type) : self
+    public function setType(?string $type) : self
     {
         $this->type = $type;
         return $this;
@@ -109,7 +139,7 @@ class Precipitation extends AbstractDTO
      */
     public function setValue(?float $value) : self
     {
-        $this->value = (float) ($value < 0.1 ? 0.0 : $value);
+        $this->value = $value !== null ? (float) ($value < 0.1 ? 0.0 : $value) : null;
         return $this;
     }
 
@@ -131,7 +161,7 @@ class Precipitation extends AbstractDTO
      */
     public function setLowestValue(?float $value) : self
     {
-        $this->lowestValue = (float) ($value < 0.1 ? 0.0 : $value);
+        $this->lowestValue = $value !== null ? (float) ($value < 0.1 ? 0.0 : $value) : null;
         return $this;
     }
 
@@ -153,7 +183,7 @@ class Precipitation extends AbstractDTO
      */
     public function setHighestValue(?float $value) : self
     {
-        $this->highestValue = (float) ($value < 0.1 ? 0 : $value);
+        $this->highestValue = $value !== null ? (float) ($value < 0.1 ? 0 : $value) : null;
         return $this;
     }
 

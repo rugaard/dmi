@@ -31,7 +31,7 @@ class Direction extends AbstractDTO
      *
      * @var float|null
      */
-    protected $degrees = 0.0;
+    protected $degrees;
 
     /**
      * Parse data.
@@ -66,19 +66,19 @@ class Direction extends AbstractDTO
         if ($degrees < 360 && $degrees > 337.5) {
             $this->setDirection('N');
         } elseif ($degrees > 292.5) {
-            $this->setDirection('NV');
+            $this->setDirection('NW');
         } elseif ($degrees > 247.5) {
             $this->setDirection('V');
         } elseif ($degrees > 202.5) {
-            $this->setDirection('SV');
+            $this->setDirection('SW');
         } elseif ($degrees > 157.5) {
             $this->setDirection('S');
         } elseif ($degrees > 112.5) {
-            $this->setDirection('SØ');
+            $this->setDirection('SE');
         } elseif ($degrees > 67.5) {
-            $this->setDirection('Ø');
+            $this->setDirection('E');
         } elseif ($degrees > 22.5) {
-            $this->setDirection('NØ');
+            $this->setDirection('NE');
         } elseif ($degrees >= 0) {
             $this->setDirection('N');
         }
@@ -95,68 +95,82 @@ class Direction extends AbstractDTO
     {
         switch ($direction) {
             case 'N':
-                $this->direction = 'Nord';
+                $this->direction = 'North';
                 $this->setAbbreviation('N');
                 break;
             case 'S':
-                $this->direction = 'Syd';
+                $this->direction = 'South';
                 $this->setAbbreviation('S');
                 break;
             case 'Ø':
-                $this->direction = 'Øst';
-                $this->setAbbreviation('Ø');
+            case 'E':
+                $this->direction = 'East';
+                $this->setAbbreviation('E');
                 break;
             case 'V':
-                $this->direction = 'Vest';
-                $this->setAbbreviation('V');
+            case 'W':
+                $this->direction = 'West';
+                $this->setAbbreviation('W');
                 break;
             case 'NØ':
-                $this->direction = 'Nordøst';
-                $this->setAbbreviation('NØ');
+            case 'NE':
+                $this->direction = 'Northeast';
+                $this->setAbbreviation('NE');
                 break;
             case 'NV':
-                $this->direction = 'Nordvest';
-                $this->setAbbreviation('NV');
+            case 'NW':
+                $this->direction = 'Northwest';
+                $this->setAbbreviation('NW');
                 break;
             case 'SØ':
-                $this->direction = 'Sydøst';
-                $this->setAbbreviation('SØ');
+            case 'SE':
+                $this->direction = 'Southeast';
+                $this->setAbbreviation('SE');
                 break;
             case 'SV':
-                $this->direction = 'Sydvest';
-                $this->setAbbreviation('SV');
+            case 'SW':
+                $this->direction = 'Southwest';
+                $this->setAbbreviation('SW');
                 break;
             case 'NNØ':
-                $this->direction = 'Nord-nordøst';
-                $this->setAbbreviation('NNØ');
+            case 'NNE':
+                $this->direction = 'North-northeast';
+                $this->setAbbreviation('NNE');
                 break;
             case 'NNV':
-                $this->direction = 'Nord-nordvest';
-                $this->setAbbreviation('NNV');
+            case 'NNW':
+                $this->direction = 'North-northwest';
+                $this->setAbbreviation('NNW');
                 break;
             case 'ØNØ':
-                $this->direction = 'Øst-nordøst';
-                $this->setAbbreviation('ØNØ');
+            case 'ENE':
+                $this->direction = 'East-northeast';
+                $this->setAbbreviation('ENE');
                 break;
             case 'ØSØ':
-                $this->direction = 'Øst-sydøst';
-                $this->setAbbreviation('ØSØ');
+            case 'ESE':
+                $this->direction = 'East-southeast';
+                $this->setAbbreviation('ESE');
                 break;
             case 'SSØ':
-                $this->direction = 'Syd-sydøst';
-                $this->setAbbreviation('SSØ');
+            case 'SSE':
+                $this->direction = 'South-southeast';
+                $this->setAbbreviation('SSE');
                 break;
             case 'SSV':
-                $this->direction = 'Syd-sydvest';
+            case 'SSW':
+                $this->direction = 'South-southwest';
                 $this->setAbbreviation('SSV');
                 break;
             case 'VNV':
-                $this->direction = 'Vest-nordvest';
-                $this->setAbbreviation('VNV');
+            case 'WNW':
+                $this->direction = 'West-northwest';
+                $this->setAbbreviation('WNW');
                 break;
             case 'VSV':
-                $this->direction = 'Vest-sydvest';
-                $this->setAbbreviation('VSV');
+            case 'WSW':
+                $this->direction = 'West-southwest';
+                $this->setAbbreviation('WSW');
                 break;
         }
         return $this;
@@ -202,7 +216,7 @@ class Direction extends AbstractDTO
      */
     public function setDegrees(?float $degrees) : self
     {
-        $this->degrees = $degrees !== null ? (float) $degrees : 0.0;
+        $this->degrees = $degrees !== null ? (float) $degrees : null;
         return $this;
     }
 

@@ -17,9 +17,9 @@ class Visibility extends AbstractDTO
     /**
      * Visibility value.
      *
-     * @var float
+     * @var float|null
      */
-    protected $value = 0.0;
+    protected $value;
 
     /**
      * Unit type.
@@ -49,7 +49,7 @@ class Visibility extends AbstractDTO
      */
     public function parse(array $data): void
     {
-        $this->setValue((float) $data['visibility']);
+        $this->setValue($data['visibility'] ?? null);
     }
 
     /**
@@ -60,7 +60,7 @@ class Visibility extends AbstractDTO
      */
     public function setValue(?float $value) : self
     {
-        $this->value = $value !== null ? (float) $value : 0.0;
+        $this->value = $value !== null ? (float) $value : null;
         return $this;
     }
 
