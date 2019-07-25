@@ -47,11 +47,13 @@ class Pollen extends AbstractDTO
                  // Convert to array.
                  $data = (array) $data;
 
-                 // Convert value to integer.
-                 $data['value'] = (int) $data['value'];
-
-                 // Get level of pollen.
-                 $data['level'] = $this->getPollenLevel($data['name'], $data['value']);
+                 if (in_array($data['name'], ['Alternaria', 'Cladosporium'])) {
+                     $data['level'] = $this->determinePollenLevelByText($data['value']);
+                     $data['value'] = null;
+                 } else {
+                     $data['value'] = is_numeric($data['value']) ? (int) $data['value'] : 0;
+                     $data['level'] = $this->getPollenLevel($data['name'], $data['value']);
+                 }
 
                  return Collection::make($data);
              }));
@@ -126,11 +128,11 @@ class Pollen extends AbstractDTO
     /**
      * Get pollen level.
      *
-     * @param  string $name
-     * @param  int    $value
+     * @param  string     $name
+     * @param  int|string $value
      * @return string|null
      */
-    protected function getPollenLevel(string $name, int $value) :? string
+    protected function getPollenLevel(string $name, $value) :? string
     {
         switch ($name) {
             case 'Birk':
@@ -145,10 +147,6 @@ class Pollen extends AbstractDTO
                 return $this->determinePollenLevel($value, 50, 10);
             case 'Hassel':
                 return $this->determinePollenLevel($value, 15, 5);
-            case 'Alternaria':
-                return $this->determinePollenLevel($value, 100, 20);
-            case 'Cladosporium':
-                return $this->determinePollenLevel($value, 6000, 2000);
         }
         return null;
     }
@@ -159,10 +157,14 @@ class Pollen extends AbstractDTO
      * @param  int $value
      * @param  int $highValue
      * @param  int $moderateValue
-     * @return string
+     * @return string|null
      */
-    protected function determinePollenLevel(int $value, int $highValue, int $moderateValue) : string
+    protected function determinePollenLevel(int $value, int $highValue, int $moderateValue) :? string
     {
+        if ($value <= 0) {
+            return null;
+        }
+
         if ($value > $highValue) {
             return 'High';
         }
@@ -172,5 +174,27 @@ class Pollen extends AbstractDTO
         }
 
         return 'Low';
+    }
+
+    /**
+     * Determine pollen level by text.
+     *
+     * @param  string $value
+     * @return string|null
+     */
+    protected function determinePollenLevelByText(string $value) :? string
+    {
+        switch ($value) {
+            case 'Højt':
+                return 'High';
+                break;
+            case 'Moderat':
+                return 'Moderate';
+                break;
+            case 'Lavt':
+                return 'Low';
+            default:
+                return null;
+        }
     }
 }

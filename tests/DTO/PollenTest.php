@@ -77,7 +77,6 @@ class PollenTest extends AbstractTestCase
      * Test pollen levels.
      *
      * @return void
-     * @throws \ReflectionException
      */
     public function testPollenLevels() : void
     {
@@ -86,42 +85,50 @@ class PollenTest extends AbstractTestCase
             'Birk' => Collection::make([
                 ['value' => 101, 'expectedLevel' => 'High'],
                 ['value' => 31, 'expectedLevel' => 'Moderate'],
-                ['value' => 0, 'expectedLevel' => 'Low']
+                ['value' => 1, 'expectedLevel' => 'Low'],
+                ['value' => 0, 'expectedLevel' => null]
             ]),
             'Bynke' => Collection::make([
                 ['value' => 51, 'expectedLevel' => 'High'],
                 ['value' => 11, 'expectedLevel' => 'Moderate'],
-                ['value' => 0, 'expectedLevel' => 'Low']
+                ['value' => 1, 'expectedLevel' => 'Low'],
+                ['value' => 0, 'expectedLevel' => null]
             ]),
             'El' => Collection::make([
                 ['value' => 51, 'expectedLevel' => 'High'],
                 ['value' => 11, 'expectedLevel' => 'Moderate'],
-                ['value' => 0, 'expectedLevel' => 'Low']
+                ['value' => 1, 'expectedLevel' => 'Low'],
+                ['value' => 0, 'expectedLevel' => null]
             ]),
             'Elm' => Collection::make([
                 ['value' => 51, 'expectedLevel' => 'High'],
                 ['value' => 11, 'expectedLevel' => 'Moderate'],
-                ['value' => 0, 'expectedLevel' => 'Low']
+                ['value' => 1, 'expectedLevel' => 'Low'],
+                ['value' => 0, 'expectedLevel' => null]
             ]),
             'Græs' => Collection::make([
                 ['value' => 51, 'expectedLevel' => 'High'],
                 ['value' => 11, 'expectedLevel' => 'Moderate'],
-                ['value' => 0, 'expectedLevel' => 'Low']
+                ['value' => 1, 'expectedLevel' => 'Low'],
+                ['value' => 0, 'expectedLevel' => null]
             ]),
             'Hassel' => Collection::make([
                 ['value' => 16, 'expectedLevel' => 'High'],
                 ['value' => 6, 'expectedLevel' => 'Moderate'],
-                ['value' => 0, 'expectedLevel' => 'Low']
+                ['value' => 1, 'expectedLevel' => 'Low'],
+                ['value' => 0, 'expectedLevel' => null]
             ]),
             'Alternaria' => Collection::make([
-                ['value' => 101, 'expectedLevel' => 'High'],
-                ['value' => 21, 'expectedLevel' => 'Moderate'],
-                ['value' => 0, 'expectedLevel' => 'Low']
+                ['value' => 'Højt', 'expectedLevel' => 'High'],
+                ['value' => 'Moderat', 'expectedLevel' => 'Moderate'],
+                ['value' => 'Lavt', 'expectedLevel' => 'Low'],
+                ['value' => '-', 'expectedLevel' => null]
             ]),
             'Cladosporium' => Collection::make([
-                ['value' => 6001, 'expectedLevel' => 'High'],
-                ['value' => 2001, 'expectedLevel' => 'Moderate'],
-                ['value' => 0, 'expectedLevel' => 'Low']
+                ['value' => 'Højt', 'expectedLevel' => 'High'],
+                ['value' => 'Moderat', 'expectedLevel' => 'Moderate'],
+                ['value' => 'Lavt', 'expectedLevel' => 'Low'],
+                ['value' => '-', 'expectedLevel' => null],
             ]),
         ]);
 
@@ -132,9 +139,16 @@ class PollenTest extends AbstractTestCase
         // for each available level.
         $mockedData->each(function ($data, $pollenName) use ($dto) {
             $data->each(function ($test) use ($dto, $pollenName) {
-                $result = $this->invokeMethod($dto, 'getPollenLevel', [$pollenName, $test['value']]);
-                $this->assertIsString($result);
-                $this->assertEquals($test['expectedLevel'], $result);
+                $result = in_array($pollenName, ['Alternaria', 'Cladosporium'])
+                    ? $this->invokeMethod($dto, 'determinePollenLevelByText', [$test['value']])
+                    : $this->invokeMethod($dto, 'getPollenLevel', [$pollenName, $test['value']]);
+
+                if ($test['expectedLevel'] !== null) {
+                    $this->assertIsString($result);
+                    $this->assertEquals($test['expectedLevel'], $result);
+                } else {
+                    $this->assertNull($result);
+                }
             });
         });
 

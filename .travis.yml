@@ -17,7 +17,7 @@ before_script:
   - if [ $(phpenv version-name) = "7.2" ]; then ./cc-test-reporter before-build; fi
 
 script:
-  - vendor/bin/phpunit --coverage-text --coverage-clover clover.xml
+  - vendor/bin/phpunit --do-not-cache-result --coverage-text --coverage-clover clover.xml
 
 after_success:
   - if [ $(phpenv version-name) = "7.2" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build -t clover --exit-code $TRAVIS_TEST_RESULT; fi

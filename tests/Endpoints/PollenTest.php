@@ -164,19 +164,19 @@ class PollenTest extends AbstractTestCase
                     $this->assertEquals('Birk', $reading->get('name'));
                     $this->assertIsInt($reading->get('value'));
                     $this->assertEquals(0, $reading->get('value'));
-                    $this->assertEquals('Low', $reading->get('level'));
+                    $this->assertNull($reading->get('level'));
                     break;
                 case 1:
                     $this->assertEquals('Bynke', $reading->get('name'));
                     $this->assertIsInt($reading->get('value'));
                     $this->assertEquals(0, $reading->get('value'));
-                    $this->assertEquals('Low', $reading->get('level'));
+                    $this->assertNull($reading->get('level'));
                     break;
                 case 2:
                     $this->assertEquals('El', $reading->get('name'));
                     $this->assertIsInt($reading->get('value'));
                     $this->assertEquals(0, $reading->get('value'));
-                    $this->assertEquals('Low', $reading->get('level'));
+                    $this->assertNull($reading->get('level'));
                     break;
                 case 3:
                     $this->assertEquals('Elm', $reading->get('name'));
@@ -194,18 +194,16 @@ class PollenTest extends AbstractTestCase
                     $this->assertEquals('Hassel', $reading->get('name'));
                     $this->assertIsInt($reading->get('value'));
                     $this->assertEquals(0, $reading->get('value'));
-                    $this->assertEquals('Low', $reading->get('level'));
+                    $this->assertNull($reading->get('level'));
                     break;
                 case 6:
                     $this->assertEquals('Alternaria', $reading->get('name'));
-                    $this->assertIsInt($reading->get('value'));
-                    $this->assertEquals(0, $reading->get('value'));
-                    $this->assertEquals('Low', $reading->get('level'));
+                    $this->assertNull($reading->get('value'));
+                    $this->assertEquals('Moderate', $reading->get('level'));
                     break;
                 case 7:
                     $this->assertEquals('Cladosporium', $reading->get('name'));
-                    $this->assertIsInt($reading->get('value'));
-                    $this->assertEquals(0, $reading->get('value'));
+                    $this->assertNull($reading->get('value'));
                     $this->assertEquals('Low', $reading->get('level'));
                     break;
             }
