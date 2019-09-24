@@ -41,22 +41,28 @@ class Pollen extends AbstractDTO
      */
     public function parse(array $data) : void
     {
-        $this->setName($data['name'])
-             ->setForecast($data['forecast'])
-             ->setReadings(Collection::make($data['readings']->xpath('reading'))->map(function ($data) {
-                 // Convert to array.
-                 $data = (array) $data;
+        $this->setName($data['name']);
 
-                 if (in_array($data['name'], ['Alternaria', 'Cladosporium'])) {
-                     $data['level'] = $this->determinePollenLevelByText($data['value']);
-                     $data['value'] = null;
-                 } else {
-                     $data['value'] = is_numeric($data['value']) ? (int) $data['value'] : 0;
-                     $data['level'] = $this->getPollenLevel($data['name'], $data['value']);
-                 }
+        if (isset($data['forecast']) && $data['forecast']->count() > 0) {
+            $this->setForecast($data['forecast']);
+        }
 
-                 return Collection::make($data);
-             }));
+        if (isset($data['readings']) && $data['readings']->count() > 0) {
+            $this->setReadings(Collection::make($data['readings']->xpath('reading'))->map(function ($data) {
+                // Convert to array.
+                $data = (array) $data;
+
+                if (in_array($data['name'], ['Alternaria', 'Cladosporium'])) {
+                    $data['level'] = $this->determinePollenLevelByText($data['value']);
+                    $data['value'] = null;
+                } else {
+                    $data['value'] = is_numeric($data['value']) ? (int)$data['value'] : 0;
+                    $data['level'] = $this->getPollenLevel($data['name'], $data['value']);
+                }
+
+                return Collection::make($data);
+            }));
+        }
     }
 
     /**
@@ -98,7 +104,7 @@ class Pollen extends AbstractDTO
      *
      * @return string|null
      */
-    public function getForecast() : string
+    public function getForecast() :? string
     {
         return $this->forecast;
     }
@@ -118,9 +124,9 @@ class Pollen extends AbstractDTO
     /**
      * Get pollen readings.
      *
-     * @return \Tightenco\Collect\Support\Collection
+     * @return \Tightenco\Collect\Support\Collection|null
      */
-    public function getReadings() : Collection
+    public function getReadings() :? Collection
     {
         return $this->readings;
     }

@@ -1,0 +1,1317 @@
+{
+   "name":"Høvelte",
+   "area":"Allerød",
+   "vandstand":"",
+   "day0":"none",
+   "day1":"none",
+   "day2":"temperatur-varsel-2.svg",
+   "day3":"temperatur-varsel-2.svg",
+   "day4":"temperatur-varsel-2.svg",
+   "day5":"temperatur-varsel-2.svg",
+   "favorite":"triangel-1.svg",
+   "warnings":[
+      {
+         "timeString":"24 Jul 2019 12:00",
+         "time":1563962400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"24 Jul 2019 13:00",
+         "time":1563966000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"24 Jul 2019 14:00",
+         "time":1563969600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"24 Jul 2019 15:00",
+         "time":1563973200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"24 Jul 2019 16:00",
+         "time":1563976800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"24 Jul 2019 17:00",
+         "time":1563980400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"24 Jul 2019 18:00",
+         "time":1563984000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"24 Jul 2019 19:00",
+         "time":1563987600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"24 Jul 2019 20:00",
+         "time":1563991200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"24 Jul 2019 21:00",
+         "time":1563994800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"24 Jul 2019 22:00",
+         "time":1563998400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"24 Jul 2019 23:00",
+         "time":1564002000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 00:00",
+         "time":1564005600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 01:00",
+         "time":1564009200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 02:00",
+         "time":1564012800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 03:00",
+         "time":1564016400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 04:00",
+         "time":1564020000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 05:00",
+         "time":1564023600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 06:00",
+         "time":1564027200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 07:00",
+         "time":1564030800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 08:00",
+         "time":1564034400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 09:00",
+         "time":1564038000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 10:00",
+         "time":1564041600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 11:00",
+         "time":1564045200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 12:00",
+         "time":1564048800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 13:00",
+         "time":1564052400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 14:00",
+         "time":1564056000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 15:00",
+         "time":1564059600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 16:00",
+         "time":1564063200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 17:00",
+         "time":1564066800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 18:00",
+         "time":1564070400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 19:00",
+         "time":1564074000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 20:00",
+         "time":1564077600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 21:00",
+         "time":1564081200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 22:00",
+         "time":1564084800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"25 Jul 2019 23:00",
+         "time":1564088400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 00:00",
+         "time":1564092000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 01:00",
+         "time":1564095600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 02:00",
+         "time":1564099200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 03:00",
+         "time":1564102800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 04:00",
+         "time":1564106400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 05:00",
+         "time":1564110000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 06:00",
+         "time":1564113600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 07:00",
+         "time":1564117200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 08:00",
+         "time":1564120800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 09:00",
+         "time":1564124400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 10:00",
+         "time":1564128000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 11:00",
+         "time":1564131600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 12:00",
+         "time":1564135200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 13:00",
+         "time":1564138800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 14:00",
+         "time":1564142400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 15:00",
+         "time":1564146000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 16:00",
+         "time":1564149600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 17:00",
+         "time":1564153200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 18:00",
+         "time":1564156800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 19:00",
+         "time":1564160400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 20:00",
+         "time":1564164000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 21:00",
+         "time":1564167600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 22:00",
+         "time":1564171200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"26 Jul 2019 23:00",
+         "time":1564174800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 00:00",
+         "time":1564178400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 01:00",
+         "time":1564182000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 02:00",
+         "time":1564185600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 03:00",
+         "time":1564189200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 04:00",
+         "time":1564192800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 05:00",
+         "time":1564196400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 06:00",
+         "time":1564200000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 07:00",
+         "time":1564203600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 08:00",
+         "time":1564207200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 09:00",
+         "time":1564210800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 10:00",
+         "time":1564214400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 11:00",
+         "time":1564218000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 12:00",
+         "time":1564221600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 13:00",
+         "time":1564225200000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 14:00",
+         "time":1564228800000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 15:00",
+         "time":1564232400000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 16:00",
+         "time":1564236000000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      },
+      {
+         "timeString":"27 Jul 2019 17:00",
+         "time":1564239600000,
+         "warning_list":[
+            {
+               "category":2,
+               "type":3,
+               "group":"Særlige vejrfænomener",
+               "cause":"Vær forberedt på hedebølge Maxtemp > 28gr/3d",
+               "title":"DMI Femdøgnsudsigt for hedebølge ",
+               "text":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+               "warning_area":"Allerød"
+            }
+         ],
+         "icon":"temperatur-varsel-2.svg"
+      }
+   ],
+   "locationWarnings":[
+      {
+         "area":"Allerød",
+         "warningText":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+         "warningTitle":"DMI Femdøgnsudsigt for hedebølge ",
+         "category":"4",
+         "issuedAt":1563794040000,
+         "issuedAtText":"2019-07-22 13:14",
+         "validFrom":1563962400000,
+         "validFromText":"Onsdag kl. 12:00",
+         "validTo":1564243200000,
+         "validToText":"Lørdag kl. 18:00",
+         "additionalText":"",
+         "warningType":"3",
+         "warningCauseGroup":"9",
+         "validFromDay":"Onsdag",
+         "validToDay":"Lørdag",
+         "iconOverview":"bla-temperatur-varsel.svg",
+         "validFromHour":"kl. 12:00",
+         "validToHour":"kl. 18:00",
+         "formattedCategory":2,
+         "warningCause":"temperatur",
+         "peiod":"Onsdag kl. 12:00 til lørdag kl. 18:00",
+         "icon":"temperatur-varsel-2.svg"
+      }
+   ],
+   "actualWarnings":[
+
+   ],
+   "fivedayWarnings":[
+      {
+         "area":"Allerød",
+         "warningText":"Vær forberedt på, at DMI forventer 28 grader eller mere i de kommende 4 dage.  Femdøgnsudsigten for voldsomt vejr opdateres senest tirsdag kl 15..",
+         "warningTitle":"DMI Femdøgnsudsigt for hedebølge ",
+         "category":"4",
+         "issuedAt":1563794040000,
+         "issuedAtText":"2019-07-22 13:14",
+         "validFrom":1563962400000,
+         "validFromText":"Onsdag kl. 12:00",
+         "validTo":1564243200000,
+         "validToText":"Lørdag kl. 18:00",
+         "additionalText":"",
+         "warningType":"3",
+         "warningCauseGroup":"9",
+         "validFromDay":"Onsdag",
+         "validToDay":"Lørdag",
+         "iconOverview":"bla-temperatur-varsel.svg",
+         "validFromHour":"kl. 12:00",
+         "validToHour":"kl. 18:00",
+         "formattedCategory":2,
+         "warningCause":"temperatur",
+         "peiod":"Onsdag kl. 12:00 til lørdag kl. 18:00",
+         "icon":"temperatur-varsel-2.svg"
+      }
+   ]
+}

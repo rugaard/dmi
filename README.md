@@ -150,7 +150,7 @@ extendedForecast();
 Search locations by name.
 
 ```php
-search(string $query, int $locationId);
+search(string $query, int $limit);
 ```
 
 | Parameter | Type | Default | Description |
@@ -183,7 +183,7 @@ Get current weather condition and latest forecast for a location specified by co
 _Note: `$includeRegional` is required to get `municipality` and `region` of location._
 
 ```php
-locationByCoordinate(float $latitude, float $longitude, bool $includeWarnings);
+locationByCoordinate(float $latitude, float $longitude, bool $includeRegional, bool $includeWarnings);
 ```
 
 | Parameter | Type | Default | Description |
