@@ -44,7 +44,7 @@ class Pollen extends AbstractDTO
         $this->setName($data['name']);
 
         if (isset($data['forecast'])) {
-            $this->setForecast($data['forecast']);
+            $this->setForecast((string) $data['forecast']);
         }
 
         if (isset($data['readings']) && $data['readings']->count() > 0) {
@@ -95,7 +95,7 @@ class Pollen extends AbstractDTO
      */
     public function setForecast(string $forecast) : self
     {
-        $this->forecast = $forecast;
+        $this->forecast = !empty($forecast) ? $forecast : null;
         return $this;
     }
 
