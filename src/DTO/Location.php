@@ -547,6 +547,12 @@ class Location extends AbstractDTO
         $forecast = Collection::make();
 
         foreach ($hours as $hour) {
+            // Sometimes the hour has no data in the API.
+            // If this happens, we'll skip that specific hour.
+            if (empty($hour)) {
+                continue;
+            }
+
             $forecast->put(
                 DateTime::createFromFormat('YmdHis', $hour['time'], $timezone)->format('YmdHis'),
                 new Hour(array_merge($hour, [
@@ -582,6 +588,12 @@ class Location extends AbstractDTO
         $forecast = Collection::make();
 
         foreach ($hours as $hour) {
+            // Sometimes the hour has no data in the API.
+            // If this happens, we'll skip that specific hour.
+            if (empty($hour)) {
+                continue;
+            }
+
             // Parse hour.
             $currentHour = new Hour($hour);
 
