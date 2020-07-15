@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Rugaard\DMI\DTO\Units\Temperature;
+namespace Rugaard\DMI\Units\Temperature;
 
 use Rugaard\DMI\Contracts\Unit;
 
 /**
  * Class Celsius.
  *
- * @package Rugaard\DMI\DTO\Units
+ * @package Rugaard\DMI\Units\Temperatures
  */
 class Celsius implements Unit
 {

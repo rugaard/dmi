@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Rugaard\DMI\DTO\Units\Time;
+namespace Rugaard\DMI\Units\Time;
 
 use Rugaard\DMI\Contracts\Unit;
 
 /**
  * Class Hour.
  *
- * @package Rugaard\DMI\DTO\Units\Time
+ * @package Rugaard\DMI\Units\Time
  */
 class Hour implements Unit
 {

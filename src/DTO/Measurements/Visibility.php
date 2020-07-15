@@ -5,7 +5,7 @@ namespace Rugaard\DMI\DTO\Measurements;
 
 use Rugaard\DMI\Contracts\Unit;
 use Rugaard\DMI\DTO\AbstractDTO;
-use Rugaard\DMI\DTO\Units\Length\Meter;
+use Rugaard\DMI\Units\Length\Meter;
 
 /**
  * Class Visibility.

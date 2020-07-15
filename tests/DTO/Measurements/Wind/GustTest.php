@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Rugaard\DMI\Tests\DTO\Measurements;
+namespace Rugaard\DMI\Tests\DTO\Measurements\Wind;
 
 use Rugaard\DMI\DTO\Measurements\Wind\Gust;
-use Rugaard\DMI\DTO\Units\Time\Hour;
-use Rugaard\DMI\DTO\Units\Speed\MetersPerSecond;
+use Rugaard\DMI\Units\Time\Hour;
+use Rugaard\DMI\Units\Speed\MetersPerSecond;
 use Rugaard\DMI\Tests\AbstractTestCase;
 
 /**

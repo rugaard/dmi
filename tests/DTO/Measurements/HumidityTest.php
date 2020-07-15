@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Tests\DTO\Measurements;
 
 use Rugaard\DMI\DTO\Measurements\Humidity;
-use Rugaard\DMI\DTO\Units\Length\Millimeter;
-use Rugaard\DMI\DTO\Units\Percentage;
+use Rugaard\DMI\Units\Length\Millimeter;
+use Rugaard\DMI\Units\Percentage;
 use Rugaard\DMI\Tests\AbstractTestCase;
 
 /**

@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Tests\DTO\Measurements;
 
 use Rugaard\DMI\DTO\Measurements\Precipitation;
-use Rugaard\DMI\DTO\Units\Length\Meter;
-use Rugaard\DMI\DTO\Units\Length\Millimeter;
+use Rugaard\DMI\Units\Length\Meter;
+use Rugaard\DMI\Units\Length\Millimeter;
 use Rugaard\DMI\Tests\AbstractTestCase;
 use Tightenco\Collect\Support\Collection;
 

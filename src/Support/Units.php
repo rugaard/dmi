@@ -2,15 +2,15 @@
 declare(strict_types=1);
 
 use Rugaard\DMI\Contracts\Unit;
-use Rugaard\DMI\DTO\Units\Bearing;
-use Rugaard\DMI\DTO\Units\Percentage;
-use Rugaard\DMI\DTO\Units\Length\Centimeter;
-use Rugaard\DMI\DTO\Units\Length\Meter;
-use Rugaard\DMI\DTO\Units\Length\Millimeter;
-use Rugaard\DMI\DTO\Units\Pressure\Hectopascal;
-use Rugaard\DMI\DTO\Units\Speed\MetersPerSecond;
-use Rugaard\DMI\DTO\Units\Temperature\Celsius;
-use Rugaard\DMI\DTO\Units\Time\Hour;
+use Rugaard\DMI\Units\Bearing;
+use Rugaard\DMI\Units\Percentage;
+use Rugaard\DMI\Units\Length\Centimeter;
+use Rugaard\DMI\Units\Length\Meter;
+use Rugaard\DMI\Units\Length\Millimeter;
+use Rugaard\DMI\Units\Pressure\Hectopascal;
+use Rugaard\DMI\Units\Speed\MetersPerSecond;
+use Rugaard\DMI\Units\Temperature\Celsius;
+use Rugaard\DMI\Units\Time\Hour;
 
 if (!function_exists('getUnitByAbbreviation')) {
     /**

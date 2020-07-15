@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Rugaard\DMI\DTO\Units;
+namespace Rugaard\DMI\Units;
 
 use Rugaard\DMI\Contracts\Unit;
 
 /**
  * Class Percentage.
  *
- * @package Rugaard\DMI\DTO\Units
+ * @package Rugaard\DMI\Units
  */
 class Percentage implements Unit
 {

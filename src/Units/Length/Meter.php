@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Rugaard\DMI\DTO\Units\Length;
+namespace Rugaard\DMI\Units\Length;
 
 use Rugaard\DMI\Contracts\Unit;
 
 /**
  * Class Meter.
  *
- * @package Rugaard\DMI\DTO\Units\Length
+ * @package Rugaard\DMI\Units\Length
  */
 class Meter implements Unit
 {

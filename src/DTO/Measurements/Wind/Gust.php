@@ -5,7 +5,7 @@ namespace Rugaard\DMI\DTO\Measurements\Wind;
 
 use Rugaard\DMI\Contracts\Unit;
 use Rugaard\DMI\DTO\AbstractDTO;
-use Rugaard\DMI\DTO\Units\Speed\MetersPerSecond;
+use Rugaard\DMI\Units\Speed\MetersPerSecond;
 
 /**
  * Class Gust.
