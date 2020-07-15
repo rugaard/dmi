@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Tests\DTO\Measurements;
 
 use Rugaard\DMI\DTO\Measurements\Temperature;
-use Rugaard\DMI\DTO\Units\Bearing;
-use Rugaard\DMI\DTO\Units\Temperature\Celsius;
+use Rugaard\DMI\Units\Bearing;
+use Rugaard\DMI\Units\Temperature\Celsius;
 use Rugaard\DMI\Tests\AbstractTestCase;
 
 /**

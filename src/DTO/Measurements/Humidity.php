@@ -5,7 +5,7 @@ namespace Rugaard\DMI\DTO\Measurements;
 
 use Rugaard\DMI\Contracts\Unit;
 use Rugaard\DMI\DTO\AbstractDTO;
-use Rugaard\DMI\DTO\Units\Percentage;
+use Rugaard\DMI\Units\Percentage;
 
 /**
  * Class Humidity.

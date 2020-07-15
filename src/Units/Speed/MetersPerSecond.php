@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Rugaard\DMI\DTO\Units\Speed;
+namespace Rugaard\DMI\Units\Speed;
 
 use Rugaard\DMI\Contracts\Unit;
 
 /**
  * Class MetresPerSecond.
  *
- * @package Rugaard\DMI\DTO\Units\Speed
+ * @package Rugaard\DMI\Units\Speed
  */
 class MetersPerSecond implements Unit
 {

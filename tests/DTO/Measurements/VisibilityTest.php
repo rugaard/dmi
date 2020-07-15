@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Tests\DTO\Measurements;
 
 use Rugaard\DMI\DTO\Measurements\Visibility;
-use Rugaard\DMI\DTO\Units\Length\Centimeter;
-use Rugaard\DMI\DTO\Units\Length\Meter;
+use Rugaard\DMI\Units\Length\Centimeter;
+use Rugaard\DMI\Units\Length\Meter;
 use Rugaard\DMI\Tests\AbstractTestCase;
 
 /**

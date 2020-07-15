@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Rugaard\DMI\DTO\Units\Pressure;
+namespace Rugaard\DMI\Units\Pressure;
 
 use Rugaard\DMI\Contracts\Unit;
 
 /**
  * Class Hectopascal.
  *
- * @package Rugaard\DMI\DTO\Units\Pressure
+ * @package Rugaard\DMI\Units\Pressure
  */
 class Hectopascal implements Unit
 {
