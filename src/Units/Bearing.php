@@ -3,56 +3,33 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\Units;
 
-use Rugaard\DMI\Contracts\Unit;
+use Rugaard\DMI\Abstracts\AbstractUnit;
 
 /**
  * Class Bearing.
  *
  * @package Rugaard\DMI\Units
  */
-class Bearing implements Unit
+class Bearing extends AbstractUnit
 {
     /**
-     * Name of unit.
+     * Name in singular form.
      *
      * @var string
      */
-    protected $name = 'Bearing';
+    protected string $singular = 'Degree';
+
+    /**
+     * Name in plural form.
+     *
+     * @var string
+     */
+    protected string $plural = 'Degrees';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected $abbreviation = '°';
-
-    /**
-     * Get unit name.
-     *
-     * @return string
-     */
-    public function getName() : string
-    {
-        return $this->name;
-    }
-
-    /**
-     * Get unit abbreviation.
-     *
-     * @return string
-     */
-    public function getAbbreviation() : string
-    {
-        return $this->abbreviation;
-    }
-
-    /**
-     * Get unit as a string.
-     *
-     * @return string
-     */
-    public function __toString() : string
-    {
-        return $this->getAbbreviation();
-    }
+    protected string $abbreviation = '°';
 }

@@ -11,7 +11,7 @@ use Rugaard\DMI\Tests\AbstractTestCase;
 /**
  * Class HumidityTest.
  *
- * @package Rugaard\DMI\Tests\DTO\Measurements
+ * @package Rugaard\DMI\Tests\DTO\Measurement
  */
 class HumidityTest extends AbstractTestCase
 {

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\Tests\Endpoints;
 
-use Rugaard\DMI\DMI;
+use Rugaard\DMI\Client;
 use Rugaard\DMI\Exceptions\DMIException;
 use Rugaard\DMI\Tests\AbstractTestCase;
 use Rugaard\DMI\Tests\Support\MockedResponses\MockedResponses;
@@ -26,7 +26,7 @@ class ArchiveTest extends AbstractTestCase
     public function testInvalidMeasurement() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockEmptyArchive());
+        $dmi = (new Client)->setClient($this->mockEmptyArchive());
 
         // Expect exception.
         $this->expectException(DMIException::class);
@@ -45,7 +45,7 @@ class ArchiveTest extends AbstractTestCase
     public function testInvalidFrequency() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockEmptyArchive());
+        $dmi = (new Client)->setClient($this->mockEmptyArchive());
 
         // Expect exception.
         $this->expectException(DMIException::class);
@@ -64,7 +64,7 @@ class ArchiveTest extends AbstractTestCase
     public function testInvalidPeriod() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockEmptyArchive());
+        $dmi = (new Client)->setClient($this->mockEmptyArchive());
 
         // Expect exception.
         $this->expectException(DMIException::class);
@@ -83,7 +83,7 @@ class ArchiveTest extends AbstractTestCase
     public function testInvalidMunicipalityId() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockEmptyArchive());
+        $dmi = (new Client)->setClient($this->mockEmptyArchive());
 
         // Expect exception.
         $this->expectException(DMIException::class);
@@ -102,7 +102,7 @@ class ArchiveTest extends AbstractTestCase
     public function testInvalidCountry() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockEmptyArchive());
+        $dmi = (new Client)->setClient($this->mockEmptyArchive());
 
         // Expect exception.
         $this->expectException(DMIException::class);
@@ -121,7 +121,7 @@ class ArchiveTest extends AbstractTestCase
     public function testFailedRequest() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockInternalErrorRequest());
+        $dmi = (new Client)->setClient($this->mockInternalErrorRequest());
 
         // Assert expectation of exception.
         $this->expectException(DMIException::class);

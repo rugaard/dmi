@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Tests\Endpoints;
 
 use DateTime;
-use Rugaard\DMI\DMI;
+use Rugaard\DMI\Client;
 use Rugaard\DMI\Endpoints\UV;
 use Rugaard\DMI\Exceptions\DMIException;
 use Rugaard\DMI\Tests\AbstractTestCase;
@@ -49,7 +49,7 @@ class UVTest extends AbstractTestCase
     public function testBasics() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockUV());
+        $dmi = (new Client)->setClient($this->mockUV());
 
         // Get UV data.
         $uv = $dmi->uv($this->mockedLocationId);
@@ -71,7 +71,7 @@ class UVTest extends AbstractTestCase
     public function testWithGlobalId() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = new DMI($this->mockedLocationId, $this->mockUV());
+        $dmi = new Client($this->mockedLocationId, $this->mockUV());
 
         // Get UV data.
         $uv = $dmi->uv();
@@ -93,7 +93,7 @@ class UVTest extends AbstractTestCase
     public function testEmptyUV() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockEmptyUV());
+        $dmi = (new Client)->setClient($this->mockEmptyUV());
 
         // Get UV data.
         $uv = $dmi->uv($this->mockedLocationId);
@@ -113,7 +113,7 @@ class UVTest extends AbstractTestCase
     public function testUV() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockUV());
+        $dmi = (new Client)->setClient($this->mockUV());
 
         //  Get UV (low to moderate) data.
         $uv = $dmi->uv($this->mockedLocationId);
@@ -173,7 +173,7 @@ class UVTest extends AbstractTestCase
     public function testFailedRequest() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockInternalErrorRequest());
+        $dmi = (new Client)->setClient($this->mockInternalErrorRequest());
 
         // Assert expectation of exception.
         $this->expectException(DMIException::class);

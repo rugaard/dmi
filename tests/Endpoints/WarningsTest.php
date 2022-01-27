@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Tests\Endpoints;
 
 use DateTime;
-use Rugaard\DMI\DMI;
+use Rugaard\DMI\Client;
 use Rugaard\DMI\DTO\Warning;
 use Rugaard\DMI\Endpoints\Warnings;
 use Rugaard\DMI\Exceptions\DMIException;
@@ -30,7 +30,7 @@ class WarningsTest extends AbstractTestCase
     public function testBasics() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockWarnings());
+        $dmi = (new Client)->setClient($this->mockWarnings());
 
         // Get warnings data.
         $warnings = $dmi->warnings();
@@ -55,7 +55,7 @@ class WarningsTest extends AbstractTestCase
     public function testEmptyWarnings() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockEmptyWarnings());
+        $dmi = (new Client)->setClient($this->mockEmptyWarnings());
 
         // Get pollen data.
         $warnings = $dmi->warnings();
@@ -75,7 +75,7 @@ class WarningsTest extends AbstractTestCase
     public function testWarning() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockWarnings());
+        $dmi = (new Client)->setClient($this->mockWarnings());
 
         // Get warnings data.
         $warnings = $dmi->warnings();
@@ -196,7 +196,7 @@ class WarningsTest extends AbstractTestCase
     public function testFailedRequest() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockInternalErrorRequest());
+        $dmi = (new Client)->setClient($this->mockInternalErrorRequest());
 
         // Assert expectation of exception.
         $this->expectException(DMIException::class);

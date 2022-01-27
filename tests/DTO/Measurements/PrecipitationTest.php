@@ -12,7 +12,7 @@ use Tightenco\Collect\Support\Collection;
 /**
  * Class PrecipitationTest.
  *
- * @package Rugaard\DMI\Tests\DTO\Measurements
+ * @package Rugaard\DMI\Tests\DTO\Measurement
  */
 class PrecipitationTest extends AbstractTestCase
 {

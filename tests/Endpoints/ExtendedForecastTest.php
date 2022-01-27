@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Tests\Endpoints;
 
 use DateTime;
-use Rugaard\DMI\DMI;
+use Rugaard\DMI\Client;
 use Rugaard\DMI\DTO\Forecast\Text;
 use Rugaard\DMI\Endpoints\Forecast;
 use Rugaard\DMI\Exceptions\DMIException;
@@ -30,7 +30,7 @@ class ExtendedForecastTest extends AbstractTestCase
     public function testBasics() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockExtendedForecast());
+        $dmi = (new Client)->setClient($this->mockExtendedForecast());
 
         // Get extended forecast.
         $forecast = $dmi->extendedForecast();
@@ -58,7 +58,7 @@ class ExtendedForecastTest extends AbstractTestCase
     public function testDays() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockExtendedForecast());
+        $dmi = (new Client)->setClient($this->mockExtendedForecast());
 
         // Get extended forecast.
         $forecast = $dmi->extendedForecast();
@@ -87,7 +87,7 @@ class ExtendedForecastTest extends AbstractTestCase
     public function testFailedRequest() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockInternalErrorRequest());
+        $dmi = (new Client)->setClient($this->mockInternalErrorRequest());
 
         // Assert expectation of exception.
         $this->expectException(DMIException::class);

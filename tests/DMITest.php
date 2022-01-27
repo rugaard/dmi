@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\Tests;
 
-use Rugaard\DMI\DMI;
+use Rugaard\DMI\Client;
 use Rugaard\DMI\Exceptions\ClientException;
 use Rugaard\DMI\Exceptions\ParsingFailedException;
 use Rugaard\DMI\Exceptions\RequestException;
@@ -28,7 +28,7 @@ class DMITest extends AbstractTestCase
     public function testInvalidJson() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockInvalidJsonRequest());
+        $dmi = (new Client)->setClient($this->mockInvalidJsonRequest());
 
         // Expect exception.
         $this->expectException(ParsingFailedException::class);
@@ -47,7 +47,7 @@ class DMITest extends AbstractTestCase
     public function testNoContentRequest() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockNoContentRequest());
+        $dmi = (new Client)->setClient($this->mockNoContentRequest());
 
         // Request data.
         $data = $this->invokeMethod($dmi, 'request', ['http://mocked.url']);
@@ -66,7 +66,7 @@ class DMITest extends AbstractTestCase
     public function testClientException() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockNotFoundRequest());
+        $dmi = (new Client)->setClient($this->mockNotFoundRequest());
 
         // Expect exception.
         $this->expectException(ClientException::class);
@@ -85,7 +85,7 @@ class DMITest extends AbstractTestCase
     public function testServerException() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockInternalErrorRequest());
+        $dmi = (new Client)->setClient($this->mockInternalErrorRequest());
 
         // Expect exception.
         $this->expectException(ServerException::class);
@@ -104,7 +104,7 @@ class DMITest extends AbstractTestCase
     public function testRequestException() : void
     {
         // Instantiate DMI.
-        $dmi = new DMI;
+        $dmi = new Client;
 
         // Expect exception.
         $this->expectException(RequestException::class);

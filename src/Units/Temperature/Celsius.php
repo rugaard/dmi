@@ -3,56 +3,33 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\Units\Temperature;
 
-use Rugaard\DMI\Contracts\Unit;
+use Rugaard\DMI\Abstracts\AbstractUnit;
 
 /**
  * Class Celsius.
  *
- * @package Rugaard\DMI\Units\Temperatures
+ * @package Rugaard\DMI\Unit\Temperatures
  */
-class Celsius implements Unit
+class Celsius extends AbstractUnit
 {
     /**
-     * Name of unit.
+     * Name in singular form.
      *
      * @var string
      */
-    protected $name = 'Celsius';
+    protected string $singular = 'Celsius';
+
+    /**
+     * Name in plural form.
+     *
+     * @var string
+     */
+    protected string $plural = 'Celsius';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected $abbreviation = '°C';
-
-    /**
-     * Get unit name.
-     *
-     * @return string
-     */
-    public function getName() : string
-    {
-        return $this->name;
-    }
-
-    /**
-     * Get unit abbreviation.
-     *
-     * @return string
-     */
-    public function getAbbreviation() : string
-    {
-        return $this->abbreviation;
-    }
-
-    /**
-     * Get unit as a string.
-     *
-     * @return string
-     */
-    public function __toString() : string
-    {
-        return $this->getAbbreviation();
-    }
+    protected string $abbreviation = '°C';
 }

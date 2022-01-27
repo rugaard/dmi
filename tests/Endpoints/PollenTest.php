@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Tests\Endpoints;
 
 use DateTime;
-use Rugaard\DMI\DMI;
+use Rugaard\DMI\Client;
 use Rugaard\DMI\DTO\Pollen as PollenDTO;
 use Rugaard\DMI\Endpoints\Pollen;
 use Rugaard\DMI\Exceptions\DMIException;
@@ -50,7 +50,7 @@ class PollenTest extends AbstractTestCase
     public function testBasics() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockPollen());
+        $dmi = (new Client)->setClient($this->mockPollen());
 
         // Get UV data.
         $pollen = $dmi->pollen();
@@ -90,7 +90,7 @@ class PollenTest extends AbstractTestCase
     public function testEmptyPollen() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockEmptyPollen());
+        $dmi = (new Client)->setClient($this->mockEmptyPollen());
 
         // Get pollen data.
         $pollen = $dmi->pollen();
@@ -110,7 +110,7 @@ class PollenTest extends AbstractTestCase
     public function testRegions() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockPollen());
+        $dmi = (new Client)->setClient($this->mockPollen());
 
         // Get pollen data.
         $pollen = $dmi->pollen();
@@ -143,7 +143,7 @@ class PollenTest extends AbstractTestCase
     public function testReadings() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockPollen());
+        $dmi = (new Client)->setClient($this->mockPollen());
 
         // Get pollen data.
         $pollen = $dmi->pollen();
@@ -219,7 +219,7 @@ class PollenTest extends AbstractTestCase
     public function testFailedRequest() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockInternalErrorRequest());
+        $dmi = (new Client)->setClient($this->mockInternalErrorRequest());
 
         // Assert expectation of exception.
         $this->expectException(DMIException::class);

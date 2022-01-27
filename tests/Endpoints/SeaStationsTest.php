@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Tests\Endpoints;
 
 use DateTime;
-use Rugaard\DMI\DMI;
+use Rugaard\DMI\Client;
 use Rugaard\DMI\DTO\SeaStation;
 use Rugaard\DMI\Endpoints\SeaStations;
 use Rugaard\DMI\Exceptions\DMIException;
@@ -50,7 +50,7 @@ class SeaStationsTest extends AbstractTestCase
     public function testBasics() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockSeaStations());
+        $dmi = (new Client)->setClient($this->mockSeaStations());
 
         // Get sea stations.
         $seaStations = $dmi->seaStations();
@@ -71,7 +71,7 @@ class SeaStationsTest extends AbstractTestCase
     public function testEmptySeaStations() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockEmptySeaStations());
+        $dmi = (new Client)->setClient($this->mockEmptySeaStations());
 
         // Get sea stations.
         $seaStations = $dmi->seaStations();
@@ -91,7 +91,7 @@ class SeaStationsTest extends AbstractTestCase
     public function testSeaStationById() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockSeaStations());
+        $dmi = (new Client)->setClient($this->mockSeaStations());
 
         // Get sea stations.
         $seaStation = $dmi->seaStation($this->mockedSeaStationId);
@@ -142,7 +142,7 @@ class SeaStationsTest extends AbstractTestCase
     public function testObservations() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockSeaStationsWithObservations());
+        $dmi = (new Client)->setClient($this->mockSeaStationsWithObservations());
 
         // Get sea stations.
         $seaStation = $dmi->seaStation($this->mockedSeaStationId, true);
@@ -184,7 +184,7 @@ class SeaStationsTest extends AbstractTestCase
     public function testForecast() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockSeaStationsWithForecast());
+        $dmi = (new Client)->setClient($this->mockSeaStationsWithForecast());
 
         // Get sea stations.
         $seaStation = $dmi->seaStation($this->mockedSeaStationId, false, true);
@@ -222,7 +222,7 @@ class SeaStationsTest extends AbstractTestCase
     public function testFailedRequest() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockInternalErrorRequest());
+        $dmi = (new Client)->setClient($this->mockInternalErrorRequest());
 
         // Assert expectation of exception.
         $this->expectException(DMIException::class);

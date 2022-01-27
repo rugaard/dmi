@@ -11,7 +11,7 @@ use Rugaard\DMI\Tests\AbstractTestCase;
 /**
  * Class VisibilityTest.
  *
- * @package Rugaard\DMI\Tests\DTO\Measurements
+ * @package Rugaard\DMI\Tests\DTO\Measurement
  */
 class VisibilityTest extends AbstractTestCase
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Tests\DTO\Measurements;
 
 use Rugaard\DMI\DTO\Measurements\Wind;
-use Rugaard\DMI\DTO\Measurements\Wind\Direction;
+use Rugaard\DMI\DTO\Measurements\Wind\WindDirection;
 use Rugaard\DMI\DTO\Measurements\Wind\Gust;
 use Rugaard\DMI\DTO\Measurements\Wind\Speed;
 use Rugaard\DMI\Tests\AbstractTestCase;
@@ -12,7 +12,7 @@ use Rugaard\DMI\Tests\AbstractTestCase;
 /**
  * Class WindTest.
  *
- * @package Rugaard\DMI\Tests\DTO\Measurements
+ * @package Rugaard\DMI\Tests\DTO\Measurement
  */
 class WindTest extends AbstractTestCase
 {
@@ -64,10 +64,10 @@ class WindTest extends AbstractTestCase
         $dto = new Wind;
 
         // Set wind direction.
-        $dto->setDirection(new Direction($this->mockedData));
+        $dto->setDirection(new WindDirection($this->mockedData));
 
         // Assertions.
-        $this->assertInstanceOf(Direction::class, $dto->getDirection());
+        $this->assertInstanceOf(WindDirection::class, $dto->getDirection());
     }
 
     /**

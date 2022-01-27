@@ -11,7 +11,7 @@ use Rugaard\DMI\Tests\AbstractTestCase;
 /**
  * Class SpeedTest.
  *
- * @package Rugaard\DMI\Tests\DTO\Measurements\Wind
+ * @package Rugaard\DMI\Tests\DTO\Measurement\Wind
  */
 class SpeedTest extends AbstractTestCase
 {

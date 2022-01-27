@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Tests\Endpoints;
 
 use DateTime;
-use Rugaard\DMI\DMI;
+use Rugaard\DMI\Client;
 use Rugaard\DMI\DTO\SunTime;
 use Rugaard\DMI\Endpoints\SunTimes;
 use Rugaard\DMI\Exceptions\DMIException;
@@ -50,7 +50,7 @@ class SunTimesTest extends AbstractTestCase
     public function testBasics() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockSunTimes());
+        $dmi = (new Client)->setClient($this->mockSunTimes());
 
         // Get sun times.
         $sunTimes = $dmi->sunTimes($this->mockedLocationId);
@@ -70,7 +70,7 @@ class SunTimesTest extends AbstractTestCase
     public function testWithGlobalId() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = new DMI($this->mockedLocationId, $this->mockSunTimes());
+        $dmi = new Client($this->mockedLocationId, $this->mockSunTimes());
 
         // Get sun times.
         $sunTimes = $dmi->sunTimes();
@@ -90,7 +90,7 @@ class SunTimesTest extends AbstractTestCase
     public function testEmptySunTime() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockEmptySunTimes());
+        $dmi = (new Client)->setClient($this->mockEmptySunTimes());
 
         // Get sun times.
         $sunTimes = $dmi->sunTimes($this->mockedLocationId);
@@ -110,7 +110,7 @@ class SunTimesTest extends AbstractTestCase
     public function testSunTime() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockSunTimes());
+        $dmi = (new Client)->setClient($this->mockSunTimes());
 
         // Get sun times.
         $sunTimes = $dmi->sunTimes($this->mockedLocationId);
@@ -138,7 +138,7 @@ class SunTimesTest extends AbstractTestCase
     public function testToArray() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockSunTimes());
+        $dmi = (new Client)->setClient($this->mockSunTimes());
 
         // Get sun times.
         $sunTimes = $dmi->sunTimes($this->mockedLocationId);
@@ -165,7 +165,7 @@ class SunTimesTest extends AbstractTestCase
     public function testFailedRequest() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockInternalErrorRequest());
+        $dmi = (new Client)->setClient($this->mockInternalErrorRequest());
 
         // Assert expectation of exception.
         $this->expectException(DMIException::class);

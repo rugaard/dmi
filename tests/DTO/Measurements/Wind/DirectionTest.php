@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\Tests\DTO\Measurements\Wind;
 
-use Rugaard\DMI\DTO\Measurements\Wind\Direction;
+use Rugaard\DMI\DTO\Measurements\Wind\WindDirection;
 use Rugaard\DMI\Tests\AbstractTestCase;
 use Tightenco\Collect\Support\Collection;
 
 /**
  * Class DirectionTest.
  *
- * @package Rugaard\DMI\Tests\DTO\Measurements\Wind
+ * @package Rugaard\DMI\Tests\DTO\Measurement\Wind
  */
 class DirectionTest extends AbstractTestCase
 {
@@ -37,7 +37,7 @@ class DirectionTest extends AbstractTestCase
         // Test each wind degree.
         $mockedData->each(function ($data) {
             // Instantiate empty DTO.
-            $dto = new Direction;
+            $dto = new WindDirection;
 
             // Set direction.
             $dto->setDegreesAndDirection($data->get('value'));
@@ -50,7 +50,7 @@ class DirectionTest extends AbstractTestCase
         });
 
         // Test non-existing wind direction.
-        $dto = (new Direction)->setDirectionByDegrees(-1);
+        $dto = (new WindDirection)->setDirectionByDegrees(-1);
         $this->assertNull($dto->getDegrees());
         $this->assertNull($dto->getDirection());
     }
@@ -78,7 +78,7 @@ class DirectionTest extends AbstractTestCase
         // Test each wind degree.
         $mockedData->each(function ($data) {
             // Instantiate empty DTO.
-            $dto = new Direction;
+            $dto = new WindDirection;
 
             // Set direction.
             $dto->setDirectionByDegrees($data->get('value'));
@@ -90,7 +90,7 @@ class DirectionTest extends AbstractTestCase
         });
 
         // Test non-existing wind direction.
-        $dto = (new Direction)->setDirectionByDegrees(-1);
+        $dto = (new WindDirection)->setDirectionByDegrees(-1);
         $this->assertNull($dto->getDirection());
     }
 
@@ -124,7 +124,7 @@ class DirectionTest extends AbstractTestCase
         // Test each wind direction.
         $mockedData->each(function ($data) {
             // Instantiate empty DTO.
-            $dto = new Direction;
+            $dto = new WindDirection;
 
             // Set direction.
             $dto->setDirection($data->get('value'));
@@ -136,7 +136,7 @@ class DirectionTest extends AbstractTestCase
         });
 
         // Test non-existing wind direction.
-        $dto = (new Direction)->setDirection('N/A');
+        $dto = (new WindDirection)->setDirection('N/A');
         $this->assertNull($dto->getDirection());
     }
 
@@ -148,7 +148,7 @@ class DirectionTest extends AbstractTestCase
     public function testAbbreviation() : void
     {
         // Instantiate empty DTO.
-        $dto = new Direction;
+        $dto = new WindDirection;
 
         // Mocked abbreviation
         $mockedAbbreviation = 'S';
@@ -169,7 +169,7 @@ class DirectionTest extends AbstractTestCase
     public function testDegrees() : void
     {
         // Instantiate empty DTO.
-        $dto = new Direction;
+        $dto = new WindDirection;
 
         // Mocked degrees.
         $mockedDegrees = 131.761903;
@@ -190,7 +190,7 @@ class DirectionTest extends AbstractTestCase
     public function testToString() : void
     {
         // Instantiate empty DTO.
-        $dto = new Direction;
+        $dto = new WindDirection;
 
         // Mocked direction.
         $mockedDirection = 'NE';

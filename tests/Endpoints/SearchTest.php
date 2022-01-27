@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\Tests\Endpoints;
 
-use Rugaard\DMI\DMI;
+use Rugaard\DMI\Client;
 use Rugaard\DMI\Endpoints\Search;
 use Rugaard\DMI\DTO\Search as SearchDTO;
 use Rugaard\DMI\Exceptions\DMIException;
@@ -49,7 +49,7 @@ class SearchTest extends AbstractTestCase
     public function testBasics() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockSearch());
+        $dmi = (new Client)->setClient($this->mockSearch());
 
         // Get search data.
         $search = $dmi->search($this->mockedQuery);
@@ -69,7 +69,7 @@ class SearchTest extends AbstractTestCase
     public function testEmptySearch() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockEmptySearch());
+        $dmi = (new Client)->setClient($this->mockEmptySearch());
 
         // Get search data.
         $search = $dmi->search($this->mockedQuery);
@@ -89,7 +89,7 @@ class SearchTest extends AbstractTestCase
     public function testResult() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockSearch());
+        $dmi = (new Client)->setClient($this->mockSearch());
 
         // Get search data.
         $search = $dmi->search($this->mockedQuery);
@@ -121,7 +121,7 @@ class SearchTest extends AbstractTestCase
     public function testFailedRequest() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockInternalErrorRequest());
+        $dmi = (new Client)->setClient($this->mockInternalErrorRequest());
 
         // Assert expectation of exception.
         $this->expectException(DMIException::class);

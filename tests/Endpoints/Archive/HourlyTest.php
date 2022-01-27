@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Tests\Endpoints\Archive;
 
 use DateTime;
-use Rugaard\DMI\DMI;
+use Rugaard\DMI\Client;
 use Rugaard\DMI\DTO\Archive\Parameter;
 use Rugaard\DMI\DTO\Archive\Value;
 use Rugaard\DMI\DTO\Units\Bearing;
@@ -67,7 +67,7 @@ class HourlyTest extends AbstractTestCase
     public function testTemperatures() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockArchive($this->frequency, 'temperature'));
+        $dmi = (new Client)->setClient($this->mockArchive($this->frequency, 'temperature'));
 
         // Get archive data.
         $archive = $dmi->archive('temperature', $this->frequency, $this->period);
@@ -117,7 +117,7 @@ class HourlyTest extends AbstractTestCase
     public function testWind() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockArchive($this->frequency, 'wind'));
+        $dmi = (new Client)->setClient($this->mockArchive($this->frequency, 'wind'));
 
         // Get archive data.
         $archive = $dmi->archive('wind', $this->frequency, $this->period);
@@ -167,7 +167,7 @@ class HourlyTest extends AbstractTestCase
     public function testWindDirection() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockArchive($this->frequency, 'windDirection'));
+        $dmi = (new Client)->setClient($this->mockArchive($this->frequency, 'windDirection'));
 
         // Get archive data.
         $archive = $dmi->archive('wind-direction', $this->frequency, $this->period);
@@ -217,7 +217,7 @@ class HourlyTest extends AbstractTestCase
     public function testHumidity() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockArchive($this->frequency, 'humidity'));
+        $dmi = (new Client)->setClient($this->mockArchive($this->frequency, 'humidity'));
 
         // Get archive data.
         $archive = $dmi->archive('humidity', $this->frequency, $this->period);
@@ -267,7 +267,7 @@ class HourlyTest extends AbstractTestCase
     public function testPressure() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockArchive($this->frequency, 'pressure'));
+        $dmi = (new Client)->setClient($this->mockArchive($this->frequency, 'pressure'));
 
         // Get archive data.
         $archive = $dmi->archive('pressure', $this->frequency, $this->period);
@@ -317,7 +317,7 @@ class HourlyTest extends AbstractTestCase
     public function testPrecipitation() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockArchive($this->frequency, 'precipitation'));
+        $dmi = (new Client)->setClient($this->mockArchive($this->frequency, 'precipitation'));
 
         // Get archive data.
         $archive = $dmi->archive('precipitation', $this->frequency, $this->period);
@@ -367,7 +367,7 @@ class HourlyTest extends AbstractTestCase
     public function testLightning() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockArchive($this->frequency, 'lightning'));
+        $dmi = (new Client)->setClient($this->mockArchive($this->frequency, 'lightning'));
 
         // Get archive data.
         $archive = $dmi->archive('lightning', $this->frequency, $this->period);
@@ -415,7 +415,7 @@ class HourlyTest extends AbstractTestCase
     public function testSun() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockArchive($this->frequency, 'sun'));
+        $dmi = (new Client)->setClient($this->mockArchive($this->frequency, 'sun'));
 
         // Get archive data.
         $archive = $dmi->archive('sun', $this->frequency, $this->period);
@@ -465,7 +465,7 @@ class HourlyTest extends AbstractTestCase
     public function testDrought() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockArchive($this->frequency, 'drought'));
+        $dmi = (new Client)->setClient($this->mockArchive($this->frequency, 'drought'));
 
         // Get archive data.
         $archive = $dmi->archive('drought', $this->frequency, $this->period);
@@ -497,7 +497,7 @@ class HourlyTest extends AbstractTestCase
     public function testSnow() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockArchive($this->frequency, 'snow'));
+        $dmi = (new Client)->setClient($this->mockArchive($this->frequency, 'snow'));
 
         // Get archive data.
         $archive = $dmi->archive('snow', $this->frequency, $this->period);
@@ -529,7 +529,7 @@ class HourlyTest extends AbstractTestCase
     public function testEmptyArchiveData() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockEmptyArchive());
+        $dmi = (new Client)->setClient($this->mockEmptyArchive());
 
         // Get archive data-
         $archive = $dmi->archive('temperature', $this->frequency, $this->period);

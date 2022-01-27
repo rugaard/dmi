@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Tests\Endpoints;
 
 use DateTime;
-use Rugaard\DMI\DMI;
+use Rugaard\DMI\Client;
 use Rugaard\DMI\DTO\Forecast\Current;
 use Rugaard\DMI\DTO\Forecast\Day;
 use Rugaard\DMI\DTO\Forecast\Hour;
@@ -16,7 +16,7 @@ use Rugaard\DMI\DTO\Measurements\Pressure;
 use Rugaard\DMI\DTO\Measurements\Temperature;
 use Rugaard\DMI\DTO\Measurements\Visibility;
 use Rugaard\DMI\DTO\Measurements\Wind;
-use Rugaard\DMI\DTO\Measurements\Wind\Direction;
+use Rugaard\DMI\DTO\Measurements\Wind\WindDirection;
 use Rugaard\DMI\DTO\Measurements\Wind\Gust;
 use Rugaard\DMI\DTO\Measurements\Wind\Speed;
 use Rugaard\DMI\DTO\Units\Length\Meter;
@@ -81,7 +81,7 @@ class LocationTest extends AbstractTestCase
     public function testBasics() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocation());
+        $dmi = (new Client)->setClient($this->mockLocation());
 
         // Get location.
         $location = $dmi->location($this->mockedLocationId, true,false);
@@ -117,7 +117,7 @@ class LocationTest extends AbstractTestCase
      */
     public function testWithGlobalId() : void
     {
-        $dmi = new DMI($this->mockedLocationId, $this->mockLocationWithFailedRegional());
+        $dmi = new Client($this->mockedLocationId, $this->mockLocationWithFailedRegional());
 
         // Get location.
         $location = $dmi->location();
@@ -137,7 +137,7 @@ class LocationTest extends AbstractTestCase
     public function testWithEmptyRegional() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocationWithEmptyRegional());
+        $dmi = (new Client)->setClient($this->mockLocationWithEmptyRegional());
 
         // Get location.
         $location = $dmi->location($this->mockedLocationId, true,false);
@@ -158,7 +158,7 @@ class LocationTest extends AbstractTestCase
     public function testWithCoordinates() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocation());
+        $dmi = (new Client)->setClient($this->mockLocation());
 
         // Get location by coordinate (aka. nearest weather station).
         $location = $dmi->locationByCoordinate($this->mockedCoordinate['latitude'], $this->mockedCoordinate['longitude']);
@@ -195,7 +195,7 @@ class LocationTest extends AbstractTestCase
     public function testWithCoordinatesAndFailedRegional() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocationWithFailedRegional());
+        $dmi = (new Client)->setClient($this->mockLocationWithFailedRegional());
 
         // Get location by coordinate (aka. nearest weather station).
         $location = $dmi->locationByCoordinate($this->mockedCoordinate['latitude'], $this->mockedCoordinate['longitude'], true, false);
@@ -216,7 +216,7 @@ class LocationTest extends AbstractTestCase
     public function testForecasts() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocation());
+        $dmi = (new Client)->setClient($this->mockLocation());
 
         // Get location.
         $location = $dmi->location($this->mockedLocationId, true,false);
@@ -238,7 +238,7 @@ class LocationTest extends AbstractTestCase
     public function testCurrentlyForecast() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocation());
+        $dmi = (new Client)->setClient($this->mockLocation());
 
         // Get location.
         $location = $dmi->location($this->mockedLocationId, false,false);
@@ -274,7 +274,7 @@ class LocationTest extends AbstractTestCase
         $this->assertEquals('m/s', $currentForecast->getWind()->getSpeed()->getUnit()->getAbbreviation());
         $this->assertEquals('2.9 m/s', (string) $currentForecast->getWind()->getSpeed());
         $this->assertEquals('2.9 m/s', (string) $currentForecast->getWind());
-        $this->assertInstanceOf(Direction::class, $currentForecast->getWind()->getDirection());
+        $this->assertInstanceOf(WindDirection::class, $currentForecast->getWind()->getDirection());
         $this->assertEquals('South', $currentForecast->getWind()->getDirection()->getDirection());
         $this->assertEquals('S', $currentForecast->getWind()->getDirection()->getAbbreviation());
         $this->assertIsFloat($currentForecast->getWind()->getDirection()->getDegrees());
@@ -343,7 +343,7 @@ class LocationTest extends AbstractTestCase
     public function testHourlyForecast() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocation());
+        $dmi = (new Client)->setClient($this->mockLocation());
 
         // Get location.
         $location = $dmi->location($this->mockedLocationId, false,false);
@@ -385,7 +385,7 @@ class LocationTest extends AbstractTestCase
         $this->assertEquals('m/s', $hour->getWind()->getSpeed()->getUnit()->getAbbreviation());
         $this->assertEquals('2.9 m/s', (string) $hour->getWind()->getSpeed());
         $this->assertEquals('2.9 m/s', (string) $hour->getWind());
-        $this->assertInstanceOf(Direction::class, $hour->getWind()->getDirection());
+        $this->assertInstanceOf(WindDirection::class, $hour->getWind()->getDirection());
         $this->assertEquals('South', $hour->getWind()->getDirection()->getDirection());
         $this->assertEquals('S', $hour->getWind()->getDirection()->getAbbreviation());
         $this->assertIsFloat($hour->getWind()->getDirection()->getDegrees());
@@ -454,7 +454,7 @@ class LocationTest extends AbstractTestCase
     public function testDailyForecast() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocation());
+        $dmi = (new Client)->setClient($this->mockLocation());
 
         // Get location.
         $location = $dmi->location($this->mockedLocationId, false,false);
@@ -496,7 +496,7 @@ class LocationTest extends AbstractTestCase
         $this->assertEquals('m/s', $day->getWind()->getSpeed()->getUnit()->getAbbreviation());
         $this->assertEquals('4.8 m/s', (string) $day->getWind()->getSpeed());
         $this->assertEquals('4.8 m/s', (string) $day->getWind());
-        $this->assertInstanceOf(Direction::class, $day->getWind()->getDirection());
+        $this->assertInstanceOf(WindDirection::class, $day->getWind()->getDirection());
         $this->assertEquals('Southwest', $day->getWind()->getDirection()->getDirection());
         $this->assertEquals('SW', $day->getWind()->getDirection()->getAbbreviation());
         $this->assertIsFloat($day->getWind()->getDirection()->getDegrees());
@@ -565,7 +565,7 @@ class LocationTest extends AbstractTestCase
     public function testRegionalForecast() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocation());
+        $dmi = (new Client)->setClient($this->mockLocation());
 
         // Get location.
         $location = $dmi->location($this->mockedLocationId, true, false);
@@ -594,7 +594,7 @@ class LocationTest extends AbstractTestCase
     public function testWithoutWarnings() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocation());
+        $dmi = (new Client)->setClient($this->mockLocation());
 
         // Get location.
         $location = $dmi->location($this->mockedLocationId, false,false);
@@ -626,7 +626,7 @@ class LocationTest extends AbstractTestCase
     public function testByIdWithEmptyWarnings() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocationWithEmptyWarnings());
+        $dmi = (new Client)->setClient($this->mockLocationWithEmptyWarnings());
 
         // Get location.
         $location = $dmi->location($this->mockedLocationId, false);
@@ -658,7 +658,7 @@ class LocationTest extends AbstractTestCase
     public function testByIdWithWarnings() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocationWithWarnings());
+        $dmi = (new Client)->setClient($this->mockLocationWithWarnings());
 
         // Get location.
         $location = $dmi->location($this->mockedLocationId, false);
@@ -704,7 +704,7 @@ class LocationTest extends AbstractTestCase
     public function testByCoordinateWithEmptyWarnings() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocationWithEmptyWarnings());
+        $dmi = (new Client)->setClient($this->mockLocationWithEmptyWarnings());
 
         // Get location by coordinate (aka. nearest weather station).
         $location = $dmi->locationByCoordinate($this->mockedCoordinate['latitude'], $this->mockedCoordinate['longitude'], false);
@@ -736,7 +736,7 @@ class LocationTest extends AbstractTestCase
     public function testByCoordinateWithWarnings() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockLocationWithWarnings());
+        $dmi = (new Client)->setClient($this->mockLocationWithWarnings());
 
         // Get location by coordinate (aka. nearest weather station).
         $location = $dmi->locationByCoordinate($this->mockedCoordinate['latitude'], $this->mockedCoordinate['longitude'], false);
@@ -782,7 +782,7 @@ class LocationTest extends AbstractTestCase
     public function testFailedRequestById() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockInternalErrorRequest());
+        $dmi = (new Client)->setClient($this->mockInternalErrorRequest());
 
         // Assert expectation of exception.
         $this->expectException(DMIException::class);
@@ -800,7 +800,7 @@ class LocationTest extends AbstractTestCase
     public function testFailedRequest() : void
     {
         // Instantiate DMI with mocked client.
-        $dmi = (new DMI)->setClient($this->mockInternalErrorRequest());
+        $dmi = (new Client)->setClient($this->mockInternalErrorRequest());
 
         // Assert expectation of exception.
         $this->expectException(DMIException::class);

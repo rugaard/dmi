@@ -11,7 +11,7 @@ use Rugaard\DMI\Tests\AbstractTestCase;
 /**
  * Class GustTest.
  *
- * @package Rugaard\DMI\Tests\DTO\Measurements\Wind
+ * @package Rugaard\DMI\Tests\DTO\Measurement\Wind
  */
 class GustTest extends AbstractTestCase
 {
