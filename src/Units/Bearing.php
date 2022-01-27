@@ -17,14 +17,14 @@ class Bearing implements Unit
      *
      * @var string
      */
-    protected $name = 'Bearing';
+    protected string $name = 'Bearing';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected $abbreviation = '°';
+    protected string $abbreviation = '°';
 
     /**
      * Get unit name.

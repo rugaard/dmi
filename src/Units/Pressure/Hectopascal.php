@@ -17,14 +17,14 @@ class Hectopascal implements Unit
      *
      * @var string
      */
-    protected $name = 'Hectopascal';
+    protected string $name = 'Hectopascal';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected $abbreviation = 'hPa';
+    protected string $abbreviation = 'hPa';
 
     /**
      * Get unit name.

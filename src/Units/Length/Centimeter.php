@@ -17,14 +17,14 @@ class Centimeter implements Unit
      *
      * @var string
      */
-    protected $name = 'Centimeter';
+    protected string $name = 'Centimeter';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected $abbreviation = 'cm';
+    protected string $abbreviation = 'cm';
 
     /**
      * Get unit name.

@@ -17,14 +17,14 @@ class Millimeter implements Unit
      *
      * @var string
      */
-    protected $name = 'Millimeter';
+    protected string $name = 'Millimeter';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected $abbreviation = 'mm';
+    protected string $abbreviation = 'mm';
 
     /**
      * Get unit name.

@@ -97,9 +97,10 @@ Are you using an older version, then you need to manually add the service provid
 ## ⚙️ Usage
 
 First thing you need to do, is to instantiate the `DMI` client
+
 ```php
 # Instantiate the DMI client.
-$dmi = new \Rugaard\DMI\DMI;
+$dmi = new \Rugaard\DMI\Client;
 ```
 
 Once you've done that, you're able to request one or more of the supported features:

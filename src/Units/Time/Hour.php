@@ -17,14 +17,14 @@ class Hour implements Unit
      *
      * @var string
      */
-    protected $name = 'Hour';
+    protected string $name = 'Hour';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected $abbreviation = 'h';
+    protected string $abbreviation = 'h';
 
     /**
      * Get unit name.

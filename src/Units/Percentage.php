@@ -17,14 +17,14 @@ class Percentage implements Unit
      *
      * @var string
      */
-    protected $name = 'Percentage';
+    protected string $name = 'Percentage';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected $abbreviation = '%';
+    protected string $abbreviation = '%';
 
     /**
      * Get unit name.

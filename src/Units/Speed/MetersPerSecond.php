@@ -17,14 +17,14 @@ class MetersPerSecond implements Unit
      *
      * @var string
      */
-    protected $name = 'Meters per second';
+    protected string $name = 'Meters per second';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected $abbreviation = 'm/s';
+    protected string $abbreviation = 'm/s';
 
     /**
      * Get unit name.

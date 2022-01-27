@@ -16,5 +16,5 @@ interface DTO
      * @param  array $data
      * @return void
      */
-    public function parse(array $data) : void;
+    public function parse(array $data): void;
 }

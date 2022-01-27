@@ -17,14 +17,14 @@ class Celsius implements Unit
      *
      * @var string
      */
-    protected $name = 'Celsius';
+    protected string $name = 'Celsius';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected $abbreviation = '°C';
+    protected string $abbreviation = '°C';
 
     /**
      * Get unit name.

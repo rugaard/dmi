@@ -17,14 +17,14 @@ class Meter implements Unit
      *
      * @var string
      */
-    protected $name = 'Meter';
+    protected string $name = 'Meter';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected $abbreviation = 'm';
+    protected string $abbreviation = 'm';
 
     /**
      * Get unit name.
