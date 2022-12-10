@@ -7,6 +7,7 @@ namespace Rugaard\DMI\Abstracts;
 /**
  * Class AbstractUnit.
  *
+ * @abstract
  * @package Rugaard\DMI\Abstracts
  */
 abstract class AbstractUnit

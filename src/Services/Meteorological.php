@@ -226,7 +226,7 @@ class Meteorological extends Client
         // Parse all stations.
         foreach ($data['features'] as $station) {
             $stations->push(
-                $this->parseStation($station)
+                dd($this->parseStation($station)
             );
         }
 
