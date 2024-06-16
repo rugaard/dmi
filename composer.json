@@ -34,7 +34,7 @@
     "ext-json": "*",
     "ext-simplexml": "*",
     "guzzlehttp/guzzle": "^6.0|^7.0",
-    "tightenco/collect": "^7.0|^8.0"
+    "tightenco/collect": "^7.0|^8.0|^9.0"
   },
   "require-dev": {
     "mockery/mockery": "^1.0",
