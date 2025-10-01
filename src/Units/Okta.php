@@ -7,28 +7,35 @@ namespace Rugaard\DMI\Units;
 use Rugaard\DMI\Abstracts\Unit;
 
 /**
- * Class Percentage.
+ * Class Okta.
  */
-class Percentage extends Unit
+class Okta extends Unit
 {
     /**
      * Name in singular form.
      *
      * @var string
      */
-    public string $name = 'Percent';
+    public string $name = 'Okta';
 
     /**
      * Name in plural form.
      *
      * @var string
      */
-    public string $namePlural = 'Percent';
+    public string $namePlural = 'Oktas';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    public string $abbreviation = '%';
+    public string $abbreviation = 'Oktas';
+
+    /**
+     * Prefer abbreviation of unit.
+     *
+     * @var bool
+     */
+    protected bool $preferAbbreviation = false;
 }

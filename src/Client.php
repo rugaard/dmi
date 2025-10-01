@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI;
 
+use GeoJson\Exception\UnserializationException;
+use GeoJson\GeoJson;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException as GuzzleClientException;
 use GuzzleHttp\Exception\GuzzleException;
@@ -11,6 +13,7 @@ use GuzzleHttp\Exception\ServerException as GuzzleServerException;
 use GuzzleHttp\Psr7\Request as GuzzleRequest;
 use GuzzleHttp\Psr7\Uri;
 use JsonException;
+use Rugaard\DMI\Enums\Service;
 use Rugaard\DMI\Exceptions\ClientException;
 use Rugaard\DMI\Exceptions\DMIException;
 use Rugaard\DMI\Exceptions\ParsingFailedException;
@@ -24,23 +27,20 @@ use function sprintf;
 
 /**
  * Class Client.
- *
- * @abstract
- * @package Rugaard\DMI
  */
 abstract class Client
 {
     /**
-     * Current version.
+     * Client version.
      *
      * @const string
      */
     public const VERSION = '2.0';
 
     /**
-     * HTTP Client.
+     * Underlying HTTP Client instance.
      *
-     * @var \GuzzleHttp\Client
+     * @var GuzzleClient
      */
     protected GuzzleClient $client;
 
@@ -49,18 +49,18 @@ abstract class Client
      *
      * @var string
      */
-    protected string $apiKey;
+    protected readonly string $apiKey;
 
     /**
      * Client constructor.
      *
      * @param string|null $apiKey
-     * @throws \Exception
+     * @throws DMIException
      */
     public function __construct(?string $apiKey)
     {
         if (empty($apiKey)) {
-            throw new DMIException('Missing API key for DMI service');
+            throw new DMIException(message: 'Missing API key for DMI service [' . static::class .']', code: 500);
         }
 
         // Set API key.
@@ -78,40 +78,75 @@ abstract class Client
     }
 
     /**
+     * Build and send request to DMI API.
+     *
+     * @param string $method
+     * @param string $url
+     * @param array $query
+     * @param array $headers
+     * @return GeoJson|null
+     * @throws ParsingFailedException|ServerException|ClientException|RequestException
+     */
+    protected function request(string $method, string $url, array $query = [], array $headers = []): ?GeoJson
+    {
+        // Build request for service.
+        $request = $this->buildRequest(
+            method: $method,
+            url: $url,
+            query: $query,
+            headers: $headers
+        );
+
+        // Send request to service.
+        $response = $this->sendRequest(request: $request);
+
+        try {
+            // Parse GeoJSON response.
+            return !empty($response) ? GeoJson::jsonUnserialize(json: $response) : null;
+        } catch (UnserializationException) {
+            return null;
+        }
+    }
+
+    /**
      * Generate request instance.
      *
      * @param string $method
      * @param string $url
      * @param array $query
      * @param array $headers
-     * @return \GuzzleHttp\Psr7\Request
+     * @return GuzzleRequest
      */
     protected function buildRequest(string $method, string $url, array $query = [], array $headers = []): GuzzleRequest
     {
-        // Add API key to query.
-        $query['api-key'] = $this->apiKey;
-
         // Naturally sort query array.
         natsort($query);
 
         // Generate URI instance.
         $uri = Uri::withQueryValues(
-            new Uri('/v' . $this->getServiceVersion() . '/' . $this->getServiceName() . '/collections/' . $url . '?api-key=' . $this->apiKey),
-            $query
+            uri: new Uri(uri: "/v{$this->serviceVersion()}/{$this->service()->value}/collections/{$url}"),
+            keyValueArray: $query
         );
 
-        return new GuzzleRequest($method, $uri, $headers);
+        return new GuzzleRequest(
+            method: $method,
+            uri: $uri,
+            headers: [
+                ...$headers,
+                'X-Gravitee-Api-Key' => $this->apiKey,
+            ],
+        );
     }
 
     /**
      * Send request to DMI API.
      *
-     * @param \GuzzleHttp\Psr7\Request $request
+     * @param GuzzleRequest $request
      * @param array $options
      * @return array
-     * @throws \Rugaard\DMI\Exceptions\ParsingFailedException
+     * @throws ParsingFailedException|ServerException|ClientException|RequestException
      */
-    protected function request(GuzzleRequest $request, array $options = []): array
+    protected function sendRequest(GuzzleRequest $request, array $options = []): array
     {
         try {
             // Send request.
@@ -127,9 +162,9 @@ abstract class Client
             $body = (string) $response->getBody();
 
             // JSON Decode response.
-            return (array) json_decode($body, true, 512, JSON_THROW_ON_ERROR);
+            return (array) json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR);
         } catch (JsonException) {
-            throw new ParsingFailedException(sprintf('Could not JSON decode response. Reason: %s.', json_last_error_msg()), 400);
+            throw new ParsingFailedException(sprintf('Could not decode response. Reason: %s.', json_last_error_msg()), 400);
         } catch (GuzzleServerException $e) {
             throw new ServerException($e->getMessage(), $e->getRequest(), $e->getResponse(), $e);
         } catch (GuzzleClientException $e) {
@@ -142,14 +177,14 @@ abstract class Client
     /**
      * Get name of service.
      *
-     * @return string
+     * @return Service
      */
-    abstract protected function getServiceName(): string;
+    abstract public function service(): Service;
 
     /**
      * Get service version.
      *
-     * @return int|float
+     * @return string
      */
-    abstract protected function getServiceVersion(): int|float;
+    abstract public function serviceVersion(): string;
 }

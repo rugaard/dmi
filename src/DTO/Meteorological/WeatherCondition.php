@@ -4,23 +4,40 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\DTO\Meteorological;
 
-use Rugaard\DMI\Abstracts\AbstractObservation;
+use Rugaard\DMI\Abstracts\Observation;
+use Rugaard\DMI\Enums\Meteorological\WeatherCondition as WeatherConditionEnum;
 
 /**
  * Class WeatherCondition.
- *
- * @package Rugaard\DMI\DTO\Meteorological
  */
-class WeatherCondition extends AbstractObservation
+class WeatherCondition extends Observation
 {
     /**
-     * WeatherCondition constructor.
+     * Value of observation.
      *
-     * @param mixed ...$data
+     * @var WeatherConditionEnum
      */
-    public function __construct(...$data)
+    public WeatherConditionEnum $value;
+
+    /**
+     * Set observation value.
+     *
+     * @param float $value
+     * @return $this
+     */
+    public function setValue(float $value): self
     {
-        parent::__construct($data);
-        //$this->unit = null;
+        $this->value = WeatherConditionEnum::from(value: (int) $value);
+        return $this;
+    }
+
+    /**
+     * Get description of value.
+     *
+     * @return string
+     */
+    public function getValueDescription(): string
+    {
+        return $this->value->description();
     }
 }

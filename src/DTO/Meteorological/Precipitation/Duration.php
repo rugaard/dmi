@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Rugaard\DMI\DTO\Meteorological;
+namespace Rugaard\DMI\DTO\Meteorological\Precipitation;
 
 use Illuminate\Support\Collection;
 use Rugaard\DMI\Abstracts\Observation;
 use Rugaard\DMI\Units\Time\Minute;
 
 /**
- * Class LeafMoisture.
+ * Class Duration.
  */
-class LeafMoisture extends Observation
+class Duration extends Observation
 {
     /**
      * Value of observation.
@@ -28,7 +28,7 @@ class LeafMoisture extends Observation
     public Minute $unit;
 
     /**
-     * LeafMoisture constructor.
+     * Duration constructor.
      *
      * @param Collection|array $data
      */
@@ -38,5 +38,17 @@ class LeafMoisture extends Observation
 
         // Set internal unit.
         $this->unit = new Minute;
+    }
+
+    /**
+     * Set observation value.
+     *
+     * @param float $value
+     * @return $this
+     */
+    public function setValue(float $value): self
+    {
+        $this->value = $value === -0.1 ? 0.1 : $value;
+        return $this;
     }
 }

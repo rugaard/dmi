@@ -4,24 +4,39 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\DTO\Meteorological;
 
-use Rugaard\DMI\Abstracts\AbstractObservation;
+use Illuminate\Support\Collection;
+use Rugaard\DMI\Abstracts\Observation;
 use Rugaard\DMI\Units\Time\Minute;
 
 /**
  * Class Sunshine.
- *
- * @package Rugaard\DMI\DTO\Meteorological
  */
-class Sunshine extends AbstractObservation
+class Sunshine extends Observation
 {
+    /**
+     * Value of observation.
+     *
+     * @var float
+     */
+    public float $value;
+
+    /**
+     * Unit of value.
+     *
+     * @var Minute
+     */
+    public Minute $unit;
+
     /**
      * Sunshine constructor.
      *
-     * @param mixed ...$data
+     * @param Collection|array $data
      */
-    public function __construct(...$data)
+    public function __construct(Collection|array $data)
     {
-        parent::__construct($data);
-        $this->unit = new Minute();
+        parent::__construct(data: $data);
+
+        // Set internal unit.
+        $this->unit = new Minute;
     }
 }

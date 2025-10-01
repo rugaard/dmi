@@ -1,35 +1,36 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Rugaard\DMI\Units\Time;
 
-use Rugaard\DMI\Abstracts\AbstractUnit;
+use Rugaard\DMI\Abstracts\Unit;
 
 /**
  * Class Day.
  *
  * @package Rugaard\DMI\Unit\Time
  */
-class Day extends AbstractUnit
+class Day extends Unit
 {
     /**
      * Name in singular form.
      *
      * @var string
      */
-    protected string $singular = 'Day';
+    public string $name = 'Day';
 
     /**
      * Name in plural form.
      *
      * @var string
      */
-    protected string $plural = 'Days';
+    public string $namePlural = 'Days';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected string $abbreviation = 'd';
+    public string $abbreviation = 'd';
 }

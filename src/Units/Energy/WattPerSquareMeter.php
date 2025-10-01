@@ -1,35 +1,34 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Rugaard\DMI\Units\Energy;
 
-use Rugaard\DMI\Abstracts\AbstractUnit;
+use Rugaard\DMI\Abstracts\Unit;
 
 /**
  * Class WattPerSquareMeter.
- *
- * @package Rugaard\DMI\Unit\Energy
  */
-class WattPerSquareMeter extends AbstractUnit
+class WattPerSquareMeter extends Unit
 {
     /**
      * Name in singular form.
      *
      * @var string
      */
-    protected string $singular = 'Watt per square meter';
+    public string $name = 'Watt per square meter';
 
     /**
      * Name in plural form.
      *
      * @var string
      */
-    protected string $plural = 'Watts per square meters';
+    public string $namePlural = 'Watts per square meters';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected string $abbreviation = 'W/m²';
+    public string $abbreviation = 'W/m²';
 }

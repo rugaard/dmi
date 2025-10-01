@@ -1,35 +1,34 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Rugaard\DMI\Units\Length;
 
-use Rugaard\DMI\Abstracts\AbstractUnit;
+use Rugaard\DMI\Abstracts\Unit;
 
 /**
  * Class Millimeter.
- *
- * @package Rugaard\DMI\Unit\Length
  */
-class Millimeter extends AbstractUnit
+class Millimeter extends Unit
 {
     /**
      * Name in singular form.
      *
      * @var string
      */
-    protected string $singular = 'Millimeter';
+    public string $name = 'Millimeter';
 
     /**
      * Name in plural form.
      *
      * @var string
      */
-    protected string $plural = 'Millimeters';
+    public string $namePlural = 'Millimeters';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected string $abbreviation = 'mm';
+    public string $abbreviation = 'mm';
 }

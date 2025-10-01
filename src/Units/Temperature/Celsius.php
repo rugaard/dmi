@@ -1,35 +1,34 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Rugaard\DMI\Units\Temperature;
 
-use Rugaard\DMI\Abstracts\AbstractUnit;
+use Rugaard\DMI\Abstracts\Unit;
 
 /**
  * Class Celsius.
- *
- * @package Rugaard\DMI\Unit\Temperatures
  */
-class Celsius extends AbstractUnit
+class Celsius extends Unit
 {
     /**
      * Name in singular form.
      *
      * @var string
      */
-    protected string $singular = 'Celsius';
+    public string $name = 'Celsius';
 
     /**
      * Name in plural form.
      *
      * @var string
      */
-    protected string $plural = 'Celsius';
+    public string $namePlural = 'Celsius';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected string $abbreviation = '°C';
+    public string $abbreviation = '°C';
 }

@@ -1,35 +1,34 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Rugaard\DMI\Units;
 
-use Rugaard\DMI\Abstracts\AbstractUnit;
+use Rugaard\DMI\Abstracts\Unit;
 
 /**
  * Class Bearing.
- *
- * @package Rugaard\DMI\Units
  */
-class Bearing extends AbstractUnit
+class Bearing extends Unit
 {
     /**
      * Name in singular form.
      *
      * @var string
      */
-    protected string $singular = 'Degree';
+    public string $name = 'Degree';
 
     /**
      * Name in plural form.
      *
      * @var string
      */
-    protected string $plural = 'Degrees';
+    public string $namePlural = 'Degrees';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected string $abbreviation = '°';
+    public string $abbreviation = '°';
 }

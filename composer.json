@@ -30,15 +30,16 @@
     "source": "https://github.com/rugaard/dmi"
   },
   "require": {
-    "php": "^8.1",
+    "php": "^8.2",
     "ext-json": "*",
     "guzzlehttp/guzzle": "^7.0",
-    "tightenco/collect": "^9.0"
+    "illuminate/collections": "^12.0|^11.0|^10.0",
+    "illuminate/support": "^12.0|^11.0|^10.0",
+    "jmikola/geojson": "^1.2"
   },
   "require-dev": {
-    "mockery/mockery": "^1.0",
-    "phpunit/phpunit": "^9.0",
-    "symfony/var-dumper": "^6.0"
+    "phpunit/phpunit": "^12.0",
+    "symfony/var-dumper": "^7.0"
   },
   "autoload": {
     "psr-4": {
@@ -64,9 +65,6 @@
   "config": {
     "optimize-autoloader": true,
     "preferred-install": "dist",
-    "sort-packages": true,
-    "allow-plugins": {
-      "kylekatarnls/update-helper": true
-    }
+    "sort-packages": true
   }
 }

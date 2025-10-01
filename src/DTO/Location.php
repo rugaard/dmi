@@ -4,42 +4,25 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\DTO;
 
-use function is_array;
+use Illuminate\Support\Collection;
+use Rugaard\DMI\Abstracts\DTO;
 
 /**
  * Class Location.
- *
- * @package Rugaard\DMI\DTO
  */
-class Location
+class Location extends DTO
 {
     /**
-     * Type of location.
+     * Coordinates type.
      *
      * @var string
      */
-    protected string $type;
+    public string $type;
 
     /**
      * Coordinates of location.
      *
-     * @var array
+     * @var Collection
      */
-    protected array $coordinates;
-
-    /**
-     * Location constructor.
-     *
-     * @param ...$data
-     */
-    public function __construct(...$data)
-    {
-        // Support old school arrays.
-        if (is_array($data[0] ?? null)) {
-            $data = $data[0];
-        }
-
-        $this->type = (string) $data['type'];
-        $this->coordinates = (array) ($data['coordinates'] ?? []);
-    }
+    public Collection $coordinates;
 }

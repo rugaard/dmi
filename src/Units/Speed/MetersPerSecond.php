@@ -1,35 +1,34 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Rugaard\DMI\Units\Speed;
 
-use Rugaard\DMI\Abstracts\AbstractUnit;
+use Rugaard\DMI\Abstracts\Unit;
 
 /**
  * Class MetresPerSecond.
- *
- * @package Rugaard\DMI\Unit\Speed
  */
-class MetersPerSecond extends AbstractUnit
+class MetersPerSecond extends Unit
 {
     /**
      * Name in singular form.
      *
      * @var string
      */
-    protected string $singular = 'Meter per second';
+    public string $name = 'Meter per second';
 
     /**
      * Name in plural form.
      *
      * @var string
      */
-    protected string $plural = 'Meters per second';
+    public string $namePlural = 'Meters per second';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected string $abbreviation = 'm/s';
+    public string $abbreviation = 'm/s';
 }

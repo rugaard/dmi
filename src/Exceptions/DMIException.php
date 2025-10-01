@@ -6,7 +6,7 @@ namespace Rugaard\DMI\Exceptions;
 use Exception;
 
 /**
- * Class DMIException
+ * Class DMIException.
  *
  * @package Rugaard\DMI\Exceptions
  */

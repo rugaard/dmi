@@ -1,35 +1,34 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Rugaard\DMI\Units\Pressure;
 
-use Rugaard\DMI\Abstracts\AbstractUnit;
+use Rugaard\DMI\Abstracts\Unit;
 
 /**
  * Class Kilopascal.
- *
- * @package Rugaard\DMI\Unit\Pressure
  */
-class Kilopascal extends AbstractUnit
+class Kilopascal extends Unit
 {
     /**
      * Name in singular form.
      *
      * @var string
      */
-    protected string $singular = 'Kilopascal';
+    public string $name = 'Kilopascal';
 
     /**
      * Name in plural form.
      *
      * @var string
      */
-    protected string $plural = 'Kilopascals';
+    public string $namePlural = 'Kilopascals';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected string $abbreviation = 'kPa';
+    public string $abbreviation = 'kPa';
 }

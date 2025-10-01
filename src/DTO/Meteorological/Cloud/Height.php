@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Rugaard\DMI\DTO\Meteorological;
+namespace Rugaard\DMI\DTO\Meteorological\Cloud;
 
 use Illuminate\Support\Collection;
 use Rugaard\DMI\Abstracts\Observation;
-use Rugaard\DMI\Units\Time\Minute;
+use Rugaard\DMI\Units\Length\Meter;
 
 /**
- * Class LeafMoisture.
+ * Class Height.
  */
-class LeafMoisture extends Observation
+class Height extends Observation
 {
     /**
      * Value of observation.
@@ -23,12 +23,12 @@ class LeafMoisture extends Observation
     /**
      * Unit of value.
      *
-     * @var Minute
+     * @var Meter
      */
-    public Minute $unit;
+    public Meter $unit;
 
     /**
-     * LeafMoisture constructor.
+     * Height constructor.
      *
      * @param Collection|array $data
      */
@@ -37,6 +37,6 @@ class LeafMoisture extends Observation
         parent::__construct(data: $data);
 
         // Set internal unit.
-        $this->unit = new Minute;
+        $this->unit = new Meter;
     }
 }

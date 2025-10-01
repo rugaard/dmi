@@ -7,28 +7,35 @@ namespace Rugaard\DMI\Units;
 use Rugaard\DMI\Abstracts\Unit;
 
 /**
- * Class Percentage.
+ * Class Quarter.
  */
-class Percentage extends Unit
+class Quarter extends Unit
 {
     /**
      * Name in singular form.
      *
      * @var string
      */
-    public string $name = 'Percent';
+    public string $name = 'Quarter';
 
     /**
      * Name in plural form.
      *
      * @var string
      */
-    public string $namePlural = 'Percent';
+    public string $namePlural = 'Quarters';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    public string $abbreviation = '%';
+    public string $abbreviation = 'Quarters';
+
+    /**
+     * Prefer abbreviation of unit.
+     *
+     * @var bool
+     */
+    protected bool $preferAbbreviation = false;
 }

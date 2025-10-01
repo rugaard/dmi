@@ -4,297 +4,92 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\Services;
 
-use DateTime;
-use DateTimeInterface;
-use Rugaard\DMI\Abstracts\AbstractObservation;
+use GeoJson\Feature\Feature;
+use Illuminate\Support\Collection;
 use Rugaard\DMI\Client;
-use Rugaard\DMI\Collections\ObservationsCollection;
-use Rugaard\DMI\DTO\Stations\MeteorologicalStation;
-use Rugaard\DMI\DTO\WorldMeteorologicalOrganization;
-use Rugaard\DMI\Support\DateTimePeriod;
-use Rugaard\DMI\Traits\HasLocation;
-use Rugaard\DMI\Types\MeteorologicalType;
-use Tightenco\Collect\Support\Arr;
-use Tightenco\Collect\Support\Collection;
+use Rugaard\DMI\Collections\ObservationCollection;
+use Rugaard\DMI\Enums\Meteorological\ObservationFilter;
+use Rugaard\DMI\Enums\Meteorological\Parameter;
+use Rugaard\DMI\Enums\Meteorological\StationFilter;
+use Rugaard\DMI\Enums\Service;
+use Rugaard\DMI\Exceptions\ParsingFailedException;
+use ValueError;
 
 use function array_filter;
-use function array_map;
-use function array_merge;
-use function in_array;
+
+use const ARRAY_FILTER_USE_KEY;
 
 /**
  * Class Meteorological.
- *
- * @package Rugaard\DMI\Services
  */
 class Meteorological extends Client
 {
-    use HasLocation;
 
     /**
-     * Array of supported observation filters.
+     * Get all observation stations.
      *
-     * @var string[]
+     * @param array $filters
+     * @return array
+     * @throws ParsingFailedException
      */
-    protected array $observationFilters = [
-        'bbox',
-        'bbox-crs',
-        'datetime',
-        'limit',
-        'offset',
-        'parameterId',
-        'period',
-        'stationId',
-        'sortorder'
-    ];
+    public function stations(array $filters = []): array
+    {
+        // Only allow supported filters.
+        $filters = array_filter(array: $filters, callback: fn (string $key) => StationFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
-    /**
-     * Array of supported station filters.
-     *
-     * @var string[]
-     */
-    protected array $stationFilters = [
-        'bbox',
-        'bbox-crs',
-        'datetime',
-        'limit',
-        'offset',
-        'stationId',
-        'status',
-        'type'
-    ];
+        return $this->request(method: 'get', url: 'station/items', query: $filters);
+    }
 
     /**
      * Get all observations.
      *
      * @param array $filters
-     * @return \Rugaard\DMI\Collections\ObservationsCollection
-     * @throws \Rugaard\DMI\Exceptions\ParsingFailedException
+     * @return Collection
+     * @throws ParsingFailedException
      */
-    public function getAllObservations(array $filters = []): ObservationsCollection
+    public function observations(array $filters = []): Collection
     {
-        // Validate filters.
-        $filters = array_filter($filters, fn(string $filter) => in_array($filter, $this->observationFilters, true), ARRAY_FILTER_USE_KEY);
+        // Only allow supported filters.
+        $filters = array_filter(array: $filters, callback: fn (string $key) => ObservationFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
-        // Sort order.
-        $filters = array_merge(['sortorder' => 'observed,DESC'], $filters);
+        // Always sort by latest observation,
+        // unless specified otherwise.
+        $filters = ['sortorder' => 'observed,DESC', ...$filters];
 
-        // Build and send request.
-        $response = $this->request(
-            $this->buildRequest('get', 'observation/items', $filters)
-        );
+        // Retrieve observations from API.
+        $response = $this->request(method: 'get', url: 'observation/items', query: $filters);
 
-        return $this->parseObservations($response);
-    }
-
-    /**
-     * Get observation by ID.
-     *
-     * @param string $observationId
-     * @param array $filters
-     * @return \Rugaard\DMI\Abstracts\AbstractObservation
-     * @throws \Rugaard\DMI\Exceptions\ParsingFailedException
-     */
-    public function getObservationById(string $observationId, array $filters = []): AbstractObservation
-    {
-        // Validate filters.
-        $filters = array_filter($filters, fn(string $filter) => in_array($filter, $this->observationFilters, true), ARRAY_FILTER_USE_KEY);
-
-        // Build and send request.
-        $response = $this->request(
-            $this->buildRequest('get', 'observation/items/' . $observationId, $filters)
-        );
-
-        return $this->parseObservation($response);
-    }
-
-    /**
-     * Parse array of observations.
-     *
-     * @param array $data
-     * @return \Rugaard\DMI\Collections\ObservationsCollection
-     */
-    protected function parseObservations(array $data): ObservationsCollection
-    {
-        // Observations container.
-        $observations = ObservationsCollection::make();
-
-        // Parse all observations.
-        foreach ($data['features'] as $observation) {
-            $observations->push(
-                $this->parseObservation($observation)
-            );
-        }
-
-        return $observations;
-    }
-
-    /**
-     * Parse observation.
-     *
-     * @param array $data
-     * @return \Rugaard\DMI\Abstracts\AbstractObservation
-     */
-    protected function parseObservation(array $data): AbstractObservation
-    {
-        // Determine type of observation
-        $measurementType = MeteorologicalType::from($data['properties']['parameterId']);
-
-        return new ($measurementType->type())(
-            id: $data['id'],
-            type: $measurementType,
-            value: $data['properties']['value'],
-            stationId: $data['properties']['stationId'],
-            location: $data['geometry'] !== null ? $this->parseLocation($data['geometry']) : null,
-            timestamp: DateTime::createFromFormat(DateTimeInterface::RFC3339, $data['properties']['observed'])
-        );
-    }
-
-    /**
-     * Get all stations.
-     *
-     * @param array $filters
-     * @return \Tightenco\Collect\Support\Collection
-     * @throws \Rugaard\DMI\Exceptions\ParsingFailedException
-     */
-    public function getAllStations(array $filters = []): Collection
-    {
-        // Validate filters.
-        $filters = array_filter($filters, fn(string $filter) => in_array($filter, $this->stationFilters, true), ARRAY_FILTER_USE_KEY);
-
-        // Build and send request.
-        $response = $this->request(
-            $this->buildRequest('get', 'station/items', $filters)
-        );
-
-        return $this->parseStations($response);
-    }
-
-    /**
-     * Get stations by station ID.
-     *
-     * @param string $stationId
-     * @param array $filters
-     * @return \Tightenco\Collect\Support\Collection
-     * @throws \Rugaard\DMI\Exceptions\ParsingFailedException
-     */
-    public function getStationsByStationId(string $stationId, array $filters = []): Collection
-    {
-        // Validate filters.
-        $filters = array_filter($filters, fn(string $filter) => in_array($filter, $this->stationFilters, true), ARRAY_FILTER_USE_KEY);
-
-        // Build and send request.
-        $response = $this->request(
-            $this->buildRequest('get', 'station/items/', array_merge($filters, ['stationId' => $stationId]))
-        );
-
-        return $this->parseStations($response);
-    }
-
-    /**
-     * Get station by UUID.
-     *
-     * @param string $stationUuid
-     * @param array $filters
-     * @return \Rugaard\DMI\DTO\Stations\MeteorologicalStation
-     * @throws \Rugaard\DMI\Exceptions\ParsingFailedException
-     */
-    public function getStationById(string $stationUuid, array $filters = []): MeteorologicalStation
-    {
-        // Validate filters.
-        $filters = array_filter($filters, fn(string $filter) => in_array($filter, $this->stationFilters, true), ARRAY_FILTER_USE_KEY);
-
-        // Build and send request.
-        $response = $this->request(
-            $this->buildRequest('get', 'station/items/' . $stationUuid, $filters)
-        );
-
-        return $this->parseStation($response);
-    }
-
-    /**
-     * Parse array of stations.
-     *
-     * @param array $data
-     * @return \Tightenco\Collect\Support\Collection
-     */
-    protected function parseStations(array $data): Collection
-    {
-        // Stations container.
-        $stations = Collection::make();
-
-        // Parse all stations.
-        foreach ($data['features'] as $station) {
-            $stations->push(
-                dd($this->parseStation($station)
-            );
-        }
-
-        return $stations;
-    }
-
-    /**
-     * Parse station.
-     *
-     * @param array $data
-     * @return \Rugaard\DMI\DTO\Stations\MeteorologicalStation
-     */
-    protected function parseStation(array $data): MeteorologicalStation
-    {
-        // Parsed station data.
-        $station = Arr::except($data['properties'], [
-            'regionId', 'wmoStationId', 'wmoCountryCode',
-            'operationFrom', 'operationTo', 'status', 'parameterId',
-            'validFrom', 'validTo', 'created', 'updated'
-        ]);
-
-        // Stations UUID.
-        $station['id'] = $data['id'];
-
-        // Stations supported measurements
-        $station['measurements'] = Collection::make(array_map(static fn(string $parameter) => MeteorologicalType::from($parameter), $data['properties']['parameterId']));
-
-        // Location of station.
-        $station['location'] = $data['geometry'] !== null ? $this->parseLocation($data['geometry']) : null;
-
-        // Status of station.
-        $station['isActive'] = $data['properties']['status'] === 'Active';
-
-        // World Meteorological Organization.
-        $station['wmo'] = (!empty($data['properties']['regionId']) || !empty($data['properties']['wmoCountryCode']) || !empty($data['properties']['wmoStationId']))
-            ? new WorldMeteorologicalOrganization(stationId: $data['properties']['wmoStationId'], regionId: $data['properties']['regionId'], countryCode: $data['properties']['wmoCountryCode'])
-            : null;
-
-        // Period of where station is/was operational.
-        $station['operational'] = new DateTimePeriod(fromDate: $data['properties']['operationFrom'], toDate: $data['properties']['operationTo'] ?? null);
-
-        // Period of where data is valid.
-        $station['valid'] = new DateTimePeriod(fromDate: $data['properties']['validFrom'], toDate: $data['properties']['validTo'] ?? null);
-
-        // Created / Updated timestamp in DMI database.
-        $station['created'] = !empty($data['properties']['created']) ? DateTime::createFromFormat(DateTimeInterface::RFC3339, $data['properties']['created']) : null;
-        $station['updated'] = !empty($data['properties']['updated']) ? DateTime::createFromFormat(DateTimeInterface::RFC3339, $data['properties']['updated']) : null;
-
-        return new MeteorologicalStation($station);
+        // Parse each observation and return it as a Collection.
+        return ObservationCollection::make(items: $response)->map(callback: static function (Feature $item) {
+            try {
+                // Get meteorological parameter from payload.
+                $parameter = Parameter::from(value: $item->getProperties()['parameterId'] ?? null);
+                return $parameter->dto()::fromGeoJson(feature: $item);
+            } catch (ValueError) {
+                // Should we for some reason hit an unsupported parameter,
+                // then we'll jump ship and return null, so we can remove it later.
+                return null;
+            }
+        })->filter()->onlyFirstByType();
     }
 
     /**
      * Get service name.
      *
-     * @return string
+     * @return Service
      */
-    protected function getServiceName(): string
+    public function service(): Service
     {
-        return 'metObs';
+        return Service::Meteorological;
     }
 
     /**
-     * Get version of API service.
+     * Get service version.
      *
-     * @return int|float
+     * @return string
      */
-    protected function getServiceVersion(): int|float
+    public function serviceVersion(): string
     {
-        return 2;
+        return '2';
     }
 }

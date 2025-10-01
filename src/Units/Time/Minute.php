@@ -1,35 +1,34 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Rugaard\DMI\Units\Time;
 
-use Rugaard\DMI\Abstracts\AbstractUnit;
+use Rugaard\DMI\Abstracts\Unit;
 
 /**
  * Class Minute.
- *
- * @package Rugaard\DMI\Unit\Time
  */
-class Minute extends AbstractUnit
+class Minute extends Unit
 {
     /**
      * Name in singular form.
      *
      * @var string
      */
-    protected string $singular = 'Minute';
+    public string $name = 'Minute';
 
     /**
      * Name in plural form.
      *
      * @var string
      */
-    protected string $plural = 'Minutes';
+    public string $namePlural = 'Minutes';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected string $abbreviation = 'min';
+    public string $abbreviation = 'min';
 }

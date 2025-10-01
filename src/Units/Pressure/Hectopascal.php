@@ -1,35 +1,34 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Rugaard\DMI\Units\Pressure;
 
-use Rugaard\DMI\Abstracts\AbstractUnit;
+use Rugaard\DMI\Abstracts\Unit;
 
 /**
  * Class Hectopascal.
- *
- * @package Rugaard\DMI\Unit\Pressure
  */
-class Hectopascal extends AbstractUnit
+class Hectopascal extends Unit
 {
     /**
      * Name in singular form.
      *
      * @var string
      */
-    protected string $singular = 'Hectopascal';
+    public string $name = 'Hectopascal';
 
     /**
      * Name in plural form.
      *
      * @var string
      */
-    protected string $plural = 'Hectopascals';
+    public string $namePlural = 'Hectopascals';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected string $abbreviation = 'hPa';
+    public string $abbreviation = 'hPa';
 }

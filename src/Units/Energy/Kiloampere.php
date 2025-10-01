@@ -1,35 +1,34 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Rugaard\DMI\Units\Energy;
 
-use Rugaard\DMI\Abstracts\AbstractUnit;
+use Rugaard\DMI\Abstracts\Unit;
 
 /**
  * Class Kiloampere.
- *
- * @package Rugaard\DMI\Unit\Energy
  */
-class Kiloampere extends AbstractUnit
+class Kiloampere extends Unit
 {
     /**
      * Name in singular form.
      *
      * @var string
      */
-    protected string $singular = 'Kiloampere';
+    public string $name = 'Kiloampere';
 
     /**
      * Name in plural form.
      *
      * @var string
      */
-    protected string $plural = 'Kiloamperes';
+    public string $namePlural = 'Kiloamperes';
 
     /**
      * Abbreviation of unit name.
      *
      * @var string
      */
-    protected string $abbreviation = 'kA';
+    public string $abbreviation = 'kA';
 }

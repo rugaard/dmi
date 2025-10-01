@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Rugaard\DMI\DTO\Meteorological;
+namespace Rugaard\DMI\DTO\Meteorological\Wind;
 
 use Illuminate\Support\Collection;
 use Rugaard\DMI\Abstracts\Observation;
-use Rugaard\DMI\Units\Time\Minute;
+use Rugaard\DMI\Units\Speed\MetersPerSecond;
 
 /**
- * Class LeafMoisture.
+ * Class Speed.
  */
-class LeafMoisture extends Observation
+class Speed extends Observation
 {
     /**
      * Value of observation.
@@ -23,12 +23,12 @@ class LeafMoisture extends Observation
     /**
      * Unit of value.
      *
-     * @var Minute
+     * @var MetersPerSecond
      */
-    public Minute $unit;
+    public MetersPerSecond $unit;
 
     /**
-     * LeafMoisture constructor.
+     * Direction constructor.
      *
      * @param Collection|array $data
      */
@@ -37,6 +37,6 @@ class LeafMoisture extends Observation
         parent::__construct(data: $data);
 
         // Set internal unit.
-        $this->unit = new Minute;
+        $this->unit = new MetersPerSecond;
     }
 }

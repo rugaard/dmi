@@ -6,7 +6,7 @@ namespace Rugaard\DMI\Exceptions;
 use GuzzleHttp\Exception\ClientException as GuzzleClientException;
 
 /**
- * Class ClientException
+ * Class ClientException.
  *
  * @package Rugaard\DMI\Exceptions
  */

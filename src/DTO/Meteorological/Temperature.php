@@ -4,24 +4,39 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\DTO\Meteorological;
 
-use Rugaard\DMI\Abstracts\AbstractObservation;
+use Illuminate\Support\Collection;
+use Rugaard\DMI\Abstracts\Observation;
 use Rugaard\DMI\Units\Temperature\Celsius;
 
 /**
  * Class Temperature.
- *
- * @package Rugaard\DMI\DTO\Meteorological
  */
-class Temperature extends AbstractObservation
+class Temperature extends Observation
 {
+    /**
+     * Value of observation.
+     *
+     * @var float
+     */
+    public float $value;
+
+    /**
+     * Unit of value.
+     *
+     * @var Celsius
+     */
+    public Celsius $unit;
+
     /**
      * Temperature constructor.
      *
-     * @param mixed ...$data
+     * @param Collection|array $data
      */
-    public function __construct(...$data)
+    public function __construct(Collection|array $data)
     {
-        parent::__construct($data);
-        $this->unit = new Celsius();
+        parent::__construct(data: $data);
+
+        // Set internal unit.
+        $this->unit = new Celsius;
     }
 }
