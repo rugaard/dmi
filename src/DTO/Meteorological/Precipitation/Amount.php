@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Rugaard\DMI\DTO\Meteorological\Precipitation;
 
 use Illuminate\Support\Collection;
-use Rugaard\DMI\Abstracts\Observation;
+use Rugaard\DMI\Abstracts\Observations\Meteorological as MeteorologicalObservation;
 use Rugaard\DMI\Units\Length\Millimeter;
 
 /**
  * Class Amount.
  */
-class Amount extends Observation
+class Amount extends MeteorologicalObservation
 {
     /**
      * Value of observation.

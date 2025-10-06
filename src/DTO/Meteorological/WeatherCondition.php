@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\DTO\Meteorological;
 
-use Rugaard\DMI\Abstracts\Observation;
+use Rugaard\DMI\Abstracts\Observations\Meteorological as MeteorologicalObservation;
 use Rugaard\DMI\Enums\Meteorological\WeatherCondition as WeatherConditionEnum;
 
 /**
  * Class WeatherCondition.
  */
-class WeatherCondition extends Observation
+class WeatherCondition extends MeteorologicalObservation
 {
     /**
      * Value of observation.

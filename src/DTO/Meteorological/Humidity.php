@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Rugaard\DMI\DTO\Meteorological;
 
 use Illuminate\Support\Collection;
-use Rugaard\DMI\Abstracts\Observation;
+use Rugaard\DMI\Abstracts\Observations\Meteorological as MeteorologicalObservation;
 use Rugaard\DMI\Units\Percentage;
 
 /**
  * Class Humidity.
  */
-class Humidity extends Observation
+class Humidity extends MeteorologicalObservation
 {
     /**
      * Value of observation.

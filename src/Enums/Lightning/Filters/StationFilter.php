@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rugaard\DMI\Enums\Meteorological;
+namespace Rugaard\DMI\Enums\Lightning\Filters;
 
 /**
  * Enum StationFilter.
@@ -18,5 +18,4 @@ enum StationFilter: string
     case Offset = 'offset';
     case StationId = 'stationId';
     case Status = 'status';
-    case Type = 'type';
 }

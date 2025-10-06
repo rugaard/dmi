@@ -133,6 +133,7 @@ abstract class Client
             uri: $uri,
             headers: [
                 ...$headers,
+                'Accept-Encoding' => 'br;q=1.0, gzip;q=0.8, *;q=0.5',
                 'X-Gravitee-Api-Key' => $this->apiKey,
             ],
         );

@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Rugaard\DMI\DTO\Meteorological;
 
 use Illuminate\Support\Collection;
-use Rugaard\DMI\Abstracts\Observation;
+use Rugaard\DMI\Abstracts\Observations\Meteorological as MeteorologicalObservation;
 use Rugaard\DMI\Units\Temperature\Celsius;
 
 /**
  * Class Temperature.
  */
-class Temperature extends Observation
+class Temperature extends MeteorologicalObservation
 {
     /**
      * Value of observation.

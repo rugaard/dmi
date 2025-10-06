@@ -7,14 +7,13 @@ namespace Rugaard\DMI\Services;
 use GeoJson\Feature\Feature;
 use GeoJson\Feature\FeatureCollection;
 use Illuminate\Support\Collection;
-use Rugaard\DMI\Abstracts\Observation;
-use Rugaard\DMI\Abstracts\Station;
 use Rugaard\DMI\Client;
 use Rugaard\DMI\Collections\ObservationCollection;
-use Rugaard\DMI\DTO\Stations\Meteorological as MeteorologicalStation;
-use Rugaard\DMI\Enums\Meteorological\Filters\ObservationFilter;
-use Rugaard\DMI\Enums\Meteorological\Filters\StationFilter;
-use Rugaard\DMI\Enums\Meteorological\Parameter;
+use Rugaard\DMI\DTO\Lightning\Lightning as LightningDTO;
+use Rugaard\DMI\DTO\Lightning\Sensor;
+use Rugaard\DMI\DTO\Stations\Lightning as LightningStation;
+use Rugaard\DMI\Enums\Lightning\Filters\StationFilter;
+use Rugaard\DMI\Enums\Oceanographic\Filters\ObservationFilter;
 use Rugaard\DMI\Enums\Service;
 use Rugaard\DMI\Exceptions\ParsingFailedException;
 use ValueError;
@@ -24,9 +23,9 @@ use function array_filter;
 use const ARRAY_FILTER_USE_KEY;
 
 /**
- * Class Meteorological.
+ * Class Oceanographic.
  */
-class Meteorological extends Client
+class Lightning extends Client
 {
     /**
      * Get all observations.
@@ -45,29 +44,19 @@ class Meteorological extends Client
         $response = $this->request(method: 'get', url: 'observation/items', query: $filters);
 
         // Parse each observation and return it as a Collection.
-        return ObservationCollection::make(items: $response)->map(callback: static function (Feature $item) {
-            try {
-                // Get meteorological parameter from payload.
-                $parameter = Parameter::from(value: $item->getProperties()['parameterId'] ?? null);
-                return $parameter->dto()::fromGeoJson(feature: $item);
-            } catch (ValueError) {
-                // Should we for some reason hit an unsupported parameter,
-                // then we'll jump ship and return null, so we can remove it later.
-                return null;
-            }
-        })->filter();
+        return ObservationCollection::make(items: $response)->map(callback: fn (Feature $item) => LightningDTO::fromGeoJson(feature: $item));
     }
 
     /**
      * Get observation by ID.
      *
      * @param string $id
-     * @return Observation|null
+     * @return LightningDTO|null
      * @throws ParsingFailedException
      */
-    public function observationById(string $id): ?Observation
+    public function observationById(string $id): ?LightningDTO
     {
-        // Retrieve observation station by ID from API.
+        // Retrieve observation by ID from API.
         /** @var Feature|null $response */
         $response = $this->request(method: 'get', url: 'observation/items/' . $id);
 
@@ -76,14 +65,52 @@ class Meteorological extends Client
             return null;
         }
 
-        // Determine observation parameter type.
-        $parameter = Parameter::from(value: $response->getProperties()['parameterId'] ?? null);
-
-        return $parameter->dto()::fromGeoJson(feature: $response);
+        return LightningDTO::fromGeoJson(feature: $response);
     }
 
     /**
-     * Get all observation stations.
+     * Get all sensor data.
+     *
+     * @param array $filters
+     * @return ObservationCollection
+     * @throws ParsingFailedException
+     */
+    public function sensorData(array $filters = []): ObservationCollection
+    {
+        // Only allow supported filters.
+        $filters = array_filter(array: $filters, callback: fn (string $key) => ObservationFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
+
+        // Retrieve observations from API.
+        /** @var FeatureCollection|null $response */
+        $response = $this->request(method: 'get', url: 'sensordata/items', query: $filters);
+
+        // Parse each observation and return it as a Collection.
+        return ObservationCollection::make(items: $response)->map(callback: fn (Feature $item) => Sensor::fromGeoJson(feature: $item));
+    }
+
+    /**
+     * Get sensor data by ID.
+     *
+     * @param string $id
+     * @return Sensor|null
+     * @throws ParsingFailedException
+     */
+    public function sensorDataById(string $id): ?Sensor
+    {
+        // Retrieve sensor data by ID from API.
+        /** @var Feature|null $response */
+        $response = $this->request(method: 'get', url: 'sensordata/items/' . $id);
+
+        // Validate response.
+        if (empty($response)) {
+            return null;
+        }
+
+        return Sensor::fromGeoJson(feature: $response);
+    }
+
+    /**
+     * Get all lightning stations.
      *
      * @param array $filters
      * @return Collection
@@ -99,19 +126,19 @@ class Meteorological extends Client
         $response = $this->request(method: 'get', url: 'station/items', query: $filters);
 
         // Parse each station and return it as a Collection.
-        return Collection::make(items: $response)->map(callback: fn (Feature $item) => MeteorologicalStation::fromGeoJson(feature: $item));
+        return Collection::make(items: $response)->map(callback: fn (Feature $item) => LightningStation::fromGeoJson(feature: $item));
     }
 
     /**
-     * Get observation station by UUID.
+     * Get lightning station by UUID.
      *
      * @param string $id
-     * @return Station|null
+     * @return LightningStation|null
      * @throws ParsingFailedException
      */
-    public function stationById(string $id): ?Station
+    public function stationById(string $id): ?LightningStation
     {
-        // Retrieve observation station by ID from API.
+        // Retrieve lightning station by ID from API.
         /** @var Feature|null $response */
         $response = $this->request(method: 'get', url: 'station/items/' . $id);
 
@@ -120,11 +147,11 @@ class Meteorological extends Client
             return null;
         }
 
-        return MeteorologicalStation::fromGeoJson(feature: $response);
+        return LightningStation::fromGeoJson(feature: $response);
     }
 
     /**
-     * Get observation station(s) by ID.
+     * Get lightning station(s) by ID.
      *
      * @param string $stationId
      * @return Collection
@@ -132,15 +159,15 @@ class Meteorological extends Client
      */
     public function stationByStationId(string $stationId): Collection
     {
-        // Retrieve observation station by ID from API.
+        // Retrieve lightning station by ID from API.
         /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'station/items', query: ['stationId' => $stationId]);
 
-        return Collection::make(items: $response)->map(callback: fn (Feature $item) => MeteorologicalStation::fromGeoJson(feature: $item));
+        return Collection::make(items: $response)->map(callback: fn (Feature $item) => LightningStation::fromGeoJson(feature: $item));
     }
 
     /**
-     * Get observation station(s) by name.
+     * Get lightning station(s) by name.
      *
      * @param string $stationName
      * @return Collection
@@ -158,7 +185,7 @@ class Meteorological extends Client
      */
     public function service(): Service
     {
-        return Service::Meteorological;
+        return Service::Lightning;
     }
 
     /**

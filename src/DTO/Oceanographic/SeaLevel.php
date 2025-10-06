@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Rugaard\DMI\DTO\Meteorological\Cloud;
+namespace Rugaard\DMI\DTO\Oceanographic;
 
 use Illuminate\Support\Collection;
-use Rugaard\DMI\Abstracts\Observations\Meteorological as MeteorologicalObservation;
-use Rugaard\DMI\Units\Length\Meter;
+use Rugaard\DMI\Abstracts\Observations\Oceanographic as OceanographicObservation;
+use Rugaard\DMI\Units\Length\Centimeter;
 
 /**
- * Class Height.
+ * Class SeaLevel.
  */
-class Height extends MeteorologicalObservation
+class SeaLevel extends OceanographicObservation
 {
     /**
      * Value of observation.
@@ -23,12 +23,12 @@ class Height extends MeteorologicalObservation
     /**
      * Unit of value.
      *
-     * @var Meter
+     * @var Centimeter
      */
-    public Meter $unit;
+    public Centimeter $unit;
 
     /**
-     * Height constructor.
+     * SeaLevel constructor.
      *
      * @param Collection|array $data
      */
@@ -37,6 +37,6 @@ class Height extends MeteorologicalObservation
         parent::__construct(data: $data);
 
         // Set internal unit.
-        $this->unit = new Meter;
+        $this->unit = new Centimeter;
     }
 }
