@@ -8,15 +8,15 @@ use GeoJson\Feature\Feature;
 use GeoJson\Feature\FeatureCollection;
 use Illuminate\Support\Collection;
 use Rugaard\DMI\Client;
+use Rugaard\DMI\Collections\LightningCollection;
 use Rugaard\DMI\Collections\ObservationCollection;
 use Rugaard\DMI\DTO\Lightning\Lightning as LightningDTO;
 use Rugaard\DMI\DTO\Lightning\Sensor;
 use Rugaard\DMI\DTO\Stations\Lightning as LightningStation;
 use Rugaard\DMI\Enums\Lightning\Filters\StationFilter;
-use Rugaard\DMI\Enums\Oceanographic\Filters\ObservationFilter;
+use Rugaard\DMI\Enums\Lightning\Filters\ObservationSensorFilter;
 use Rugaard\DMI\Enums\Service;
 use Rugaard\DMI\Exceptions\ParsingFailedException;
-use ValueError;
 
 use function array_filter;
 
@@ -31,20 +31,20 @@ class Lightning extends Client
      * Get all observations.
      *
      * @param array $filters
-     * @return ObservationCollection
+     * @return LightningCollection
      * @throws ParsingFailedException
      */
-    public function observations(array $filters = []): ObservationCollection
+    public function observations(array $filters = []): LightningCollection
     {
         // Only allow supported filters.
-        $filters = array_filter(array: $filters, callback: fn (string $key) => ObservationFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
+        $filters = array_filter(array: $filters, callback: fn (string $key) => ObservationSensorFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve observations from API.
         /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'observation/items', query: $filters);
 
         // Parse each observation and return it as a Collection.
-        return ObservationCollection::make(items: $response)->map(callback: fn (Feature $item) => LightningDTO::fromGeoJson(feature: $item));
+        return LightningCollection::make(items: $response)->map(callback: fn (Feature $item) => LightningDTO::fromGeoJson(feature: $item));
     }
 
     /**
@@ -72,20 +72,20 @@ class Lightning extends Client
      * Get all sensor data.
      *
      * @param array $filters
-     * @return ObservationCollection
+     * @return LightningCollection
      * @throws ParsingFailedException
      */
-    public function sensorData(array $filters = []): ObservationCollection
+    public function sensorData(array $filters = []): LightningCollection
     {
         // Only allow supported filters.
-        $filters = array_filter(array: $filters, callback: fn (string $key) => ObservationFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
+        $filters = array_filter(array: $filters, callback: fn (string $key) => ObservationSensorFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve observations from API.
         /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'sensordata/items', query: $filters);
 
         // Parse each observation and return it as a Collection.
-        return ObservationCollection::make(items: $response)->map(callback: fn (Feature $item) => Sensor::fromGeoJson(feature: $item));
+        return LightningCollection::make(items: $response)->map(callback: fn (Feature $item) => Sensor::fromGeoJson(feature: $item));
     }
 
     /**

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Rugaard\DMI\Enums\Lightning\Filters;
 
 /**
- * Enum ObservationFilter.
+ * Enum ObservationSensorFilter.
  *
  * @return string
  */
-enum ObservationFilter: string
+enum ObservationSensorFilter: string
 {
     case BoundingBox = 'bbox';
     case BoundingBoxCRS = 'bbox-crs';
