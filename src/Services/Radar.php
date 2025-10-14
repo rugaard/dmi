@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\Services;
 
-use GeoJson\Feature\Feature;
-use GeoJson\Feature\FeatureCollection;
 use Illuminate\Support\Collection;
 use Rugaard\DMI\Client;
 use Rugaard\DMI\DTO\Radar\Composite;
@@ -35,7 +33,6 @@ class Radar extends Client
      */
     public function download(string $filename): ?string
     {
-        /** @var string|null $response */
         return $this->request(method: 'get', url: 'download/' . $filename);
     }
 
@@ -52,10 +49,9 @@ class Radar extends Client
         $filters = array_filter(array: $filters, callback: fn (string $key) => CompositeFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve radar composites data features from API.
-        /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'collections/composite/items', query: $filters);
 
-        return Collection::make(items: $response->getFeatures())->map(callback: fn (Feature $feature) => Composite::fromGeoJson(feature: $feature));
+        return Collection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => Composite::fromGeoJson(payload: $item));
     }
 
     /**
@@ -68,7 +64,6 @@ class Radar extends Client
     public function compositeById(string $id): ?Composite
     {
         // Retrieve radar composite data features by ID from API.
-        /** @var Feature|null $response */
         $response = $this->request(method: 'get', url: 'collections/composite/items/' . $id);
 
         // Validate response.
@@ -76,7 +71,7 @@ class Radar extends Client
             return null;
         }
 
-        return Composite::fromGeoJson(feature: $response);
+        return Composite::fromGeoJson(payload: $response);
     }
 
     /**
@@ -92,10 +87,9 @@ class Radar extends Client
         $filters = array_filter(array: $filters, callback: fn (string $key) => PseudoCappiFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve pseudo cappi radar data features from API.
-        /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'collections/pseudoCappi/items', query: $filters);
 
-        return Collection::make(items: $response->getFeatures())->map(callback: fn (Feature $feature) => PseudoCappi::fromGeoJson(feature: $feature));
+        return Collection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => PseudoCappi::fromGeoJson(payload: $item));
     }
 
     /**
@@ -108,7 +102,6 @@ class Radar extends Client
     public function pseudoCappiById(string $id): ?PseudoCappi
     {
         // Retrieve pseudo cappi radar data features by ID from API.
-        /** @var Feature|null $response */
         $response = $this->request(method: 'get', url: 'collections/pseudoCappi/items/' . $id);
 
         // Validate response.
@@ -116,7 +109,7 @@ class Radar extends Client
             return null;
         }
 
-        return PseudoCappi::fromGeoJson(feature: $response);
+        return PseudoCappi::fromGeoJson(payload: $response);
     }
 
     /**
@@ -132,10 +125,9 @@ class Radar extends Client
         $filters = array_filter(array: $filters, callback: fn (string $key) => VolumeFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve volume radar data features from API.
-        /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'collections/volume/items', query: $filters);
 
-        return Collection::make(items: $response->getFeatures())->map(callback: fn (Feature $feature) => Volume::fromGeoJson(feature: $feature));
+        return Collection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => Volume::fromGeoJson(payload: $item));
     }
 
     /**
@@ -148,7 +140,6 @@ class Radar extends Client
     public function volumeById(string $id): ?Volume
     {
         // Retrieve volume radar data features by ID from API.
-        /** @var Feature|null $response */
         $response = $this->request(method: 'get', url: 'collections/volume/items/' . $id);
 
         // Validate response.
@@ -156,7 +147,7 @@ class Radar extends Client
             return null;
         }
 
-        return Volume::fromGeoJson(feature: $response);
+        return Volume::fromGeoJson(payload: $response);
     }
 
     /**

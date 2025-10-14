@@ -10,6 +10,7 @@ use Exception;
 use Rugaard\DMI\Support\Attributes\BoundingBox as HasBoundingBox;
 use Rugaard\DMI\Support\Attributes\CreatedTimestamp as HasCreatedTimestamp;
 use Rugaard\DMI\Support\Attributes\Location as HasLocation;
+use Rugaard\DMI\Support\Attributes\STAC as HasSTAC;
 use Rugaard\DMI\Support\FromGeoJson;
 
 /**
@@ -17,7 +18,7 @@ use Rugaard\DMI\Support\FromGeoJson;
  */
 abstract class Radar extends DTO
 {
-    use FromGeoJson, HasBoundingBox, HasLocation, HasCreatedTimestamp;
+    use FromGeoJson, HasBoundingBox, HasLocation, HasCreatedTimestamp, HasSTAC;
     /**
      * Radar data ID.
      *

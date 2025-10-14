@@ -86,10 +86,10 @@ abstract class Client
      * @param string $url
      * @param array $query
      * @param array $headers
-     * @return GeoJson|string|null
+     * @return array|string|null
      * @throws ParsingFailedException|ServerException|ClientException|RequestException
      */
-    protected function request(string $method, string $url, array $query = [], array $headers = []): GeoJson|string|null
+    protected function request(string $method, string $url, array $query = [], array $headers = []): array|string|null
     {
         // Build request for service.
         $request = $this->buildRequest(
@@ -102,17 +102,7 @@ abstract class Client
         // Send request to service.
         $response = $this->sendRequest(request: $request);
 
-        // Validate we have a response.
-        if (empty($response)) {
-            return null;
-        }
-
-        try {
-            // Parse GeoJSON response.
-            return is_array($response) ? GeoJson::jsonUnserialize(json: $response) : $response;
-        } catch (UnserializationException) {
-            return null;
-        }
+        return !empty($response) ? $response : null;
     }
 
     /**

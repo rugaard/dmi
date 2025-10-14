@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\Services;
 
-use GeoJson\Feature\Feature;
-use GeoJson\Feature\FeatureCollection;
 use Illuminate\Support\Collection;
 use Rugaard\DMI\Client;
 use Rugaard\DMI\Collections\LightningCollection;
@@ -39,11 +37,10 @@ class Lightning extends Client
         $filters = array_filter(array: $filters, callback: fn (string $key) => ObservationSensorFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve observations from API.
-        /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'collections/observation/items', query: $filters);
 
         // Parse each observation and return it as a Collection.
-        return LightningCollection::make(items: $response)->map(callback: fn (Feature $item) => LightningDTO::fromGeoJson(feature: $item));
+        return LightningCollection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => LightningDTO::fromGeoJson(payload: $item));
     }
 
     /**
@@ -56,7 +53,6 @@ class Lightning extends Client
     public function observationById(string $id): ?LightningDTO
     {
         // Retrieve observation by ID from API.
-        /** @var Feature|null $response */
         $response = $this->request(method: 'get', url: 'collections/observation/items/' . $id);
 
         // Validate response.
@@ -64,7 +60,7 @@ class Lightning extends Client
             return null;
         }
 
-        return LightningDTO::fromGeoJson(feature: $response);
+        return LightningDTO::fromGeoJson(payload: $response);
     }
 
     /**
@@ -80,11 +76,10 @@ class Lightning extends Client
         $filters = array_filter(array: $filters, callback: fn (string $key) => ObservationSensorFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve observations from API.
-        /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'collections/sensordata/items', query: $filters);
 
         // Parse each observation and return it as a Collection.
-        return LightningCollection::make(items: $response)->map(callback: fn (Feature $item) => Sensor::fromGeoJson(feature: $item));
+        return LightningCollection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => Sensor::fromGeoJson(payload: $item));
     }
 
     /**
@@ -97,7 +92,6 @@ class Lightning extends Client
     public function sensorDataById(string $id): ?Sensor
     {
         // Retrieve sensor data by ID from API.
-        /** @var Feature|null $response */
         $response = $this->request(method: 'get', url: 'collections/sensordata/items/' . $id);
 
         // Validate response.
@@ -105,7 +99,7 @@ class Lightning extends Client
             return null;
         }
 
-        return Sensor::fromGeoJson(feature: $response);
+        return Sensor::fromGeoJson(payload: $response);
     }
 
     /**
@@ -121,11 +115,10 @@ class Lightning extends Client
         $filters = array_filter(array: $filters, callback: fn (string $key) => StationFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve all observation stations from API.
-        /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'collections/station/items', query: $filters);
 
         // Parse each station and return it as a Collection.
-        return Collection::make(items: $response)->map(callback: fn (Feature $item) => LightningStation::fromGeoJson(feature: $item));
+        return Collection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => LightningStation::fromGeoJson(payload: $item));
     }
 
     /**
@@ -138,7 +131,6 @@ class Lightning extends Client
     public function stationById(string $id): ?LightningStation
     {
         // Retrieve lightning station by ID from API.
-        /** @var Feature|null $response */
         $response = $this->request(method: 'get', url: 'collections/station/items/' . $id);
 
         // Validate response.
@@ -146,7 +138,7 @@ class Lightning extends Client
             return null;
         }
 
-        return LightningStation::fromGeoJson(feature: $response);
+        return LightningStation::fromGeoJson(payload: $response);
     }
 
     /**
@@ -159,10 +151,9 @@ class Lightning extends Client
     public function stationByStationId(string $stationId): Collection
     {
         // Retrieve lightning station by ID from API.
-        /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'collections/station/items', query: ['stationId' => $stationId]);
 
-        return Collection::make(items: $response)->map(callback: fn (Feature $item) => LightningStation::fromGeoJson(feature: $item));
+        return Collection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => LightningStation::fromGeoJson(payload: $item));
     }
 
     /**

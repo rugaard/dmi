@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\Services;
 
-use GeoJson\Feature\Feature;
-use GeoJson\Feature\FeatureCollection;
 use Illuminate\Support\Collection;
 use Rugaard\DMI\Abstracts\Observation;
 use Rugaard\DMI\Abstracts\Station;
@@ -45,15 +43,14 @@ class Oceanographic extends Client
         $filters = array_filter(array: $filters, callback: fn (string $key) => ObservationFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve observations from API.
-        /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'collections/observation/items', query: $filters);
 
         // Parse each observation and return it as a Collection.
-        return ObservationCollection::make(items: $response)->map(callback: static function (Feature $item) {
+        return ObservationCollection::make(items: $response['features'] ?? [])->map(callback: static function (array $item) {
             try {
                 // Get oceanographic parameter from payload.
-                $parameter = Parameter::from(value: $item->getProperties()['parameterId'] ?? null);
-                return $parameter->dto()::fromGeoJson(feature: $item);
+                $parameter = Parameter::from(value: $item['properties']['parameterId'] ?? null);
+                return $parameter->dto()::fromGeoJson(payload: $item);
             } catch (ValueError) {
                 // Should we for some reason hit an unsupported parameter,
                 // then we'll jump ship and return null, so we can remove it later.
@@ -72,7 +69,6 @@ class Oceanographic extends Client
     public function observationById(string $id): ?Observation
     {
         // Retrieve observation by ID from API.
-        /** @var Feature|null $response */
         $response = $this->request(method: 'get', url: 'collections/observation/items/' . $id);
 
         // Validate response.
@@ -81,9 +77,9 @@ class Oceanographic extends Client
         }
 
         // Determine observation parameter type.
-        $parameter = Parameter::from(value: $response->getProperties()['parameterId'] ?? null);
+        $parameter = Parameter::from(value: $response['properties']['parameterId'] ?? null);
 
-        return $parameter->dto()::fromGeoJson(feature: $response);
+        return $parameter->dto()::fromGeoJson(payload: $response);
     }
 
     /**
@@ -99,11 +95,10 @@ class Oceanographic extends Client
         $filters = array_filter(array: $filters, callback: fn (string $key) => StationFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve all observation stations from API.
-        /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'collections/station/items', query: $filters);
 
         // Parse each station and return it as a Collection.
-        return Collection::make(items: $response)->map(callback: fn (Feature $item) => OceanographicStation::fromGeoJson(feature: $item));
+        return Collection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => OceanographicStation::fromGeoJson(payload: $item));
     }
 
     /**
@@ -116,7 +111,6 @@ class Oceanographic extends Client
     public function stationById(string $id): ?Station
     {
         // Retrieve observation station by ID from API.
-        /** @var Feature|null $response */
         $response = $this->request(method: 'get', url: 'collections/station/items/' . $id);
 
         // Validate response.
@@ -124,7 +118,7 @@ class Oceanographic extends Client
             return null;
         }
 
-        return OceanographicStation::fromGeoJson(feature: $response);
+        return OceanographicStation::fromGeoJson(payload: $response);
     }
 
     /**
@@ -137,10 +131,9 @@ class Oceanographic extends Client
     public function stationByStationId(string $stationId): Collection
     {
         // Retrieve observation station by ID from API.
-        /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'collections/station/items', query: ['stationId' => $stationId]);
 
-        return Collection::make(items: $response)->map(callback: fn (Feature $item) => OceanographicStation::fromGeoJson(feature: $item));
+        return Collection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => OceanographicStation::fromGeoJson(payload: $item));
     }
 
     /**
@@ -168,11 +161,10 @@ class Oceanographic extends Client
         $filters = array_filter(array: $filters, callback: fn (string $key) => TidewaterPredictionFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve tidewater predictions from API.
-        /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'collections/tidewater/items', query: $filters);
 
         // Parse each tidewater prediction and return it as a Collection.
-        return ObservationCollection::make(items: $response)->map(callback: fn (Feature $item) => Tidewater::fromGeoJson(feature: $item));
+        return ObservationCollection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => Tidewater::fromGeoJson(payload: $item));
     }
 
     /**
@@ -185,7 +177,6 @@ class Oceanographic extends Client
     public function tidewaterPredictionById(string $id): ?Observation
     {
         // Retrieve tidewater prediction by ID from API.
-        /** @var Feature|null $response */
         $response = $this->request(method: 'get', url: 'collections/tidewater/items/' . $id);
 
         // Validate response.
@@ -193,10 +184,7 @@ class Oceanographic extends Client
             return null;
         }
 
-        // Determine observation parameter type.
-        $parameter = Parameter::from(value: $response->getProperties()['parameterId'] ?? null);
-
-        return $parameter->dto()::fromGeoJson(feature: $response);
+        return Tidewater::fromGeoJson(payload: $response);
     }
 
     /**
@@ -212,11 +200,10 @@ class Oceanographic extends Client
         $filters = array_filter(array: $filters, callback: fn (string $key) => TidewaterStationFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve all observation stations from API.
-        /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'collections/tidewaterstation/items', query: $filters);
 
         // Parse each station and return it as a Collection.
-        return Collection::make(items: $response)->map(callback: fn (Feature $item) => TidewaterStation::fromGeoJson(feature: $item));
+        return Collection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => TidewaterStation::fromGeoJson(payload: $item));
     }
 
     /**
@@ -229,7 +216,6 @@ class Oceanographic extends Client
     public function tidewaterStationById(string $id): ?Station
     {
         // Retrieve tidewater station by ID from API.
-        /** @var Feature|null $response */
         $response = $this->request(method: 'get', url: 'collections/tidewaterstation/items/' . $id);
 
         // Validate response.
@@ -237,7 +223,7 @@ class Oceanographic extends Client
             return null;
         }
 
-        return TidewaterStation::fromGeoJson(feature: $response);
+        return TidewaterStation::fromGeoJson(payload: $response);
     }
 
     /**
@@ -250,10 +236,9 @@ class Oceanographic extends Client
     public function tidewaterStationByStationId(string $stationId): Collection
     {
         // Retrieve observation station by ID from API.
-        /** @var FeatureCollection|null $response */
         $response = $this->request(method: 'get', url: 'collections/tidewaterstation/items', query: ['stationId' => $stationId]);
 
-        return Collection::make(items: $response)->map(callback: fn (Feature $item) => TidewaterStation::fromGeoJson(feature: $item));
+        return Collection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => TidewaterStation::fromGeoJson(payload: $item));
     }
 
     /**
