@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI;
 
+use Illuminate\Support\Collection;
 use Rugaard\DMI\Enums\Service;
 use Rugaard\DMI\Exceptions\DMIException;
 use Rugaard\DMI\Services\Lightning;
 use Rugaard\DMI\Services\Meteorological;
 use Rugaard\DMI\Services\Oceanographic;
+use Rugaard\DMI\Services\Radar;
 
 use function array_flip;
 use function array_intersect_key;
@@ -22,9 +24,9 @@ final readonly class DMI
     /**
      * Service API keys.
      *
-     * @var array
+     * @var Collection
      */
-    private array $apiKeys;
+    private Collection $apiKeys;
 
     /**
      * DMI constructor.
@@ -33,7 +35,7 @@ final readonly class DMI
      */
     public function __construct(array $apiKeys = [])
     {
-        $this->apiKeys = array_intersect_key($apiKeys, array_flip($this->getSupportedServices()));
+        $this->apiKeys = Collection::make(items: array_intersect_key($apiKeys, array_flip(array: $this->getSupportedServices())));
     }
 
     /**
@@ -44,7 +46,7 @@ final readonly class DMI
      */
     public function meteorological(): Meteorological
     {
-        return new Meteorological(apiKey: $this->apiKeys['meteorological'] ?? null);
+        return new Meteorological(apiKey: $this->apiKeys->get(key: 'meteorological'));
     }
 
     /**
@@ -55,7 +57,7 @@ final readonly class DMI
      */
     public function oceanographic(): Oceanographic
     {
-        return new Oceanographic(apiKey: $this->apiKeys['oceanographic'] ?? null);
+        return new Oceanographic(apiKey: $this->apiKeys->get(key: 'oceanographic'));
     }
 
     /**
@@ -66,7 +68,18 @@ final readonly class DMI
      */
     public function lightning(): Lightning
     {
-        return new Lightning(apiKey: $this->apiKeys['lightning'] ?? null);
+        return new Lightning(apiKey: $this->apiKeys->get(key: 'lightning'));
+    }
+
+    /**
+     * Interact with Radar service.
+     *
+     * @return Radar
+     * @throws DMIException
+     */
+    public function radar(): Radar
+    {
+        return new Radar(apiKey: $this->apiKeys->get(key: 'radar'));
     }
 
     /**

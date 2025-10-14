@@ -9,7 +9,6 @@ use GeoJson\Feature\FeatureCollection;
 use Illuminate\Support\Collection;
 use Rugaard\DMI\Client;
 use Rugaard\DMI\Collections\LightningCollection;
-use Rugaard\DMI\Collections\ObservationCollection;
 use Rugaard\DMI\DTO\Lightning\Lightning as LightningDTO;
 use Rugaard\DMI\DTO\Lightning\Sensor;
 use Rugaard\DMI\DTO\Stations\Lightning as LightningStation;
@@ -41,7 +40,7 @@ class Lightning extends Client
 
         // Retrieve observations from API.
         /** @var FeatureCollection|null $response */
-        $response = $this->request(method: 'get', url: 'observation/items', query: $filters);
+        $response = $this->request(method: 'get', url: 'collections/observation/items', query: $filters);
 
         // Parse each observation and return it as a Collection.
         return LightningCollection::make(items: $response)->map(callback: fn (Feature $item) => LightningDTO::fromGeoJson(feature: $item));
@@ -58,7 +57,7 @@ class Lightning extends Client
     {
         // Retrieve observation by ID from API.
         /** @var Feature|null $response */
-        $response = $this->request(method: 'get', url: 'observation/items/' . $id);
+        $response = $this->request(method: 'get', url: 'collections/observation/items/' . $id);
 
         // Validate response.
         if (empty($response)) {
@@ -82,7 +81,7 @@ class Lightning extends Client
 
         // Retrieve observations from API.
         /** @var FeatureCollection|null $response */
-        $response = $this->request(method: 'get', url: 'sensordata/items', query: $filters);
+        $response = $this->request(method: 'get', url: 'collections/sensordata/items', query: $filters);
 
         // Parse each observation and return it as a Collection.
         return LightningCollection::make(items: $response)->map(callback: fn (Feature $item) => Sensor::fromGeoJson(feature: $item));
@@ -99,7 +98,7 @@ class Lightning extends Client
     {
         // Retrieve sensor data by ID from API.
         /** @var Feature|null $response */
-        $response = $this->request(method: 'get', url: 'sensordata/items/' . $id);
+        $response = $this->request(method: 'get', url: 'collections/sensordata/items/' . $id);
 
         // Validate response.
         if (empty($response)) {
@@ -123,7 +122,7 @@ class Lightning extends Client
 
         // Retrieve all observation stations from API.
         /** @var FeatureCollection|null $response */
-        $response = $this->request(method: 'get', url: 'station/items', query: $filters);
+        $response = $this->request(method: 'get', url: 'collections/station/items', query: $filters);
 
         // Parse each station and return it as a Collection.
         return Collection::make(items: $response)->map(callback: fn (Feature $item) => LightningStation::fromGeoJson(feature: $item));
@@ -140,7 +139,7 @@ class Lightning extends Client
     {
         // Retrieve lightning station by ID from API.
         /** @var Feature|null $response */
-        $response = $this->request(method: 'get', url: 'station/items/' . $id);
+        $response = $this->request(method: 'get', url: 'collections/station/items/' . $id);
 
         // Validate response.
         if (empty($response)) {
@@ -161,7 +160,7 @@ class Lightning extends Client
     {
         // Retrieve lightning station by ID from API.
         /** @var FeatureCollection|null $response */
-        $response = $this->request(method: 'get', url: 'station/items', query: ['stationId' => $stationId]);
+        $response = $this->request(method: 'get', url: 'collections/station/items', query: ['stationId' => $stationId]);
 
         return Collection::make(items: $response)->map(callback: fn (Feature $item) => LightningStation::fromGeoJson(feature: $item));
     }

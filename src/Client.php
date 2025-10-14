@@ -25,6 +25,8 @@ use function json_last_error_msg;
 use function natsort;
 use function sprintf;
 
+use const JSON_THROW_ON_ERROR;
+
 /**
  * Class Client.
  */
@@ -84,10 +86,10 @@ abstract class Client
      * @param string $url
      * @param array $query
      * @param array $headers
-     * @return GeoJson|null
+     * @return GeoJson|string|null
      * @throws ParsingFailedException|ServerException|ClientException|RequestException
      */
-    protected function request(string $method, string $url, array $query = [], array $headers = []): ?GeoJson
+    protected function request(string $method, string $url, array $query = [], array $headers = []): GeoJson|string|null
     {
         // Build request for service.
         $request = $this->buildRequest(
@@ -100,9 +102,14 @@ abstract class Client
         // Send request to service.
         $response = $this->sendRequest(request: $request);
 
+        // Validate we have a response.
+        if (empty($response)) {
+            return null;
+        }
+
         try {
             // Parse GeoJSON response.
-            return !empty($response) ? GeoJson::jsonUnserialize(json: $response) : null;
+            return is_array($response) ? GeoJson::jsonUnserialize(json: $response) : $response;
         } catch (UnserializationException) {
             return null;
         }
@@ -124,7 +131,7 @@ abstract class Client
 
         // Generate URI instance.
         $uri = Uri::withQueryValues(
-            uri: new Uri(uri: "/v{$this->serviceVersion()}/{$this->service()->value}/collections/{$url}"),
+            uri: new Uri(uri: "/v{$this->serviceVersion()}/{$this->service()->value}/{$url}"),
             keyValueArray: $query
         );
 
@@ -144,10 +151,10 @@ abstract class Client
      *
      * @param GuzzleRequest $request
      * @param array $options
-     * @return array
+     * @return array|string
      * @throws ParsingFailedException|ServerException|ClientException|RequestException
      */
-    protected function sendRequest(GuzzleRequest $request, array $options = []): array
+    protected function sendRequest(GuzzleRequest $request, array $options = []): array|string
     {
         try {
             // Send request.
@@ -162,8 +169,9 @@ abstract class Client
             // Extract body from response.
             $body = (string) $response->getBody();
 
-            // JSON Decode response.
-            return (array) json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR);
+            return $response->getHeader('Content-Type')[0] === 'application/json'
+                ? (array) json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR)
+                : $body;
         } catch (JsonException) {
             throw new ParsingFailedException(sprintf('Could not decode response. Reason: %s.', json_last_error_msg()), 400);
         } catch (GuzzleServerException $e) {

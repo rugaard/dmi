@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI\Abstracts;
 
-use GeoJson\Feature\Feature as GeoJsonFeature;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Collection;

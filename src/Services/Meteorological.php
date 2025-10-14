@@ -42,7 +42,7 @@ class Meteorological extends Client
 
         // Retrieve observations from API.
         /** @var FeatureCollection|null $response */
-        $response = $this->request(method: 'get', url: 'observation/items', query: $filters);
+        $response = $this->request(method: 'get', url: 'collections/observation/items', query: $filters);
 
         // Parse each observation and return it as a Collection.
         return ObservationCollection::make(items: $response)->map(callback: static function (Feature $item) {
@@ -69,7 +69,7 @@ class Meteorological extends Client
     {
         // Retrieve observation station by ID from API.
         /** @var Feature|null $response */
-        $response = $this->request(method: 'get', url: 'observation/items/' . $id);
+        $response = $this->request(method: 'get', url: 'collections/observation/items/' . $id);
 
         // Validate response.
         if (empty($response)) {
@@ -96,7 +96,7 @@ class Meteorological extends Client
 
         // Retrieve all observation stations from API.
         /** @var FeatureCollection|null $response */
-        $response = $this->request(method: 'get', url: 'station/items', query: $filters);
+        $response = $this->request(method: 'get', url: 'collections/station/items', query: $filters);
 
         // Parse each station and return it as a Collection.
         return Collection::make(items: $response)->map(callback: fn (Feature $item) => MeteorologicalStation::fromGeoJson(feature: $item));
@@ -113,7 +113,7 @@ class Meteorological extends Client
     {
         // Retrieve observation station by ID from API.
         /** @var Feature|null $response */
-        $response = $this->request(method: 'get', url: 'station/items/' . $id);
+        $response = $this->request(method: 'get', url: 'collections/station/items/' . $id);
 
         // Validate response.
         if (empty($response)) {
@@ -134,7 +134,7 @@ class Meteorological extends Client
     {
         // Retrieve observation station by ID from API.
         /** @var FeatureCollection|null $response */
-        $response = $this->request(method: 'get', url: 'station/items', query: ['stationId' => $stationId]);
+        $response = $this->request(method: 'get', url: 'collections/station/items', query: ['stationId' => $stationId]);
 
         return Collection::make(items: $response)->map(callback: fn (Feature $item) => MeteorologicalStation::fromGeoJson(feature: $item));
     }
