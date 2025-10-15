@@ -15,9 +15,9 @@ use Rugaard\DMI\Support\Attributes\ValidityPeriod as HasValidityPeriod;
 use Rugaard\DMI\Support\Attributes\WMO as HasWMOInfo;
 
 /**
- * Class Meteorological.
+ * Class Climate.
  */
-class Meteorological extends Station
+class Climate extends Station
 {
     use HasActiveStatus, HasOperationalPeriod, HasUpdatedTimestamp, HasValidityPeriod, HasWMOInfo;
 

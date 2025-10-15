@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rugaard\DMI\Enums\Meteorological;
+namespace Rugaard\DMI\Enums;
 
 /**
  * Enum StationType.
