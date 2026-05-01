@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Rugaard\DMI;
 
 use Rugaard\DMI\Enums\Service;
+use Rugaard\DMI\Services\Climate;
 use Rugaard\DMI\Services\Lightning;
 use Rugaard\DMI\Services\Meteorological;
 use Rugaard\DMI\Services\Oceanographic;
@@ -35,6 +36,16 @@ final readonly class DMI
     public static function oceanographic(): Oceanographic
     {
         return new Oceanographic;
+    }
+
+    /**
+     * Create instance of Climate service.
+     *
+     * @return Climate
+     */
+    public static function climate(): Climate
+    {
+        return new Climate;
     }
 
     /**

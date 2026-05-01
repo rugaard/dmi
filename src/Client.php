@@ -19,10 +19,11 @@ use Rugaard\DMI\Exceptions\ServerException;
 
 use function json_decode;
 use function json_last_error_msg;
-use function natsort;
+use function ksort;
 use function str_starts_with;
 
 use const JSON_THROW_ON_ERROR;
+use const PHP_VERSION;
 
 /**
  * Class Client.
@@ -35,6 +36,28 @@ abstract class Client
      * @const string
      */
     public const VERSION = '2.0';
+
+    /**
+     * Guzzle Client instance.
+     *
+     * @var GuzzleClient
+     */
+    protected GuzzleClient $client;
+
+    /**
+     * Client constructor.
+     */
+    public function __construct()
+    {
+        $this->client = new GuzzleClient(config: [
+            'base_uri' => 'https://opendataapi.dmi.dk',
+            'headers' => [
+                'Accept' => 'application/json',
+                'Accept-Encoding' => 'br;q=1.0, gzip;q=0.8, *;q=0.5',
+                'User-Agent' => 'Rugaard DMI/' . self::VERSION . ' (https://github.com/rugaard/dmi) PHP/' . PHP_VERSION
+            ]
+        ]);
+    }
 
     /**
      * Build and send request to DMI API.
@@ -74,7 +97,7 @@ abstract class Client
     protected function buildRequest(string $method, string $uri, array $query = [], array $headers = []): GuzzleRequest
     {
         // Naturally sort query array.
-        natsort($query);
+        ksort($query, SORT_NATURAL);
 
         // Generate URI instance.
         $uri = Uri::withQueryValues(
@@ -100,24 +123,8 @@ abstract class Client
     protected function sendRequest(GuzzleRequest $request, array $options = []): array|string
     {
         try {
-            // Create Guzzle client instance.
-            $client = new GuzzleClient(config: [
-                'base_uri' => 'https://opendataapi.dmi.dk',
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Accept-Encoding' => 'br;q=1.0, gzip;q=0.8, *;q=0.5',
-                    'User-Agent' => 'Rugaard DMI/' . self::VERSION . ' (https://github.com/rugaard/dmi) PHP/' . PHP_VERSION
-                ]
-            ]);
-
             // Send request.
-            $response = $client->send(request: $request, options: $options);
-
-            // If response is being returned with "204 No Content"
-            // we'll just return an empty array.
-            if ($response->getStatusCode() === 204) {
-                return [];
-            }
+            $response = $this->client->send(request: $request, options: $options);
 
             // Get body from response.
             $body = (string) $response->getBody();
