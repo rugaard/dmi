@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI;
 
-use GeoJson\Exception\UnserializationException;
-use GeoJson\GeoJson;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException as GuzzleClientException;
 use GuzzleHttp\Exception\GuzzleException;
@@ -15,7 +13,6 @@ use GuzzleHttp\Psr7\Uri;
 use JsonException;
 use Rugaard\DMI\Enums\Service;
 use Rugaard\DMI\Exceptions\ClientException;
-use Rugaard\DMI\Exceptions\DMIException;
 use Rugaard\DMI\Exceptions\ParsingFailedException;
 use Rugaard\DMI\Exceptions\RequestException;
 use Rugaard\DMI\Exceptions\ServerException;
@@ -23,7 +20,7 @@ use Rugaard\DMI\Exceptions\ServerException;
 use function json_decode;
 use function json_last_error_msg;
 use function natsort;
-use function sprintf;
+use function str_starts_with;
 
 use const JSON_THROW_ON_ERROR;
 
@@ -40,61 +37,21 @@ abstract class Client
     public const VERSION = '2.0';
 
     /**
-     * Underlying HTTP Client instance.
-     *
-     * @var GuzzleClient
-     */
-    protected GuzzleClient $client;
-
-    /**
-     * API key for DMI service.
-     *
-     * @var string
-     */
-    protected readonly string $apiKey;
-
-    /**
-     * Client constructor.
-     *
-     * @param string|null $apiKey
-     * @throws DMIException
-     */
-    public function __construct(?string $apiKey)
-    {
-        if (empty($apiKey)) {
-            throw new DMIException(message: 'Missing API key for DMI service [' . static::class .']', code: 500);
-        }
-
-        // Set API key.
-        $this->apiKey = $apiKey;
-
-        // Generate HTTP client.
-        $this->client = new GuzzleClient([
-            'base_uri' => 'https://dmigw.govcloud.dk',
-            'headers' => [
-                'Accept' => 'application/json',
-                'Accept-Encoding' => 'gzip',
-                'User-Agent' => 'Rugaard DMI/' . self::VERSION . ' (https://github.com/rugaard/dmi) PHP/' . PHP_VERSION
-            ]
-        ]);
-    }
-
-    /**
      * Build and send request to DMI API.
      *
      * @param string $method
-     * @param string $url
+     * @param string $uri
      * @param array $query
      * @param array $headers
      * @return array|string|null
      * @throws ParsingFailedException|ServerException|ClientException|RequestException
      */
-    protected function request(string $method, string $url, array $query = [], array $headers = []): array|string|null
+    protected function request(string $method, string $uri, array $query = [], array $headers = []): array|string|null
     {
         // Build request for service.
         $request = $this->buildRequest(
             method: $method,
-            url: $url,
+            uri: $uri,
             query: $query,
             headers: $headers
         );
@@ -109,30 +66,26 @@ abstract class Client
      * Generate request instance.
      *
      * @param string $method
-     * @param string $url
+     * @param string $uri
      * @param array $query
      * @param array $headers
      * @return GuzzleRequest
      */
-    protected function buildRequest(string $method, string $url, array $query = [], array $headers = []): GuzzleRequest
+    protected function buildRequest(string $method, string $uri, array $query = [], array $headers = []): GuzzleRequest
     {
         // Naturally sort query array.
         natsort($query);
 
         // Generate URI instance.
         $uri = Uri::withQueryValues(
-            uri: new Uri(uri: "/v{$this->serviceVersion()}/{$this->service()->value}/{$url}"),
+            uri: new Uri(uri: "/v{$this->serviceVersion()}/{$this->service()->value}/{$uri}"),
             keyValueArray: $query
         );
 
         return new GuzzleRequest(
             method: $method,
             uri: $uri,
-            headers: [
-                ...$headers,
-                'Accept-Encoding' => 'br;q=1.0, gzip;q=0.8, *;q=0.5',
-                'X-Gravitee-Api-Key' => $this->apiKey,
-            ],
+            headers: $headers,
         );
     }
 
@@ -147,8 +100,18 @@ abstract class Client
     protected function sendRequest(GuzzleRequest $request, array $options = []): array|string
     {
         try {
+            // Create Guzzle client instance.
+            $client = new GuzzleClient(config: [
+                'base_uri' => 'https://opendataapi.dmi.dk',
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Accept-Encoding' => 'br;q=1.0, gzip;q=0.8, *;q=0.5',
+                    'User-Agent' => 'Rugaard DMI/' . self::VERSION . ' (https://github.com/rugaard/dmi) PHP/' . PHP_VERSION
+                ]
+            ]);
+
             // Send request.
-            $response = $this->client->send($request, $options);
+            $response = $client->send(request: $request, options: $options);
 
             // If response is being returned with "204 No Content"
             // we'll just return an empty array.
@@ -156,20 +119,20 @@ abstract class Client
                 return [];
             }
 
-            // Extract body from response.
+            // Get body from response.
             $body = (string) $response->getBody();
 
-            return $response->getHeader('Content-Type')[0] === 'application/json'
+            return str_starts_with(haystack: $response->getHeaderLine(header: 'Content-Type'), needle: 'application/json')
                 ? (array) json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR)
                 : $body;
-        } catch (JsonException) {
-            throw new ParsingFailedException(sprintf('Could not decode response. Reason: %s.', json_last_error_msg()), 400);
+        } catch (JsonException $e) {
+            throw new ParsingFailedException(message: 'Could not decode response. Reason: ' . json_last_error_msg(), code: 400, previous: $e);
         } catch (GuzzleServerException $e) {
-            throw new ServerException($e->getMessage(), $e->getRequest(), $e->getResponse(), $e);
+            throw new ServerException(message: $e->getMessage(), request: $e->getRequest(), response: $e->getResponse(), previous: $e);
         } catch (GuzzleClientException $e) {
-            throw new ClientException($e->getMessage(), $e->getRequest(), $e->getResponse(), $e);
+            throw new ClientException(message: $e->getMessage(), request: $e->getRequest(), response: $e->getResponse(), previous: $e);
         } catch (GuzzleException $e) {
-            throw new RequestException($e->getMessage(), $e->getCode(), $e);
+            throw new RequestException(message: $e->getMessage(), code: $e->getCode(), previous: $e);
         }
     }
 

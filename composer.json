@@ -32,14 +32,13 @@
   "require": {
     "php": "^8.2",
     "ext-json": "*",
-    "guzzlehttp/guzzle": "^7.0",
-    "illuminate/collections": "^12.0|^11.0|^10.0",
-    "illuminate/support": "^12.0|^11.0|^10.0",
+    "guzzlehttp/guzzle": "^7.0|^8.0",
+    "illuminate/collections": "^10.0|^11.0|^12.0|^13.0",
+    "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
     "jmikola/geojson": "^1.2"
   },
   "require-dev": {
-    "phpunit/phpunit": "^12.0",
-    "symfony/var-dumper": "^7.0"
+    "symfony/var-dumper": "^7.0|^8.0"
   },
   "autoload": {
     "psr-4": {
@@ -57,9 +56,6 @@
         "Rugaard\\DMI\\Providers\\Laravel\\ServiceProvider"
       ]
     }
-  },
-  "scripts": {
-    "test": "./vendor/bin/phpunit --colors=always"
   },
   "prefer-stable": true,
   "config": {

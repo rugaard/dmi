@@ -4,16 +4,12 @@ declare(strict_types=1);
 
 namespace Rugaard\DMI;
 
-use Illuminate\Support\Collection;
 use Rugaard\DMI\Enums\Service;
-use Rugaard\DMI\Exceptions\DMIException;
 use Rugaard\DMI\Services\Lightning;
 use Rugaard\DMI\Services\Meteorological;
 use Rugaard\DMI\Services\Oceanographic;
 use Rugaard\DMI\Services\Radar;
 
-use function array_flip;
-use function array_intersect_key;
 use function array_map;
 
 /**
@@ -22,64 +18,43 @@ use function array_map;
 final readonly class DMI
 {
     /**
-     * Service API keys.
-     *
-     * @var Collection
-     */
-    private Collection $apiKeys;
-
-    /**
-     * DMI constructor.
-     *
-     * @param array $apiKeys
-     */
-    public function __construct(array $apiKeys = [])
-    {
-        $this->apiKeys = Collection::make(items: array_intersect_key($apiKeys, array_flip(array: $this->getSupportedServices())));
-    }
-
-    /**
-     * Interact with Meteorological service.
+     * Create instance of Meteorological service.
      *
      * @return Meteorological
-     * @throws DMIException
      */
-    public function meteorological(): Meteorological
+    public static function meteorological(): Meteorological
     {
-        return new Meteorological(apiKey: $this->apiKeys->get(key: 'meteorological'));
+        return new Meteorological;
     }
 
     /**
-     * Interact with Oceanographic service.
+     * Create instance of Oceanographic service.
      *
      * @return Oceanographic
-     * @throws DMIException
      */
-    public function oceanographic(): Oceanographic
+    public static function oceanographic(): Oceanographic
     {
-        return new Oceanographic(apiKey: $this->apiKeys->get(key: 'oceanographic'));
+        return new Oceanographic;
     }
 
     /**
-     * Interact with Lightning service.
+     * Create instance of Lightning service.
      *
      * @return Lightning
-     * @throws DMIException
      */
-    public function lightning(): Lightning
+    public static function lightning(): Lightning
     {
-        return new Lightning(apiKey: $this->apiKeys->get(key: 'lightning'));
+        return new Lightning;
     }
 
     /**
-     * Interact with Radar service.
+     * Create instance of Radar service.
      *
      * @return Radar
-     * @throws DMIException
      */
-    public function radar(): Radar
+    public static function radar(): Radar
     {
-        return new Radar(apiKey: $this->apiKeys->get(key: 'radar'));
+        return new Radar;
     }
 
     /**
@@ -87,7 +62,7 @@ final readonly class DMI
      *
      * @return string[]
      */
-    private function getSupportedServices(): array
+    public static function supportedServices(): array
     {
         return array_map(callback: fn (Service $service) => strtolower(string: $service->name), array: Service::cases());
     }

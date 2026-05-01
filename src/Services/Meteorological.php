@@ -39,14 +39,14 @@ class Meteorological extends Client
         $filters = array_filter(array: $filters, callback: fn (string $key) => ObservationFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve observations from API.
-        $response = $this->request(method: 'get', url: 'collections/observation/items', query: $filters);
+        $response = $this->request(method: 'get', uri: 'collections/observation/items', query: $filters);
 
         // Parse each observation and return it as a Collection.
         return ObservationCollection::make(items: $response['features'] ?? [])->map(callback: static function (array $item) {
             try {
                 // Get meteorological parameter from payload.
                 $parameter = Parameter::from(value: $item['properties']['parameterId'] ?? null);
-                return $parameter->dto()::fromGeoJson(feature: $item);
+                return $parameter->dto()::fromGeoJson(payload: $item);
             } catch (ValueError) {
                 // Should we for some reason hit an unsupported parameter,
                 // then we'll jump ship and return null, so we can remove it later.
@@ -65,7 +65,7 @@ class Meteorological extends Client
     public function observationById(string $id): ?Observation
     {
         // Retrieve observation station by ID from API.
-        $response = $this->request(method: 'get', url: 'collections/observation/items/' . $id);
+        $response = $this->request(method: 'get', uri: 'collections/observation/items/' . $id);
 
         // Validate response.
         if (empty($response)) {
@@ -91,7 +91,7 @@ class Meteorological extends Client
         $filters = array_filter(array: $filters, callback: fn (string $key) => StationFilter::tryFrom(value: $key), mode: ARRAY_FILTER_USE_KEY);
 
         // Retrieve all observation stations from API.
-        $response = $this->request(method: 'get', url: 'collections/station/items', query: $filters);
+        $response = $this->request(method: 'get', uri: 'collections/station/items', query: $filters);
 
         // Parse each station and return it as a Collection.
         return Collection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => MeteorologicalStation::fromGeoJson(payload: $item));
@@ -107,7 +107,7 @@ class Meteorological extends Client
     public function stationById(string $id): ?Station
     {
         // Retrieve observation station by ID from API.
-        $response = $this->request(method: 'get', url: 'collections/station/items/' . $id);
+        $response = $this->request(method: 'get', uri: 'collections/station/items/' . $id);
 
         // Validate response.
         if (empty($response)) {
@@ -127,7 +127,7 @@ class Meteorological extends Client
     public function stationByStationId(string $stationId): Collection
     {
         // Retrieve observation station by ID from API.
-        $response = $this->request(method: 'get', url: 'collections/station/items', query: ['stationId' => $stationId]);
+        $response = $this->request(method: 'get', uri: 'collections/station/items', query: ['stationId' => $stationId]);
 
         return Collection::make(items: $response['features'] ?? [])->map(callback: fn (array $item) => MeteorologicalStation::fromGeoJson(payload: $item));
     }
