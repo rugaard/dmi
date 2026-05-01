@@ -20,7 +20,7 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     public function register() : void
     {
-        $this->app->singleton(abstract: 'rugaard.dmi', concrete: new DMI);
+        $this->app->singleton(abstract: 'rugaard.dmi', concrete: fn () => new DMI);
         $this->app->bind(abstract: DMI::class, concrete: fn ($app) => $app['rugaard.dmi']);
     }
     /**

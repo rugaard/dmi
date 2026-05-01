@@ -46,10 +46,12 @@ abstract class Client
 
     /**
      * Client constructor.
+     *
+     * @param GuzzleClient|null $client
      */
-    public function __construct()
+    public function __construct(?GuzzleClient $client = null)
     {
-        $this->client = new GuzzleClient(config: [
+        $this->client = $client ?? new GuzzleClient(config: [
             'base_uri' => 'https://opendataapi.dmi.dk',
             'headers' => [
                 'Accept' => 'application/json',
@@ -80,9 +82,7 @@ abstract class Client
         );
 
         // Send request to service.
-        $response = $this->sendRequest(request: $request);
-
-        return !empty($response) ? $response : null;
+        return $this->sendRequest(request: $request);
     }
 
     /**
@@ -125,6 +125,12 @@ abstract class Client
         try {
             // Send request.
             $response = $this->client->send(request: $request, options: $options);
+
+            // If response is being returned with "204 No Content"
+            // we'll just return an empty array.
+            if ($response->getStatusCode() === 204) {
+                return [];
+            }
 
             // Get body from response.
             $body = (string) $response->getBody();
